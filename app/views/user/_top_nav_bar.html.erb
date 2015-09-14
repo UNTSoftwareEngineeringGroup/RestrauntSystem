@@ -1,7 +1,9 @@
+<!-- when calling this partial pass it a local variable called view with either waiter if it is for the manager or waiter, or menu if it is for the guest -->
+
 <nav class="top-bar" data-topbar role="navigation">
   <section class="top-bar-section">
     <!-- Right Nav Section -->
-    <ul class="right">
+    <ul class="right columns">
       <li>
         <%= button_to "Refill", root_url, :method => "get", class: "button round" %>
       </li>
