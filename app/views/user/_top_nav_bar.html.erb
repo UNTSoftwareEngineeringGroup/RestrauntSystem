@@ -19,12 +19,12 @@
       <!-- Back only shows if user is a manager or waiter -->
       <% if view == "waiter" %>
       <li>
-        <%= button_to "Back", :back, :method => "get", class: "button small" %>
+        <%= button_to "Back", :back, :method => "get", class: "button small radius" %>
       </li>
       <% else %>
       <!-- Help should only show if user is guest -->
       <li>
-        <%= button_to "Help", root_url, :method => "get", class: "button alert small" %>
+        <%= button_to "Help", root_url, :method => "get", class: "button alert small radius" %>
       </li>
       <% end %>
     </ul>
