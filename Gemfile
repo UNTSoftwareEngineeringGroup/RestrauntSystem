@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+#Use foundations for visuals
+gem 'foundation-rails'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.3'
