@@ -4,28 +4,37 @@
   <section class="top-bar-section">
     <!-- Right Nav Section -->
     <ul class="right columns">
-      <li>
-        <%= button_to "Refill", root_url, :method => "get", class: "button round" %>
-      </li>
-      
-      <!-- need to add a way to show the total in the pay button -->
-      <li>
-        <%= button_to "Pay Total: ", root_url, :method => "get", class: "button round success" %>
-      </li>
+      <!-- Buttons for the manager view -->
+      <% if view == "manager" %>
+        <li>
+          <%= button_to "Inventory", root_url, :method => "get", class: "button round" %>
+        </li>
+        <li>
+          <%= button_to "Reports", root_url, :method => "get", class: "button round" %>
+        </li>
+      <% else %>
+        <li>
+          <%= button_to "Refill", root_url, :method => "get", class: "button round" %>
+        </li>    
+        <!-- need to add a way to show the total in the pay button -->
+        <li>
+          <%= button_to "Pay Total: ", root_url, :method => "get", class: "button round success" %>
+        </li>
+      <% end %>
     </ul>
 
     <!-- Left Nav Section -->
     <ul class="left">
       <!-- Back only shows if user is a manager or waiter -->
       <% if view == "waiter" %>
-      <li>
-        <%= button_to "Back", :back, :method => "get", class: "button small radius" %>
-      </li>
-      <% else %>
-      <!-- Help should only show if user is guest -->
-      <li>
-        <%= button_to "Help", root_url, :method => "get", class: "button alert small radius" %>
-      </li>
+        <li>
+          <%= button_to "Back", :back, :method => "get", class: "button small radius" %>
+        </li>
+      <% elsif view == "menu" %>
+        <!-- Help should only show if user is guest -->
+        <li>
+          <%= button_to "Help", root_url, :method => "get", class: "button info small radius" %>
+        </li>
       <% end %>
     </ul>
   </section>
