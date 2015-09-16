@@ -18,7 +18,7 @@
         </li>    
         <!-- need to add a way to show the total in the pay button -->
         <li>
-          <%= button_to "Pay Total: ", root_url, :method => "get", class: "button round success" %>
+          <%= button_to "Pay Total: ", guest_pay_path, :view => "not credit", :method => "get", class: "button round success" %>
         </li>
       <% end %>
     </ul>

@@ -10,4 +10,7 @@ class UserController < ApplicationController
 
   def kitchen
   end
+
+  def pay
+  end
 end
