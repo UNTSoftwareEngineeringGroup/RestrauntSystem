@@ -1,2 +1,5 @@
-guest view
-<%= render 'side_nav', :view => "menu" %>
+<center><%= render 'top_nav_bar', :view => "menu" %></center>
+<!-- Menu Item stuff should go between the two render or -->
+<!--  it will appear either above the top bar -->
+<!-- or below the side bar -->
+<center><%= render 'side_nav', :view => "menu" %></center>
