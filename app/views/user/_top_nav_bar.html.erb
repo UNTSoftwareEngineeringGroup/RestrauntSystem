@@ -1,0 +1,42 @@
+<!-- when calling this partial pass it a local variable called view with either waiter if it is for the manager or waiter, or menu if it is for the guest -->
+
+<nav class="top-bar sticky" data-topbar role="navigation">
+  <section class="top-bar-section">
+    <!-- Right Nav Section -->
+    <ul class="right columns">
+      <!-- Buttons for the manager view -->
+      <% if view == "manager" %>
+        <li>
+          <%= button_to "Inventory", root_url, :method => "get", class: "button round" %>
+        </li>
+        <li>
+          <%= button_to "Reports", root_url, :method => "get", class: "button round" %>
+        </li>
+      <% else %>
+        <li>
+          <%= button_to "Refill", root_url, :method => "get", class: "button round" %>
+        </li>    
+        <!-- need to add a way to show the total in the pay button -->
+        <li>
+          <%= button_to "Pay Total: ", guest_pay_path, :view => "not credit", :method => "get", class: "button round success" %>
+        </li>
+      <% end %>
+    </ul>
+
+    <!-- Left Nav Section -->
+    <ul class="left">
+      <!-- Back only shows if user is a manager or waiter -->
+      <% if view == "waiter" %>
+        <li>
+          <%= button_to "Back", :back, :method => "get", class: "button small radius" %>
+        </li>
+      <% elsif view == "menu" %>
+        <!-- Help should only show if user is guest -->
+        <li>
+          <%= button_to "Help", root_url, :method => "get", class: "button info small radius" %>
+        </li>
+      <% end %>
+    </ul>
+  </section>
+
+</nav>
