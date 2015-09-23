@@ -1,0 +1,36 @@
+<% if ["Drinks", "Appetizers", "Entrees", "Desserts"].include? params[:view] %>
+  <p style="font-size:48px">
+    <center><strong>Which would you like?</strong></center>
+  </p>
+  <div>
+    <% menuitems = MenuItem.all %>
+    <ul class="small-block-grid-3">
+      <% menuitems.each do |item|%>
+
+        <% if item.category == params[:view] %>
+
+        <li>
+          <div class="columns">
+            <div class="panel">
+              <%= image_tag("placeholder.png", width: "150px") %>
+              <%= item.name%>
+              <br><br>
+              <%= item.description %>
+            </div>
+          </div>
+        </li>
+
+        <% end %>
+
+      <% end %>
+    </ul>
+  </div>
+<% elsif ["Games"].include? params[:view] %>
+  <p style="font-size:48px">
+    <center><strong>Which game would you like to play?</strong></center>
+  </p>
+<%else %>
+  <p style="font-size:48px" >
+  <center> <strong> What would you like to get started with</strong></center>
+  </p>
+<% end %>

@@ -13,4 +13,7 @@ class UserController < ApplicationController
 
   def pay
   end
+
+  def login
+  end
 end

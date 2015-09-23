@@ -1,0 +1,17 @@
+            
+            <!-- Ingredients section -->
+            <section class="top-bar-section">
+              <% if item.ingredients != "" %>
+                <div class="has-dropdown">
+                  <a href="#" class="small button radius">Customize</a>
+                  <ul class="dropdown">
+                   <% stuff=item.ingredients.split(',') %>
+                    <% stuff.each do |ingredient| %>
+                      <li style="background:white">
+                       <%= button_to "#{ingredient}", guest_url, :method => "get", class: "small button radius" %>
+                      </li>
+                    <% end %>
+                  </ul>
+                </div>
+              <% end %>
+            </section>
