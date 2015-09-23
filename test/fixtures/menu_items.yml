@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  category: MyString
+  description: MyText
+  calories: 1
+  img: MyString
+  ingredients: MyText
+  available: false
+
+two:
+  name: MyString
+  category: MyString
+  description: MyText
+  calories: 1
+  img: MyString
+  ingredients: MyText
+  available: false
