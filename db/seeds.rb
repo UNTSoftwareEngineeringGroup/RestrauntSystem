@@ -1,9 +1,4 @@
-<<<<<<< HEAD
- # This file should contain all the record creation needed to seed the database with its default values.
-=======
 # This file should contain all the record creation needed to seed the database with its default values.
-
->>>>>>> e255611a9ca54fe659528732db3f3b216c093f35
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
 
 #
@@ -13,7 +8,6 @@
 #   Mayor.create(name: "Emanuel", city: cities.first)
 
 MenuItem.delete_all
-<<<<<<< HEAD
 
 
 ####-----Appetizers-------########
@@ -26,17 +20,6 @@ MenuItem.create(
 		ingredients: "onion, bacon", 
 		available: "TRUE",
 		price: "4.57")
-=======
-####-----Appetizers-------########
-MenuItem.create(
-		name: "Cheese Fries",
- 		category: "Appetizers",
-		description: "Golden fries smothered with creamy cheese.", 
-		calories: "400", 
-		img: "img/url", 
-		ingredients: "onion, bacon", 
-		available: "TRUE")
->>>>>>> e255611a9ca54fe659528732db3f3b216c093f35
 MenuItem.create(
 		name: "Chips and Salsa",
 		category: "Appetizers",
@@ -44,12 +27,8 @@ MenuItem.create(
 		calories: "300",
 		img: "img/url",
 		ingredients: "",
-<<<<<<< HEAD
 		available: "TRUE",
 		price: "3.29")
-=======
-		available: "TRUE")
->>>>>>> e255611a9ca54fe659528732db3f3b216c093f35
 MenuItem.create(
 		name:"Spinach Dip",
 		category: "Appetizers",
@@ -57,12 +36,8 @@ MenuItem.create(
 		calories: "300",
 		img: "img/url",
 		ingredients: "",
-<<<<<<< HEAD
 		available: "TRUE",
 		price: "4.99")
-=======
-		available: "TRUE")
->>>>>>> e255611a9ca54fe659528732db3f3b216c093f35
 MenuItem.create(
 		name: "Buffalo Chicken Wings",
 		category: "Appetizers",
@@ -70,12 +45,8 @@ MenuItem.create(
 		calories: "590",
 		img: "img/url",
 		ingredients: "ranch, blue cheese, celery, carrots",
-<<<<<<< HEAD
 		available: "TRUE",
 		price: "6.99")
-=======
-		available: "TRUE")
->>>>>>> e255611a9ca54fe659528732db3f3b216c093f35
 MenuItem.create(
 		name: "Fried Mozzarella Cheese",
 		category: "Appetizers",
@@ -83,12 +54,8 @@ MenuItem.create(
 		calories: "560",
 		img: "img/url",
 		ingredients: "Marinara sauce",
-<<<<<<< HEAD
 		available: "TRUE",
 		price: "5.99")
-=======
-		available: "TRUE")
->>>>>>> e255611a9ca54fe659528732db3f3b216c093f35
 MenuItem.create(
 		name: "Nachos",
 		category: "Appetizers",
@@ -96,12 +63,8 @@ MenuItem.create(
 		calories: "1000",
 		img: "img/url",
 		ingredients: "Cheese, Jalepenos, Onions",
-<<<<<<< HEAD
 		available: "TRUE",
 		price: "4.69")
-=======
-		available: "TRUE")
->>>>>>> e255611a9ca54fe659528732db3f3b216c093f35
 
 #####----------Entrees----------###
 MenuItem.create(
@@ -111,12 +74,8 @@ MenuItem.create(
 		calories: "730",
 		img: "img/url",
 		ingredients: "bacon, cheese, lettuce, tomatoes, pickles, onion",
-<<<<<<< HEAD
 		available: "TRUE",
 		price: "9.99")
-=======
-		available: "TRUE")
->>>>>>> e255611a9ca54fe659528732db3f3b216c093f35
 MenuItem.create(
 		name: "Teriyaki Burger",
 		category: "Entrees",
@@ -124,12 +83,8 @@ MenuItem.create(
 		calories: "480",
 		img: "img/url",
 		ingredients: "cheese, lettuce, tomatoes, pickles, onion",
-<<<<<<< HEAD
 		available: "TRUE",
 		price: "8.99")
-=======
-		available: "TRUE")
->>>>>>> e255611a9ca54fe659528732db3f3b216c093f35
 MenuItem.create(
 		name: "Double Burger",
 		category: "Entrees",
@@ -137,12 +92,8 @@ MenuItem.create(
 		calories: "800",
 		img: "img/url",
 		ingredients: "cheese, lettuce, tomatoes, pickles, onion",
-<<<<<<< HEAD
 		available: "TRUE",
 		price: "12.99")
-=======
-		available: "TRUE")
->>>>>>> e255611a9ca54fe659528732db3f3b216c093f35
 MenuItem.create(
 		name: "The Roundhouse",
 		category: "Entrees",
@@ -150,12 +101,8 @@ MenuItem.create(
 		calories: "600",
 		img: "img/url",
 		ingredients: "cheese, lettuce, tomatoes, pickles, onion",
-<<<<<<< HEAD
 		available: "TRUE",
 		price: "6.59")
-=======
-		available: "TRUE")
->>>>>>> e255611a9ca54fe659528732db3f3b216c093f35
 MenuItem.create(
 		name: "The Champion",
 		category: "Entrees",
@@ -163,12 +110,8 @@ MenuItem.create(
 		calories: "750",
 		img: "img/url",
 		ingredients: "cheese, egg, avocado, lettuce, tomatoes, pickles, onion",
-<<<<<<< HEAD
 		available: "TRUE",
 		price: "9.78")
-=======
-		available: "TRUE")
->>>>>>> e255611a9ca54fe659528732db3f3b216c093f35
 MenuItem.create(
 		name: "The Classic",
 		category: "Entrees",
@@ -176,12 +119,8 @@ MenuItem.create(
 		calories: "400",
 		img: "img/url",
 		ingredients: "cheese, lettuce, tomatoes, pickles, onion",
-<<<<<<< HEAD
 		available: "TRUE",
 		price: "6.99")
-=======
-		available: "TRUE")
->>>>>>> e255611a9ca54fe659528732db3f3b216c093f35
 
 #########------Desserts---------#####
 MenuItem.create(
@@ -191,12 +130,8 @@ MenuItem.create(
 		calories: "450",
 		img: "img/url",
 		ingredients: "None",
-<<<<<<< HEAD
 		available: "TRUE",
 		price: "3.49")
-=======
-		available: "TRUE")
->>>>>>> e255611a9ca54fe659528732db3f3b216c093f35
 MenuItem.create(
 		name: "Fruit Fiesta",
 		category: "Desserts",
@@ -204,12 +139,8 @@ MenuItem.create(
 		calories: "100",
 		img: "img/url",
 		ingredients: "None",
-<<<<<<< HEAD
 		available: "TRUE",
 		price: "4.59")
-=======
-		available: "TRUE")
->>>>>>> e255611a9ca54fe659528732db3f3b216c093f35
 MenuItem.create(
 		name: "The Old Fashioned",
 		category: "Desserts",
@@ -217,12 +148,8 @@ MenuItem.create(
 		calories: "400",
 		img: "img/url",
 		ingredients: "",
-<<<<<<< HEAD
 		available: "TRUE",
 		price: "3.99")
-=======
-		available: "TRUE")
->>>>>>> e255611a9ca54fe659528732db3f3b216c093f35
 MenuItem.create(
 		name: "Strawberry Cheesecake",
 		category: "Desserts",
@@ -230,12 +157,8 @@ MenuItem.create(
 		calories: "350",
 		img: "img/url",
 		ingredients: "strawberrys",
-<<<<<<< HEAD
 		available: "TRUE",
 		price: "7.79")
-=======
-		available: "TRUE")
->>>>>>> e255611a9ca54fe659528732db3f3b216c093f35
 MenuItem.create(
 		name: "Hot Fudge Sundae",
 		category: "Desserts",
@@ -243,12 +166,8 @@ MenuItem.create(
 		calories: "470",
 		img: "img/url",
 		ingredients: "peanuts, chocolate syrup, strawberry syrup, banana",
-<<<<<<< HEAD
 		available: "TRUE",
 		price: "4.59")
-=======
-		available: "TRUE")
->>>>>>> e255611a9ca54fe659528732db3f3b216c093f35
 MenuItem.create(
 		name: "Key Lime Pie",
 		category: "Desserts",
@@ -256,12 +175,8 @@ MenuItem.create(
 		calories: "310",
 		img: "img/url",
 		ingredients: "",
-<<<<<<< HEAD
 		available: "TRUE",
 		price: "3.99")
-=======
-		available: "TRUE")
->>>>>>> e255611a9ca54fe659528732db3f3b216c093f35
 MenuItem.create(
 		name: "Ice Cream",
 		category: "Desserts",
@@ -269,12 +184,8 @@ MenuItem.create(
 		calories: "144",
 		img: "img/url",
 		ingredients: "vanilla, chocolate",
-<<<<<<< HEAD
 		available: "TRUE",
 		price: "4.99")
-=======
-		available: "TRUE")
->>>>>>> e255611a9ca54fe659528732db3f3b216c093f35
 
 ########--------Drinks--------#########
 MenuItem.create(
@@ -284,12 +195,8 @@ MenuItem.create(
 		calories: "240",
 		img: "img/url",
 		ingredients: "",
-<<<<<<< HEAD
 		available: "TRUE",
 		price: "1.99")
-=======
-		available: "TRUE")
->>>>>>> e255611a9ca54fe659528732db3f3b216c093f35
 MenuItem.create(
 		name: "Diet Coke",
 		category: "Drinks",
@@ -297,12 +204,8 @@ MenuItem.create(
 		calories: "4",
 		img: "img/url",
 		ingredients: "",
-<<<<<<< HEAD
 		available: "TRUE",
 		price: "1.99")
-=======
-		available: "TRUE")
->>>>>>> e255611a9ca54fe659528732db3f3b216c093f35
 MenuItem.create(
 		name: "Sprite",
 		category: "Drinks",
@@ -310,12 +213,8 @@ MenuItem.create(
 		calories: "140",
 		img: "img/url",
 		ingredients: "",
-<<<<<<< HEAD
 		available: "TRUE",
 		price: "1.99")
-=======
-		available: "TRUE")
->>>>>>> e255611a9ca54fe659528732db3f3b216c093f35
 MenuItem.create(
 		name: "Dr. Pepper",
 		category: "Drinks",
@@ -323,12 +222,8 @@ MenuItem.create(
 		calories: "250",
 		img: "img/url",
 		ingredients: "",
-<<<<<<< HEAD
 		available: "TRUE",
 		price: "1.99")
-=======
-		available: "TRUE")
->>>>>>> e255611a9ca54fe659528732db3f3b216c093f35
 MenuItem.create(
 		name: "Fanta Orange",
 		category: "Drinks",
@@ -336,12 +231,8 @@ MenuItem.create(
 		calories: "160",
 		img: "img/url",
 		ingredients: "",
-<<<<<<< HEAD
 		available: "TRUE",
 		price: "1.99")
-=======
-		available: "TRUE")
->>>>>>> e255611a9ca54fe659528732db3f3b216c093f35
 MenuItem.create(
 		name: "Iced Tea",
 		category: "Drinks",
@@ -349,12 +240,8 @@ MenuItem.create(
 		calories: "70",
 		img: "img/url",
 		ingredients: "",
-<<<<<<< HEAD
 		available: "TRUE",
 		price: "1.99")
-=======
-		available: "TRUE")
->>>>>>> e255611a9ca54fe659528732db3f3b216c093f35
 MenuItem.create(
 		name: "Lemonade",
 		category: "Drinks",
@@ -362,12 +249,8 @@ MenuItem.create(
 		calories: "60",
 		img: "img/url",
 		ingredients: "",
-<<<<<<< HEAD
 		available: "TRUE",
 		price: "1.99")
-=======
-		available: "TRUE")
->>>>>>> e255611a9ca54fe659528732db3f3b216c093f35
 MenuItem.create(
 		name: "Root Beer",
 		category: "Drinks",
@@ -375,12 +258,8 @@ MenuItem.create(
 		calories: "150",
 		img: "img/url",
 		ingredients: "",
-<<<<<<< HEAD
 		available: "TRUE",
 		price: "1.99")
-=======
-		available: "TRUE")
->>>>>>> e255611a9ca54fe659528732db3f3b216c093f35
 MenuItem.create(
 		name: "Hot Chocolate",
 		category: "Drinks",
@@ -388,9 +267,5 @@ MenuItem.create(
 		calories: "100",
 		img: "img/url",
 		ingredients: "",
-<<<<<<< HEAD
 		available: "TRUE",
 		price: "2.50")
-=======
-		available: "TRUE")
->>>>>>> e255611a9ca54fe659528732db3f3b216c093f35

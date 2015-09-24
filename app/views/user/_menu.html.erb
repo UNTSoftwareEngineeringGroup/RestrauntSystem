@@ -6,23 +6,27 @@
     <% menuitems = MenuItem.all %>
     <ul class="small-block-grid-3">
       <% menuitems.each do |item|%>
-
         <% if item.category == params[:view] %>
-
         <li>
           <div class="columns">
+
+            <a href="/login">
+
             <div class="panel button">
               <%= image_tag("placeholder.png", width: "150px") %>
               <%= item.name%>
-              <br><br>
+              <br>
               <%= item.description %>
+              <br>
+              <%= item.price %>
             </div>
+
+            </a>
+
           </div>
         </li>
-
-        <% end %>
-
       <% end %>
+    <% end %>
     </ul>
   </div>
 <% elsif ["Games"].include? params[:view] %>
@@ -31,6 +35,6 @@
   </p>
 <%else %>
   <p style="font-size:48px" >
-  <center> <strong> What would you like to get started with</strong></center>
+    <center> <strong> What would you like to get started with</strong></center>
   </p>
 <% end %>
