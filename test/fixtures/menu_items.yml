@@ -2,14 +2,30 @@
 
 one:
   name: MyString
+<<<<<<< HEAD
+=======
+  category: MyString
+>>>>>>> e255611a9ca54fe659528732db3f3b216c093f35
   description: MyText
   calories: 1
   img: MyString
   ingredients: MyText
+<<<<<<< HEAD
 
 two:
   name: MyString
+=======
+  available: false
+
+two:
+  name: MyString
+  category: MyString
+>>>>>>> e255611a9ca54fe659528732db3f3b216c093f35
   description: MyText
   calories: 1
   img: MyString
   ingredients: MyText
+<<<<<<< HEAD
+=======
+  available: false
+>>>>>>> e255611a9ca54fe659528732db3f3b216c093f35
