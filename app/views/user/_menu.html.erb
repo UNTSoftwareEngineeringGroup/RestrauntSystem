@@ -30,7 +30,18 @@
     <center><strong>Which game would you like to play?</strong></center>
   </p>
 <%else %>
-  <p style="font-size:48px" >
-    <center> <strong> What would you like to get started with</strong></center>
+  <div>
+  <p style="font-size:48px" class="centered large-offset-2" >
+    <strong> What would you like to get started with?</strong>
+    <br>
+    We would recommend one of the following
   </p>
+    <div class="rows">
+      <div class="large-offset-4 columns centered">
+        <div>
+        <%= link_to "Drinks", guest_url(:view => "Drinks"), :method => "get", class: "large button radius" %>
+        <%= link_to "Appetizers", guest_url(:view => "Appetizers"), :method => "get", class: "large button radius" %>
+      </div>
+    </div>
+  </div>
 <% end %>
