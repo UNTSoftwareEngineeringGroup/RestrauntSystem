@@ -9,8 +9,6 @@
 #   Mayor.create(name: "Emanuel", city: cities.first)
 
 MenuItem.delete_all
-
-
 ####-----Appetizers-------########
 MenuItem.create(
 		name: "Cheese Fries",
