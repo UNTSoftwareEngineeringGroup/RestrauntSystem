@@ -1,5 +1,4 @@
  # This file should contain all the record creation needed to seed the database with its default values.
-
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
 
 #
@@ -15,7 +14,7 @@ MenuItem.delete_all
 MenuItem.create(
 		name: "Cheese Fries",
  		category: "Appetizers",
-		description: "Golden fries smothered with creamy cheese.", 
+		description: "Golden fries smothered with creamy cheese.",
 		calories: "400", 
 		img: "img/url", 
 		ingredients: "onion, bacon", 
