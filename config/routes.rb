@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get 'kitchen' => 'user#kitchen'
   get 'waiter' => 'user#waiter'
   get 'guest/pay' => 'user#pay'
+  get 'login' => 'user#login'
 
-  root "user#guest"
+  root "user#login"
 end

@@ -1,4 +1,5 @@
-<div class="small-3 columns sticky" style="background:#333", >
+<center>
+<div class="large-2 columns" style="background:#333", >
   <% if view == "manager" %>
     <ul class="side-nav">
       <!-- Manager buttons -->
@@ -15,13 +16,13 @@
   <%else%>
     <ul class="side-nav">
       <!-- Menu buttons -->
-      <li><%= button_to "    Drinks    ", root_url, :method => "get", class: "button radius" %></li>
-      <li><%= button_to "Appitizers", root_url, :method => "get", class: "button radius" %></li>
-      <li><%= button_to "   Entrees   ", root_url, :method => "get", class: "button radius" %></li>
-      <li><%= button_to "   Dessert   ", root_url, :method => "get", class: "button radius"%></li>
-      <li><%= button_to "    Games    ", root_url, :method => "get", class: "button success radius" %></li>
+      <li><%= link_to "Drinks", guest_url(:view => "Drinks"), :method => "get", class: "button radius" %></li>
+      <li><%= link_to "Appetizers", guest_url(:view => "Appetizers"), :method => "get", class: "button radius" %></li>
+      <li><%= link_to "Entrees", guest_url(:view => "Entrees"), :method => "get", class: "button radius" %></li>
+      <li><%= link_to "Dessert", guest_url(:view => "Desserts"), :method => "get", class: "button radius"%></li>
+      <li><%= link_to "Games", guest_url(:view => "Games"), :method => "get", class: "button success radius" %></li>
     </ul>
   <% end %>
-<div>
-
+</div>
+</center>
 
