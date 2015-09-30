@@ -15,5 +15,12 @@ class UserController < ApplicationController
   end
 
   def login
+    begin params[:username]
+      #To access the value entered into the form use params[:username]
+      #So to print out the username that was entered as an alert you 
+      #would do flash.now[:alert] = "#{params[:username]} was entered"
+    rescue
+      flash.now[:alert] = "Username can't be blank!"
+    end 
   end
 end
