@@ -1,2 +1,24 @@
-login view
-<%= button_to "menu", guest_path(:view => "gs"), :item => "drinks", :method => "get" ,  class:"button radius" %>
+<!-- Make sure to remove lines 1 to 6 before final version -->
+<%= button_to "Menu", guest_path, :method => "get" ,  class:"button radius" %>
+<%= button_to "Manager", manager_path, :method => "get" ,  class:"button radius" %>
+<%= button_to "Kitchen", kitchen_path, :method => "get" ,  class:"button radius" %>
+<%= button_to "Waiter", waiter_path, :method => "get" ,  class:"button radius" %>
+<!-- remove up to here -->
+
+<div class="row">
+  <div class="small-6 small-centered text-center columns">
+    <%= form_tag login_path, :method => 'get' do %>
+      <fieldset>
+        <legend>Login</legend>
+        <div class="collapse postfix-round">
+          <div class="small-8 columns">
+            <%= text_field_tag :username, params[:username], placeholder: "Username" %>
+          </div>
+          <div class="small-4 columns">
+            <%= submit_tag "Submit", class: "button radius postfix"%>
+          </div>
+        </div>
+      </fieldset>
+    <% end %>
+  </div>
+</div>
