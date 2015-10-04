@@ -1,7 +1,10 @@
-class CreateTables < User
+class CreateTables < ActiveRecord::Migration
   def change
     create_table :tables do |t|
- 		 t.references(:ticket) :ticket
+ 		 t.string :password
+		 t.string :username
+		 t.integer :accesslevel
+		 t.integer :ticket
 
       t.timestamps null: false
     end

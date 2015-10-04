@@ -2,7 +2,7 @@ class CreateTables < ActiveRecord::Migration
   def change
     create_table :tables do |t|
  		 t.string :password
-		 t.string :usernmae
+		 t.string :username
 		 t.integer :accesslevel
 		 t.integer :ticket
 

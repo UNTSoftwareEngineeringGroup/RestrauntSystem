@@ -292,8 +292,15 @@ User.create(
 ###----Seed tables-----###
 Table.delete_all ##erase previous seed
 Table.create(
-	user.username:"Table011",
-	user.password:"table",
-	user.accesslevel:1,
+	username:"Table011",
+	password:"table",
+	accesslevel:1,
+	ticket:NULL
+)
+
+Table.create(
+	username:"Table021",
+	password:"table",
+	accesslevel:1,
 	ticket:NULL
 )
