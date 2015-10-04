@@ -1,0 +1,9 @@
+class CreateTables < User
+  def change
+    create_table :tables do |t|
+ 		 t.references(:ticket) :ticket
+
+      t.timestamps null: false
+    end
+  end
+end

@@ -1,0 +1,12 @@
+class CreateTickets < ActiveRecord::Migration
+  def change
+    create_table :tickets do |t|
+      t.int :table
+      t.int :orderItem
+      t.float :total
+      t.float :tax
+
+      t.timestamps null: false
+    end
+  end
+end

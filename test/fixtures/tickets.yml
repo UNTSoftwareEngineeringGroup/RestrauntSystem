@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  table: 
+  orderItem: 
+  total: 1.5
+  tax: 1.5
+
+two:
+  table: 
+  orderItem: 
+  total: 1.5
+  tax: 1.5

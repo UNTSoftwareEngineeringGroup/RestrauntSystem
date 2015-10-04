@@ -269,3 +269,38 @@ MenuItem.create(
 		ingredients: "",
 		available: "TRUE",
 		price: "2.50")
+
+
+		###-------Seed Users-------###
+User.delete_all ##erase previous seed
+User.create(
+	username:"Manager",
+	password:"1234",
+	accesslevel: 4
+)
+User.create(
+	username:"Server",
+	password:"1234",
+	accesslevel: 3
+)
+User.create(
+	username:"Kitchen",
+	password:"kitchen",
+	accesslevel: 2
+)
+
+###----Seed tables-----###
+Table.delete_all ##erase previous seed
+Table.create(
+	user.username:"Table011",
+	user.password:"table",
+	user.accesslevel:1,
+	ticket:NULL
+)
+
+Table.create(
+	user.username:"Table021",
+	user.password:"table",
+	user.accesslevel:1,
+	ticket:NULL
+)
