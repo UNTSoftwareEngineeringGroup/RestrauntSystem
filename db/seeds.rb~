@@ -1,5 +1,4 @@
- # This file should contain all the record creation needed to seed the database with its default values.
-
+# This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
 
 #
@@ -15,7 +14,7 @@ MenuItem.delete_all
 MenuItem.create(
 		name: "Cheese Fries",
  		category: "Appetizers",
-		description: "Golden fries smothered with creamy cheese.", 
+		description: "Golden fries smothered with creamy cheese.",
 		calories: "400", 
 		img: "img/url", 
 		ingredients: "onion, bacon", 
@@ -270,3 +269,38 @@ MenuItem.create(
 		ingredients: "",
 		available: "TRUE",
 		price: "2.50")
+
+
+		###-------Seed Users-------###
+User.delete_all ##erase previous seed
+User.create(
+	username:"Manager",
+	password:"1234",
+	accesslevel: 4
+)
+User.create(
+	username:"Server",
+	password:"1234",
+	accesslevel: 3
+)
+User.create(
+	username:"Kitchen",
+	password:"kitchen",
+	accesslevel: 2
+)
+
+###----Seed tables-----###
+Table.delete_all ##erase previous seed
+Table.create(
+	username:"Table011",
+	password:"table",
+	accesslevel:1,
+	ticket:NULL
+)
+
+Table.create(
+	username:"Table021",
+	password:"table",
+	accesslevel:1,
+	ticket:NULL
+)
