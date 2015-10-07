@@ -1,1 +1,23 @@
-kitchen view
+<head>
+  <link rel="stylesheet" type="text/css" href="../../assets/stylesheets/kitchen.css">
+  <script src="../../javascripts/kitchen.js"></script>
+</head>
+
+
+<div class="panel order" style="margin:24px 0 0 24px;">
+  <% menuitems = MenuItem.all %>
+  <h3 style="text-align:center">Order #</h3>
+  <hr style="color:black; height:3px;">
+  <ul class="small-block-grid-1 items" style="text-align:center;">
+    <% menuitems.each do |item|%>
+    <li>
+      <div class="foodItems panel button item" onclick="updateStatus(this)">
+        <h4><%= item.name%></h4>
+        <ul>
+          <li>notes about item...</li>
+        </ul>
+      </div>
+    </li>
+    <% end %>
+  </ul>
+</div>
