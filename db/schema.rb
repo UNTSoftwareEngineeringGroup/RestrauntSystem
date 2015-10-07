@@ -11,16 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151004214419) do
-
-  create_table "Tables", force: :cascade do |t|
-    t.string   "password"
-    t.string   "username"
-    t.integer  "accesslevel"
-    t.integer  "ticket"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-  end
+ActiveRecord::Schema.define(version: 20151004192403) do
 
   create_table "menu_items", force: :cascade do |t|
     t.string   "name"
@@ -43,11 +34,20 @@ ActiveRecord::Schema.define(version: 20151004214419) do
     t.datetime "updated_at",  null: false
   end
 
+  create_table "tables", force: :cascade do |t|
+    t.string   "password"
+    t.string   "username"
+    t.integer  "accesslevel"
+    t.integer  "ticket"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
   create_table "tickets", force: :cascade do |t|
     t.integer  "table"
-    t.integer  "orderItem"
     t.float    "total"
     t.float    "tax"
+    t.string   "items"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
