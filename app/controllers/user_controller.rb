@@ -19,7 +19,7 @@ class UserController < ApplicationController
       #To access the value entered into the form use params[:username]
       #So to print out the username that was entered as an alert you 
       #would do flash.now[:alert] = "#{params[:username]} was entered"
-      if params[:alert].empty?
+      if params[:username].empty?
         flash.now[:alert] = "Username Can't be blank!"
       else
       end
