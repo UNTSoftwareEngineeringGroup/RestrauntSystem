@@ -5,17 +5,32 @@
 <%= button_to "Waiter", waiter_path, :method => "get" ,  class:"button radius" %>
 <!-- remove up to here -->
 
+<!-- Alert message -->
+<div class="row">
+  <div class="small3 small-centered text-center columns">
+    <p id="alert">
+     <font color="red"> <strong><%= alert %></strong></font>
+    </p>
+  </div>
+</div>
+
+<!-- login form -->
 <div class="row">
   <div class="small-6 small-centered text-center columns">
     <%= form_tag login_path, :method => 'get' do %>
       <fieldset>
         <legend>Login</legend>
-        <div class="collapse postfix-round">
-          <div class="small-8 columns">
+        <div class="row">
+          <div class="small-12 columns">
             <%= text_field_tag :username, params[:username], placeholder: "Username" %>
-          </div>
-          <div class="small-4 columns">
-            <%= submit_tag "Submit", class: "button radius postfix"%>
+            <div class="row">
+              <div class="small-8 columns">
+                <%= text_field_tag :password, params[:password], placeholder: "Password" %>
+              </div>
+              <div class="small-4 columns">
+                <%= submit_tag "Submit", class: "button radius postfix"%>
+              </div>
+            </div>
           </div>
         </div>
       </fieldset>
