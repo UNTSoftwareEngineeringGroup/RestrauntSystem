@@ -279,7 +279,27 @@ User.create(
 	accesslevel: 4
 )
 User.create(
-	username:"Server",
+	username:"Server1",
+	password:"1234",
+	accesslevel: 3
+)
+User.create(
+	username:"Server2",
+	password:"1234",
+	accesslevel: 3
+)
+User.create(
+	username:"Server3",
+	password:"1234",
+	accesslevel: 3
+)
+User.create(
+	username:"Server4",
+	password:"1234",
+	accesslevel: 3
+)
+User.create(
+	username:"Server5",
 	password:"1234",
 	accesslevel: 3
 )
