@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  table: 1
+  total: 1.5
+  tax: 1.5
+  items: MyString
+
+two:
+  table: 1
+  total: 1.5
+  tax: 1.5
+  items: MyString
