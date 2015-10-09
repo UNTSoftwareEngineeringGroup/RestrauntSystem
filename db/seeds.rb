@@ -304,3 +304,17 @@ Table.create(
 	accesslevel:1,
 	ticket:NIL
 )
+
+####--------Ticket seed----------####
+Ticket.delete_all
+Ticket.create(
+	table: 11,
+	items: (OrderItem.create(
+		item: (MenuItem.find_by name: 'Nachos'),
+		ingredients: 'Jalepenos, Onions',
+		notes: 'Cook it light'
+	)
+			 )
+) 
+	   	
+
