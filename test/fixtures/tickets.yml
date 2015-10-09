@@ -1,13 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  table: 
-  orderItem: 
+  table: 1
   total: 1.5
   tax: 1.5
+  items: MyString
 
 two:
-  table: 
-  orderItem: 
+  table: 1
   total: 1.5
   tax: 1.5
+  items: MyString

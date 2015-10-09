@@ -293,14 +293,27 @@ User.create(
 Table.delete_all ##erase previous seed
 Table.create(
 	username:"Table011",
-	password:"table",
+	password:NIL,
 	accesslevel:1,
-	ticket:NULL
+	ticket:NIL
 )
 
 Table.create(
 	username:"Table021",
-	password:"table",
+	password:NIL,
 	accesslevel:1,
-	ticket:NULL
+	ticket:NIL
 )
+
+####--------Ticket seed----------####
+Ticket.delete_all
+Ticket.create(
+	items: (OrderItem.create(
+		item: (MenuItem.find_by name: 'Nachos'),
+		ingredients: 'Jalepenos, Onions',
+		notes: 'Cook it light'
+	)
+			 )
+) 
+	   	
+
