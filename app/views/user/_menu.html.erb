@@ -9,7 +9,7 @@
         <% if item.category == params[:view] %>
         <li>
           <div class="columns">
-            <a href="/login">
+            <%= link_to order_items_show_path( :item => "#{item.name}") do %>
               <div class="panel button", style="width:450px">
                 <div class="left">
                 <%= image_tag("placeholder.png", width: "150px") %>
@@ -20,7 +20,7 @@
                 <br><br>
                 <%= item.price %>
               </div>
-            </a>
+            <% end %>
           </div>
         </li>
       <% end %>

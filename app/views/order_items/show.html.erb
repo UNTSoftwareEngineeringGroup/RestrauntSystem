@@ -1,0 +1,28 @@
+<% item = MenuItem.where(:name => "#{params[:item]}").first %>
+<% @ingredients = item.ingredients.split(',') %>
+
+<fieldset>
+  <legend><%= params[:item] %></legend>
+    <fieldset>
+      <div>
+        <%= image_tag("placeholder.png", width: "150px") %>
+        <%= item.description %>
+        <%= form_tag guest_path(:params => params), :method => 'get' do %>
+          <fieldset>
+            <legend>Customize your order</legend>
+            Please uncheck everything you want removed.<br>
+            <% @ingredients.each do |ingredient| %>
+              <%= check_box_tag 'good-ingredients[]', checked = "#{ingredient}", true%><%= " #{ingredient}" %>
+              <br>
+            <% end %>
+            <fieldset>
+              <legend>Special Requests</legend>
+              <%= text_area_tag(:notes,'',size:"24x6") %>
+            </fieldset>
+          </fieldset>
+          <%= hidden_field_tag :item_id, "#{item.id}" %>
+          <%= submit_tag "Order", class:"button radius" %>
+        <% end %>
+      </div>
+    </fieldset>
+</fieldset>
