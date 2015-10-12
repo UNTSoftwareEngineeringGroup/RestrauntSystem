@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
 #Users
   get 'manager' => 'user#manager'
+  get 'tableview' => 'user#tableview'
   get 'guest' => 'user#guest'
   get 'kitchen' => 'user#kitchen'
   get 'waiter' => 'user#waiter'

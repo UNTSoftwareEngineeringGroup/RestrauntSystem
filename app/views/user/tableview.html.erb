@@ -1,0 +1,62 @@
+<style>
+div.columns large-10 right"{
+	padding-left: 2cm;
+}
+
+</style>
+<center><%= render 'top_nav_bar', :view => "manager" %></center>
+
+
+<div class="rows">
+  <div class="large-2 columns" style="background:#333">
+    <ul class = side-nav>
+    <li><%= button_to "Server 1 ", tableview_path, :view => "Servers", :method => "get", class: "button success radius" %></li>
+    <li><%= button_to "Server 2 ", tableview_path, :view => "Servers", :method => "get", class: "button success radius" %></li>
+  	<li><%= button_to "Server 3 ", tableview_path, :view => "Servers", :method => "get", class: "button success radius" %></li>
+	<li><%= button_to "Server 4 ", tableview_path, :view => "Servers", :method => "get", class: "button success radius" %></li>
+	<li><%= button_to "Server 5 ", tableview_path, :view => "Servers", :method => "get", class: "button success radius" %></li>
+	</ul>
+  </div>
+</div>
+<!--
+<div>
+  <% servers = User.all %>
+  <h3 style="text-align:center">Servers: </h3>
+  <hr style="color:black; height:3px;">
+  <ul class="small-block-grid-1 items" style="text-align:center;">
+    <% servers.each do |servers|%>
+    <li>
+        <h4><%= servers.username%></h4>
+    </li>
+    <% end %>
+  </ul>
+</div>
+-->
+<br>
+<div class="coulmns large-10 right">
+<div class="columns">
+<ul class="small-block-grid-3">
+  <li>
+  	<a href="#" class="button split">Table 11 <span data-dropdown="drop"></span></a><br>
+	<ul id="drop" class="f-dropdown" data-dropdown-content>
+  		<li><a href="#">Status</a></li>
+  		<li><a href="#">Refill</a></li>
+	</ul>
+  </li>
+  <li>
+  	<a href="#" class="button split">Table 12 <span data-dropdown="drop"></span></a><br>
+	<ul id="drop" class="f-dropdown" data-dropdown-content>
+ 		<li><a href="#">Status</a></li>
+  		<li><a href="#">Refill</a></li>
+	</ul>
+  </li>
+  <li>
+  	<a href="#" class="button split">Table 13 <span data-dropdown="drop"></span></a><br>
+	<ul id="drop" class="f-dropdown" data-dropdown-content>
+  		<li><a href="#">Status</a></li>
+  		<li><a href="#">Refill</a></li>
+	</ul>
+  </li>
+</ul>
+</div>
+</div>
