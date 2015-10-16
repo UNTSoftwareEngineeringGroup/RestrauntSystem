@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'ticket/addToTicket' => 'ticket#addToTicket'
-
 #Order_items
   get 'order_items/show' => 'order_items#show' 
   get 'order_items/addToTicket' => 'order_items#orderToTicket'

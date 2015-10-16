@@ -7,7 +7,7 @@
       <div>
         <%= image_tag("placeholder.png", width: "150px") %>
         <%= item.description %>
-        <%= form_tag ticket_addToTicket_path(:params => params), :method => 'get' do %>
+        <%= form_tag guest_path(:params => params), :method => 'get' do %>
           <fieldset>
             <legend>Customize your order</legend>
             Please uncheck everything you want removed.<br>
