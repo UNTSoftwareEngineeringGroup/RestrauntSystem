@@ -307,13 +307,21 @@ Table.create(
 
 ####--------Ticket seed----------####
 Ticket.delete_all
-Ticket.create(
-	items: (OrderItem.create(
-		item: (MenuItem.find_by name: 'Nachos'),
-		ingredients: 'Jalepenos, Onions',
-		notes: 'Cook it light'
-	)
-			 )
-) 
-	   	
+OrderItem.delete_all
+@ticket = Ticket.create(
+	table: "11",
+	tax: "8.25",
+	tstatus: 0,
+)
+
+@ticket.orderItems.create(
+	item: (MenuItem.find_by name: "Nachos"),
+	ingredients: "jalepenos, onions",
+	notes: "extra cheese please",
+	istatus: 0)
+@ticket.orderItems.create(
+	item: (MenuItem.find_by name: "Double Burger"),
+	ingredients: "Lettuce, Tomato",
+	notes: "Medium",
+	istatus: 0)
 

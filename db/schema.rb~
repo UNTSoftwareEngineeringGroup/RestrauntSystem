@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151018224203) do
+ActiveRecord::Schema.define(version: 20151009004742) do
 
   create_table "menu_items", force: :cascade do |t|
     t.string   "name"
@@ -26,17 +26,19 @@ ActiveRecord::Schema.define(version: 20151018224203) do
     t.float    "price"
   end
 
-  create_table "order_items", force: :cascade do |t|
+  create_table "orderitem", force: :cascade do |t|
+    t.integer  "ticket_id"
     t.integer  "item"
     t.string   "ingredients"
     t.string   "notes"
     t.integer  "istatus"
-    t.integer  "ticket_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.integer  "orderitem_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
-  add_index "order_items", ["ticket_id"], name: "index_order_items_on_ticket_id"
+  add_index "orderitem", ["orderitem_id"], name: "index_orderitem_on_orderitem_id"
+  add_index "orderitem", ["ticket_id"], name: "index_orderitem_on_ticket_id"
 
   create_table "tables", force: :cascade do |t|
     t.string   "password"
