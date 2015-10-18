@@ -47,7 +47,7 @@ ActiveRecord::Schema.define(version: 20151009004742) do
     t.integer  "table"
     t.float    "total"
     t.float    "tax"
-    t.integer  "items"
+    t.string   "items"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

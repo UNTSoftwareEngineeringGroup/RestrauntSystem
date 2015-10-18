@@ -3,7 +3,7 @@ class OrderItemsController < ApplicationController
   end
 
   def addToTicket
-	
+
     redirect_to guest_path
   end
 end
