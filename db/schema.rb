@@ -60,8 +60,4 @@ ActiveRecord::Schema.define(version: 20151009004742) do
     t.datetime "updated_at",  null: false
   end
 
-<<<<<<< HEAD
 end
-=======
-end
->>>>>>> kitchen-view
