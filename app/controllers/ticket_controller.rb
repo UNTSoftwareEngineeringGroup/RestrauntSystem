@@ -3,25 +3,34 @@ class TicketController < ApplicationController
 
 	def addToTicket
 		session[:tableID] = "15"
-    if @ticket != NIL
-	
-   @ticket = Ticket.new(
-	table: session[:tableID],
-	items: (OrderItem.create(
-		item: (MenuItem.find_by_id id: params[:item_id]),
-		ingredients: params[:good_ingredients],
-		notes: params[:notes]
-									)
-
-			 )
-	)	
-		redirect_to guest_path
-	else
-		redirect_to guest_path
- 	 end
+		@ticket = session[:ticket]
+		unless defined? @ticket
+			session[:ticket] = Ticket.create(
+			table: session[:tableID],
+			items: (OrderItem.create(
+				item: (MenuItem.find_by id: params[:item_id]),
+				ingredients: params[:good_ingredients],
+				notes: params[:notes]
+					)
+				)
+			)	
+			puts("**********Ticket created************")
+			redirect_to guest_path
+		else
+			session[:ticket] = OrderItem.create(
+				item: (MenuItem.find_by id: params[:item_id]),
+				ingredients: params[:good_ingredients],
+				notes: params[:notes]
+				
+			)
+			puts("**************Ticket added to***********")
+			redirect_to guest_path
+		end
 	end
+
+
 	private
-		def recalcTotal
+		def calcTotal
 			#add all items to total and set total with tax
 		end
 

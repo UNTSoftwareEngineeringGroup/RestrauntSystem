@@ -4,7 +4,7 @@ class CreateTickets < ActiveRecord::Migration
       t.integer :table
       t.float :total
       t.float :tax
-      t.string :items
+      t.integer :tstatus
 
       t.timestamps null: false
     end

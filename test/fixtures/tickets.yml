@@ -4,10 +4,10 @@ one:
   table: 1
   total: 1.5
   tax: 1.5
-  items: MyString
+  tstatus: 1
 
 two:
   table: 1
   total: 1.5
   tax: 1.5
-  items: MyString
+  tstatus: 1

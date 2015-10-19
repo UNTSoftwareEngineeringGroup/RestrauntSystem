@@ -4,6 +4,8 @@ class CreateOrderItems < ActiveRecord::Migration
       t.integer :item
       t.string :ingredients
       t.string :notes
+      t.integer :istatus
+      t.references :ticket, index: true, foreign_key: true
 
       t.timestamps null: false
     end
