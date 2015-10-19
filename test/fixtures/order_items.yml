@@ -1,11 +1,15 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  item: 
+  item: 1
   ingredients: MyString
   notes: MyString
+  istatus: 1
+  ticket_id: 
 
 two:
-  item: 
+  item: 1
   ingredients: MyString
   notes: MyString
+  istatus: 1
+  ticket_id: 
