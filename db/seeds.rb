@@ -312,18 +312,89 @@ User.create(
 ###----Seed tables-----###
 Table.delete_all ##erase previous seed
 Table.create(
-	username:"Table011",
+	username:"Table11",
 	password:NIL,
 	accesslevel:1,
 	ticket:NIL
 )
 
 Table.create(
-	username:"Table021",
+	username:"Table12",
 	password:NIL,
 	accesslevel:1,
 	ticket:NIL
 )
+
+Table.create(
+	username:"Table13",
+	password:NIL,
+	accesslevel:1,
+	ticket:NIL
+)
+
+Table.create(
+	username:"Table14",
+	password:NIL,
+	accesslevel:1,
+	ticket:NIL
+)
+
+Table.create(
+	username:"Table21",
+	password:NIL,
+	accesslevel:1,
+	ticket:NIL
+)
+
+Table.create(
+	username:"Table22",
+	password:NIL,
+	accesslevel:1,
+	ticket:NIL
+)
+
+Table.create(
+	username:"Table23",
+	password:NIL,
+	accesslevel:1,
+	ticket:NIL
+)
+
+Table.create(
+	username:"Table24",
+	password:NIL,
+	accesslevel:1,
+	ticket:NIL
+)
+Table.create(
+	username:"Table31",
+	password:NIL,
+	accesslevel:1,
+	ticket:NIL
+)
+
+Table.create(
+	username:"Table32",
+	password:NIL,
+	accesslevel:1,
+	ticket:NIL
+)
+
+Table.create(
+	username:"Table33",
+	password:NIL,
+	accesslevel:1,
+	ticket:NIL
+)
+
+Table.create(
+	username:"Table34",
+	password:NIL,
+	accesslevel:1,
+	ticket:NIL
+)
+
+
 
 ####--------Ticket seed----------####
 Ticket.delete_all
