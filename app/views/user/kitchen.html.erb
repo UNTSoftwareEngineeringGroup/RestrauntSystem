@@ -3,21 +3,17 @@
   <script src="../../javascripts/kitchen.js"></script>
 </head>
 
+<div class="tickets-container">
 
-<div class="panel order" style="margin:24px 0 0 24px;">
-  <% menuitems = MenuItem.all %>
-  <h3 style="text-align:center">Order #</h3>
-  <hr style="color:black; height:3px;">
-  <ul class="small-block-grid-1 items" style="text-align:center;">
-    <% menuitems.each do |item|%>
-    <li>
-      <div class="foodItems panel button item" onclick="updateStatus(this)">
-        <h4><%= item.name%></h4>
-        <ul>
-          <li>notes about item...</li>
-        </ul>
-      </div>
-    </li>
-    <% end %>
-  </ul>
-</div>
+  <!-- get all tickets from DB -->
+  <% Tickets = Ticket.all %>
+
+  <% Tickets.each do |ticket| %>
+  <div class="grid grid-pad">
+    <div class="ticket col-1-4">
+      <!-- loop through each order item within the ticket here -->
+      <div class="order-item"></div>
+    </div>
+  </div>
+  <%end%>
+</body>
