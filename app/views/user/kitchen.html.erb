@@ -1,19 +1,33 @@
 <head>
-  <link rel="stylesheet" type="text/css" href="../../assets/stylesheets/kitchen.css">
+<!--   <link rel="stylesheet" type="text/css" href="../../assets/stylesheets/kitchen.css"> -->
   <script src="../../javascripts/kitchen.js"></script>
 </head>
 
-<div class="tickets-container">
+<div class="tickets-container row">
 
   <!-- get all tickets from DB -->
-  <% Tickets = Ticket.all %>
+  <% tickets = Ticket.all %>
 
-  <% Tickets.each do |ticket| %>
-  <div class="grid grid-pad">
-    <div class="ticket col-1-4">
-      <!-- loop through each order item within the ticket here -->
-      <div class="order-item"></div>
-    </div>
+  <% tickets.each do |ticket| %>
+  <div class="large-4 columns">
+    <h3>Table #<%=ticket.table%></h3>
+    <hr>
+    <% orderItems = ticket.orderItems.all%>
+    
+      <div class="ticket col-1-4">
+        <!-- loop through each order item within the ticket here -->
+        <% orderItems.each do |orderItem| %>
+        <div class="order-item panel button" onclick="updateStatus(this)">
+          <h4>ORDER NAME PLACEHOLDER</h4>
+            <div class="item-info">
+            <ul>
+              <li><%=orderItem.ingredients%></li>
+              <li><%=orderItem.notes%></li>
+            </ul>
+            </div>
+        </div>
+        <%end%>
+      </div>  
   </div>
   <%end%>
 </body>
