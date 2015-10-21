@@ -1,78 +1,26 @@
+<!-- please remove following line before final production -->
+<% session[:table_id] = 11 %>
+
 <center>
 <div class="row">
   <div class=" columns">
   <!--Need to add a way to notify waiter -->
-  <%= button_to "Pay with Cash", guest_path, :method => "get", class: "button radius" %>
-  <!-- %= button_to "Pay with Credit", guest_pay_path, :view => "credit", :method => "get", class: "button radius"% -->
+  <%= link_to "Pay with Cash", guest_path, :method => "get", class: "button radius" %>
+  <!-- Need to show credit partial -->
+  <%= link_to "Pay with credit", guest_pay_path(:view => "credit"), class:"button radius" %>
   </div>
 </div>
 </center>
-<center>
-  <strong>OR</strong>
-  <!-- pay with credit form -->
-  <form>
-    <div class="row">
-      <div class="small-8">
-        <div class="row">
-          <div class="small-3 columns">
-            <label for="right-label" class="right">First Name</label>
-          </div>
-          <div class="small-9 columns">
-            <input type="text" id="right-label">
-          </div>
-          <div class="small-3 columns">
-            <label for="right-label" class="right">Last Name</label>
-          </div>
-          <div class="small-9 columns">
-            <input type="text" id="right-label">
-          </div>
-          <div class="small-3 columns">
-            <label for="right-label" class="right">Address</label>
-          </div>
-          <div class="small-9 columns">
-            <input type="text" id="right-label">
-          </div>
-          <div class="small-3 columns">
-            <label for="right-label" class="right">City</label>
-          </div>
-          <div class="small-9 columns">
-            <input type="text" id="right-label">
-          </div>
-          <div class="small-3 columns">
-            <label for="right-label" class="right">State</label>
-          </div>
-          <div class="small-9 columns">
-            <input type="text" id="right-label">
-          </div>
-          <div class="small-3 columns">
-            <label for="right-label" class="right">Zipcode</label>
-          </div>
-          <div class="small-9 columns">
-            <input type="text" id="right-label">
-          </div>
-          <div class="small-3 columns">
-            <label for="right-label" class="right">Credit Card Number</label>
-          </div>
-          <div class="small-9 columns">
-            <input type="text" id="right-label">
-          </div>
-          <div class="small-3 columns">
-            <label for="right-label" class="right">Experation Date</label>
-          </div>
-          <div class="small-9 columns">
-            <input type="text" id="right-label">
-          </div>
-          <div class="small-3 columns">
-            <label for="right-label" class="right">Verification Code</label>
-          </div>
-          <div class="small-9 columns">
-            <input type="text" id="right-label">
-          </div>
-        </div>
-      </div>
-    </div>
-  </form>
-</center>
+<div>
+<%  check = Ticket.find_by(table: session[:table_id]) %>
+
+</div>
+<% if params[:view] == "credit" %>
+  <%= render 'credit' %>
+<% else %> 
+  <% items = OrderItem.where(:ticket_id => check.id) %>
+    <% items.each do |item| %>
+    <%= "*****ORDER ITEM FOUND*****" %>
+  <% end %>
+<% end %>
 <%= button_to "Cancel", guest_path, :method => "get", class:"button radius left" %>
-<!-- need to set total to 0 when this button is clicked -->
-<%= button_to "Confirm", guest_path, :method => "get", class:"button radius right" %>
