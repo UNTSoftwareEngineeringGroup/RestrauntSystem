@@ -18,9 +18,15 @@
 <% if params[:view] == "credit" %>
   <%= render 'credit' %>
 <% else %> 
-  <% items = OrderItem.where(:ticket_id => check.id) %>
+  <fieldset class='small-4 small-centered text-center columns'>
+    <legend>Bill</legend>
+    <% items = OrderItem.where(:ticket_id => check.id) %>
     <% items.each do |item| %>
-    <%= "*****ORDER ITEM FOUND*****" %>
-  <% end %>
+      <% menuitem = MenuItem.where(:id => item.item).first %>
+      <%= menuitem.name %>
+      <%= menuitem.price %>
+      <%= link_to 'Comp', root_url, :method => 'get', class:'button radius small' %><br>
+    <% end %>
+  </fieldset>
 <% end %>
 <%= button_to "Cancel", guest_path, :method => "get", class:"button radius left" %>
