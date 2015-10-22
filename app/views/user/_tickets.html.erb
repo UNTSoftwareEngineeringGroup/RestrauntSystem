@@ -1,0 +1,21 @@
+<ul class="small-block-grid-3">
+	<% tickets = Ticket.all%>
+	<% tickets.each do |ticket|%>
+	<li>
+	<div class="ticket-container">
+		<h2>Table #<%=ticket.table%></h2>
+		<%orderItems = ticket.orderItems.all%>
+		<%orderItems.each do |orderItem|%>
+		<div class="order-item panel button" onclick="updateStatus(this)">
+			<h3><%=(MenuItem.find(orderItem.item)).name%></h3>
+			<hr>
+			<h4>Ingredients:</h4>
+				<p><%=orderItem.ingredients%></p>
+			<h4 style="padding-top:8px">Notes:</h4>
+				<p><%=orderItem.notes%></p>
+		</div>
+		<%end%>
+	</div>	
+	</li>
+	<%end%>
+</ul>

@@ -324,4 +324,29 @@ OrderItem.delete_all
 	ingredients: "Lettuce, Tomato",
 	notes: "Medium",
 	istatus: 0)
+@ticket.orderItems.create(
+	item: (MenuItem.find_by(name: "The Roundhouse").id),
+	ingredients: "jalepenos, onions",
+	notes: "yeehaw",
+	istatus: 0)
+@ticket.orderItems.create(
+	item: (MenuItem.find_by(name: "Strawberry Cheesecake").id),
+	ingredients: "",
+	notes: "add bacon",
+	istatus: 0)
+@ticket = Ticket.create(
+	table: "3",
+	tax: "8.25",
+	tstatus: 0,
+)
 
+@ticket.orderItems.create(
+	item: (MenuItem.find_by(name: "The Roundhouse").id),
+	ingredients: "jalepenos, onions",
+	notes: "yeehaw",
+	istatus: 0)
+@ticket.orderItems.create(
+	item: (MenuItem.find_by(name: "Strawberry Cheesecake").id),
+	ingredients: "",
+	notes: "add bacon",
+	istatus: 0)
