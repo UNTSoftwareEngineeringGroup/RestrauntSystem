@@ -1,0 +1,21 @@
+<div class="login">
+  <div class="container">
+    <div class="form">
+
+    <h1>Sign up</h1>
+
+    <%= form_for (@guestaccount) do |f| %>
+      
+      <%= f.email_field :email, :placeholder => "Email" %>
+      <%= f.password_field :password, :placeholder => "Password" %>
+	  <label for="dob_month">Birthday </label>
+	 <%= f.date_field :birthday, :placeholder => "Birthday" %>
+      <%= f.submit "Create an account", class: "btn-submit" %>
+    <% end %>
+
+  
+    </div>
+  </div>
+</div>
+
+
