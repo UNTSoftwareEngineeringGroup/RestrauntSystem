@@ -12,5 +12,14 @@ Rails.application.routes.draw do
   get 'guest/pay' => 'user#pay'
   get 'login' => 'user#login'
 
+ #Guestaccount
+  get 'signup' => 'guestaccounts#new'
+  resources :guestaccounts
+  
+   get '/guestlogin' => 'sessions#new'
+  post 'guestlogin' => 'sessions#create'
+  delete 'guestlogout' => 'sessions#destroy'
+
+  
   root "user#login"
 end
