@@ -315,12 +315,12 @@ OrderItem.delete_all
 )
 
 @ticket.orderItems.create(
-	item: (MenuItem.find_by name: "Nachos"),
+	item: (MenuItem.find_by(name: "Nachos").id),
 	ingredients: "jalepenos, onions",
 	notes: "extra cheese please",
 	istatus: 0)
 @ticket.orderItems.create(
-	item: (MenuItem.find_by name: "Double Burger"),
+	item: (MenuItem.find_by(name: "Double Burger").id),
 	ingredients: "Lettuce, Tomato",
 	notes: "Medium",
 	istatus: 0)
