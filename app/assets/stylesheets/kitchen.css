@@ -1,0 +1,13 @@
+h3 {
+  text-align: center;
+  padding: 24px;
+}
+.item-info {
+  width: 200px;
+  margin: 0 auto;
+  text-align: left;
+}
+.large-4 {
+  background-color: #ccc;
+  text-align: center;
+}
