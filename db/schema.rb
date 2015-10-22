@@ -1,4 +1,3 @@
-
 # encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
@@ -17,7 +16,7 @@ ActiveRecord::Schema.define(version: 20151021043532) do
   create_table "guestaccounts", force: :cascade do |t|
     t.string   "email"
     t.string   "password"
-    t.datetime "birthday"
+    t.date     "birthday"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
     t.string   "password_digest"
@@ -40,9 +39,13 @@ ActiveRecord::Schema.define(version: 20151021043532) do
     t.integer  "item"
     t.string   "ingredients"
     t.string   "notes"
+    t.integer  "istatus"
+    t.integer  "ticket_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
+
+  add_index "order_items", ["ticket_id"], name: "index_order_items_on_ticket_id"
 
   create_table "tables", force: :cascade do |t|
     t.string   "password"
@@ -57,7 +60,7 @@ ActiveRecord::Schema.define(version: 20151021043532) do
     t.integer  "table"
     t.float    "total"
     t.float    "tax"
-    t.string   "items"
+    t.integer  "tstatus"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

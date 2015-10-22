@@ -18,7 +18,7 @@
         <!-- loop through each order item within the ticket here -->
         <% orderItems.each do |orderItem| %>
         <div class="order-item panel button" onclick="updateStatus(this)">
-          <h4>ORDER NAME PLACEHOLDER</h4>
+          <h4><%=(MenuItem.find(orderItem.item)).name%></h4>
             <div class="item-info">
             <ul>
               <li><%=orderItem.ingredients%></li>
