@@ -3,31 +3,5 @@
   <script src="../../javascripts/kitchen.js"></script>
 </head>
 
-<div class="tickets-container row">
-
-  <!-- get all tickets from DB -->
-  <% tickets = Ticket.all %>
-
-  <% tickets.each do |ticket| %>
-  <div class="large-4 columns">
-    <h3>Table #<%=ticket.table%></h3>
-    <hr>
-    <% orderItems = ticket.orderItems.all%>
-    
-      <div class="ticket col-1-4">
-        <!-- loop through each order item within the ticket here -->
-        <% orderItems.each do |orderItem| %>
-        <div class="order-item panel button" onclick="updateStatus(this)">
-          <h4>ORDER NAME PLACEHOLDER</h4>
-            <div class="item-info">
-            <ul>
-              <li><%=orderItem.ingredients%></li>
-              <li><%=orderItem.notes%></li>
-            </ul>
-            </div>
-        </div>
-        <%end%>
-      </div>  
-  </div>
-  <%end%>
-</body>
+<%= render 'top_nav_bar', :view => "kitchen" %>
+<%= render 'tickets'%>
