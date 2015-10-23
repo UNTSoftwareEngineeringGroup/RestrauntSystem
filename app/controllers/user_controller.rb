@@ -2,6 +2,9 @@ class UserController < ApplicationController
   def manager
   end
 
+  def tableview
+  end
+
   def guest
   end
 
