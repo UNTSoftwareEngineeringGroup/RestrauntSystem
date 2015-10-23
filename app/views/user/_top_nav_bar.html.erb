@@ -18,7 +18,7 @@
         <li>
           <%= button_to "Reports", root_url, :method => "get", class: "button round" %>
         </li>
-      <% else %>
+      <% elsif view == "menu" %>
         <li>
           <%= button_to "Refill", root_url, :method => "get", class: "button round" %>
         </li>    
@@ -26,6 +26,10 @@
         <li>
           <%= button_to "Pay Total: ", guest_pay_path, :view => "not credit", :method => "get", class: "button round success" %>
         </li>
+      <% elsif view == "kitchen" %>
+        <li>
+          <%= button_to "Refresh", kitchen_path, :method => "get", class: "button round" %>
+        </li>    
       <% end %>
     </ul>
 
@@ -41,6 +45,11 @@
         <li>
           <%= button_to "Help", root_url, :method => "get", class: "button info small radius" %>
         </li>
+      <% elsif view == "kitchen" %> 
+          <ul class="title-area">
+            <li class="name">
+              <h1><a href="#">Kitchen</a></h1>
+            </li>  
       <% end %>
     </ul>
   </section>
