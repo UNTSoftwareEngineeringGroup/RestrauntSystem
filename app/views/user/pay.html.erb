@@ -25,8 +25,13 @@
       <% menuitem = MenuItem.where(:id => item.item).first %>
       <%= menuitem.name %>
       <%= menuitem.price %>
-      <%= link_to 'Comp', root_url, :method => 'get', class:'button radius small' %><br>
+      <%if params[:view] == 'waiter' %>
+        <%= link_to 'Comp', root_url, :method => 'get', class:'button radius small' %><br>
+      <% end %>
     <% end %>
+    <!-- tax goes here -->
+    <!-- gratuity -->
+    <!-- total -->
   </fieldset>
 <% end %>
 <%= button_to "Cancel", guest_path, :method => "get", class:"button radius left" %>
