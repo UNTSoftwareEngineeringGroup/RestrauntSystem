@@ -1,0 +1,83 @@
+<style>
+div.columns large-10 right"{
+	padding-left: 2cm;
+}
+
+.reveal-modal{
+    position: fixed;
+}
+
+</style>
+<center><%= render 'top_nav_bar', :view => "manager" %></center>
+
+
+<div class="rows">
+  <div class="large-2 columns" style="background:#333">
+    <ul class = side-nav>
+    <!--Modal to assign Server to Table-->
+    <a href="#" class="button radius" data-reveal-id="serverModal">Assign Servers</a>
+    <div id="serverModal" class="reveal-modal full" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+      <h3 id="modalTitle">Assign Servers</h2>
+      <!--Generating Tables-->
+      <div class="coulmns large-10 right">
+      <div class="columns">
+      <ul class="large-block-grid-4">
+  
+      <% tables = Table.all.where(:accesslevel => 1) %>
+      <% tables.each do |tables|%>
+  
+      <li>
+      <!--Generating each table to Assign-->
+        <a href="#" class="button split"><%="#{tables.username}"%> <span data-dropdown="drop"></span></a><br>
+        <ul id="drop" class="f-dropdown" data-dropdown-content>
+          <li><a href="#">Server1</a></li>
+          <li><a href="#">Server2</a></li>
+          <li><a href="#">Server3</a></li>
+          <li><a href="#">Server4</a></li>
+          <li><a href="#">Server5</a></li>
+        </ul>
+
+      </li>
+  
+      <%end%>
+      </ul>
+      </div>
+      </div>
+      <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+    </div>
+
+    <% servers = User.all.where(:accesslevel => 3) %>
+    <% servers.each do |servers|%>
+    <li><%= button_to "#{servers.username}", tableview_path, :view => "Servers", :method => "get", class: "button success radius" %></li>
+    <% end %>
+    
+	</ul>
+  </div>
+</div>
+<br>
+<br>
+<br>
+<br>
+<center>
+<div class="coulmns large-10 right">
+<div class="columns">
+<ul class="large-block-grid-4">
+  <% tables = Table.all.where(:accesslevel => 1) %>
+  <% tables.each do |tables|%>
+  <li>
+
+  <a href="#" class = "button radius" data-reveal-id=<%="#{tables.username}"%>><%="#{tables.username}"%></a>
+  	<div id=<%="#{tables.username}"%> class="reveal-modal small" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+      <h2 id="modalTitle"><%="#{tables.username}"%></h2>
+      <p>Status: </p>
+      <p>Refill: </p>
+      <p>Paid: </p>
+      <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+    </div>
+
+  </li>
+  <%end%>
+</ul>
+</div>
+</div>
+</center>
