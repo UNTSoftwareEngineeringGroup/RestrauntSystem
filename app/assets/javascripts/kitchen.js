@@ -1,11 +1,10 @@
 function updateStatus(food) {
-	var inProgress = "rgb(255, 255, 163)";
-	var done = "#66FF99";
-
-	if((food).style.backgroundColor == inProgress)
+	if((food).style.backgroundColor == "yellow")
 	{
-		(food).style.backgroundColor = done;
+		//red means the food item is being cooked
+		(food).style.backgroundColor = "green";
 	} else {
-		(food).style.backgroundColor = inProgress;
+		//green means the food item is ready
+		(food).style.backgroundColor = "yellow";
 	}
 }
