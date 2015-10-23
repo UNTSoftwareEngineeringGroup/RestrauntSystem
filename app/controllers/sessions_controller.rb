@@ -10,7 +10,7 @@ def create
     session[:guestaccount_id] = @guestaccount.id
     redirect_to '/guest?'
   else
-   flash[:danger] = 'Invalid email/password combination' # Not quite right!
+   flash.now[:danger] = "Invalid email/password combination"# Not quite right!
       render 'new'
   end 
 end
