@@ -279,7 +279,27 @@ User.create(
 	accesslevel: 4
 )
 User.create(
-	username:"Server",
+	username:"Server1",
+	password:"1234",
+	accesslevel: 3
+)
+User.create(
+	username:"Server2",
+	password:"1234",
+	accesslevel: 3
+)
+User.create(
+	username:"Server3",
+	password:"1234",
+	accesslevel: 3
+)
+User.create(
+	username:"Server4",
+	password:"1234",
+	accesslevel: 3
+)
+User.create(
+	username:"Server5",
 	password:"1234",
 	accesslevel: 3
 )
@@ -292,18 +312,89 @@ User.create(
 ###----Seed tables-----###
 Table.delete_all ##erase previous seed
 Table.create(
-	username:"Table011",
+	username:"Table11",
 	password:NIL,
 	accesslevel:1,
 	ticket:NIL
 )
 
 Table.create(
-	username:"Table021",
+	username:"Table12",
 	password:NIL,
 	accesslevel:1,
 	ticket:NIL
 )
+
+Table.create(
+	username:"Table13",
+	password:NIL,
+	accesslevel:1,
+	ticket:NIL
+)
+
+Table.create(
+	username:"Table14",
+	password:NIL,
+	accesslevel:1,
+	ticket:NIL
+)
+
+Table.create(
+	username:"Table21",
+	password:NIL,
+	accesslevel:1,
+	ticket:NIL
+)
+
+Table.create(
+	username:"Table22",
+	password:NIL,
+	accesslevel:1,
+	ticket:NIL
+)
+
+Table.create(
+	username:"Table23",
+	password:NIL,
+	accesslevel:1,
+	ticket:NIL
+)
+
+Table.create(
+	username:"Table24",
+	password:NIL,
+	accesslevel:1,
+	ticket:NIL
+)
+Table.create(
+	username:"Table31",
+	password:NIL,
+	accesslevel:1,
+	ticket:NIL
+)
+
+Table.create(
+	username:"Table32",
+	password:NIL,
+	accesslevel:1,
+	ticket:NIL
+)
+
+Table.create(
+	username:"Table33",
+	password:NIL,
+	accesslevel:1,
+	ticket:NIL
+)
+
+Table.create(
+	username:"Table34",
+	password:NIL,
+	accesslevel:1,
+	ticket:NIL
+)
+
+
 
 ####--------Ticket seed----------####
 Ticket.delete_all
@@ -315,13 +406,38 @@ OrderItem.delete_all
 )
 
 @ticket.orderItems.create(
-	item: (MenuItem.find_by name: "Nachos"),
+	item: (MenuItem.find_by(name: "Nachos").id),
 	ingredients: "jalepenos, onions",
 	notes: "extra cheese please",
 	istatus: 0)
 @ticket.orderItems.create(
-	item: (MenuItem.find_by name: "Double Burger"),
+	item: (MenuItem.find_by(name: "Double Burger").id),
 	ingredients: "Lettuce, Tomato",
 	notes: "Medium",
 	istatus: 0)
+@ticket.orderItems.create(
+	item: (MenuItem.find_by(name: "The Roundhouse").id),
+	ingredients: "jalepenos, onions",
+	notes: "yeehaw",
+	istatus: 0)
+@ticket.orderItems.create(
+	item: (MenuItem.find_by(name: "Strawberry Cheesecake").id),
+	ingredients: "",
+	notes: "add bacon",
+	istatus: 0)
+@ticket = Ticket.create(
+	table: "3",
+	tax: "8.25",
+	tstatus: 0,
+)
 
+@ticket.orderItems.create(
+	item: (MenuItem.find_by(name: "The Roundhouse").id),
+	ingredients: "jalepenos, onions",
+	notes: "yeehaw",
+	istatus: 0)
+@ticket.orderItems.create(
+	item: (MenuItem.find_by(name: "Strawberry Cheesecake").id),
+	ingredients: "",
+	notes: "add bacon",
+	istatus: 0)

@@ -24,6 +24,8 @@
         </li>    
         <!-- need to add a way to show the total in the pay button -->
         <li>
+		<div class="rows"> 
+        <div class="large-0 columns"> 
           <%= button_to "Pay Total: ", guest_pay_path, :view => "not credit", :method => "get", class: "button round success" %>
         </li>
       <% elsif view == "kitchen" %>
@@ -45,7 +47,17 @@
         <li>
           <%= button_to "Help", root_url, :method => "get", class: "button info small radius" %>
         </li>
-      <% elsif view == "kitchen" %> 
+		
+		<li> 
+ 		<div class="rows"> 
+        <div class="large-0 columns"> 
+		<a href="https://twitter.com/intent/tweet?button_hashtag=BryceBurger&text=Best%20burgers%20in%20town%20" class=" round button">Tweet #BryceBurger</a>
+			<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)) 
+			{js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}} 
+		    (document, 'script', 'twitter-wjs');</script> 
+	    </li> 
+		
+<% elsif view == "kitchen" %> 
           <ul class="title-area">
             <li class="name">
               <h1><a href="#">Kitchen</a></h1>
