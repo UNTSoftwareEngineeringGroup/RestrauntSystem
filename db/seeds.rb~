@@ -61,7 +61,7 @@ MenuItem.create(
 		category: "Appetizers",
 		description: "Warm homemade tortilla chips smothered with melted chedder in this simple favorite.",
 		calories: "1000",
-		img: "placeholder.jpg",
+		img: "nahcos.jpg",
 		ingredients: "Cheese, Jalepenos, Onions",
 		available: "TRUE",
 		price: "4.69")
@@ -72,7 +72,7 @@ MenuItem.create(
 		category: "Entrees",
 		description: "Everything is better with bacon, why not our classic cheese burger.",
 		calories: "730",
-		img: "placeholder.jpg",
+		img: "baconBurger.jpg",
 		ingredients: "bacon, cheese, lettuce, tomatoes, pickles, onion",
 		available: "TRUE",
 		price: "9.99")
@@ -81,7 +81,7 @@ MenuItem.create(
 		category: "Entrees",
 		description: "Classic with an asian twist, we've added teriyaki to this burger to give it a hint of sweetness.",
 		calories: "480",
-		img: "placeholder.jpg",
+		img: "teriyaki.jpg",
 		ingredients: "cheese, lettuce, tomatoes, pickles, onion",
 		available: "TRUE",
 		price: "8.99")
@@ -90,7 +90,7 @@ MenuItem.create(
 		category: "Entrees",
 		description: "Twice as nice as the original, two beef patties help level out that bread to meat ratio.",
 		calories: "800",
-		img: "placeholder.jpg",
+		img: "doubleBurger.jpg",
 		ingredients: "cheese, lettuce, tomatoes, pickles, onion",
 		available: "TRUE",
 		price: "12.99")
@@ -99,7 +99,7 @@ MenuItem.create(
 		category: "Entrees",
 		description: "This classic burger has kick thanks to the addition of hot jalepeno peppers.",
 		calories: "600",
-		img: "placeholder.jpg",
+		img: "jalapenoBurger.png",
 		ingredients: "cheese, lettuce, tomatoes, pickles, onion",
 		available: "TRUE",
 		price: "6.59")
@@ -108,7 +108,7 @@ MenuItem.create(
 		category: "Entrees",
 		description: "Eat like a champion with this burger that includes a fried egg and amazing avocado.",
 		calories: "750",
-		img: "placeholder.jpg",
+		img: "championBurger.jpg",
 		ingredients: "cheese, egg, avocado, lettuce, tomatoes, pickles, onion",
 		available: "TRUE",
 		price: "9.78")
@@ -117,7 +117,7 @@ MenuItem.create(
 		category: "Entrees",
 		description: "Our classic burger cooked to your preference, sometimes its the simple things that make life grand.",
 		calories: "400",
-		img: "placeholder.jpg",
+		img: "burger.jpg",
 		ingredients: "cheese, lettuce, tomatoes, pickles, onion",
 		available: "TRUE",
 		price: "6.99")
@@ -182,7 +182,7 @@ MenuItem.create(
 		category: "Desserts",
 		description: "Everyone has a favorite but we can't pick sides. Vanilla and chocolate ice cream for both sides of your craving.",
 		calories: "144",
-		img: "placeholder.jpg",
+		img: "iceCream.jpg",
 		ingredients: "vanilla, chocolate",
 		available: "TRUE",
 		price: "4.99")
@@ -193,7 +193,7 @@ MenuItem.create(
 		category: "Drinks",
 		description: "",
 		calories: "240",
-		img: "placeholder.jpg",
+		img: "coke.jpg",
 		ingredients: "",
 		available: "TRUE",
 		price: "1.99")
@@ -202,7 +202,7 @@ MenuItem.create(
 		category: "Drinks",
 		description: "",
 		calories: "4",
-		img: "placeholder.jpg",
+		img: "dietCoke.jpg",
 		ingredients: "",
 		available: "TRUE",
 		price: "1.99")
@@ -211,7 +211,7 @@ MenuItem.create(
 		category: "Drinks",
 		description: "",
 		calories: "140",
-		img: "placeholder.jpg",
+		img: "sprite.jpg",
 		ingredients: "",
 		available: "TRUE",
 		price: "1.99")
@@ -220,7 +220,7 @@ MenuItem.create(
 		category: "Drinks",
 		description: "",
 		calories: "250",
-		img: "placeholder.jpg",
+		img: "drPepper.jpg",
 		ingredients: "",
 		available: "TRUE",
 		price: "1.99")
@@ -229,7 +229,7 @@ MenuItem.create(
 		category: "Drinks",
 		description: "",
 		calories: "160",
-		img: "placeholder.jpg",
+		img: "fanta.jpg",
 		ingredients: "",
 		available: "TRUE",
 		price: "1.99")
@@ -238,7 +238,7 @@ MenuItem.create(
 		category: "Drinks",
 		description: "",
 		calories: "70",
-		img: "placeholder.jpg",
+		img: "tea.png",
 		ingredients: "",
 		available: "TRUE",
 		price: "1.99")
@@ -247,7 +247,7 @@ MenuItem.create(
 		category: "Drinks",
 		description: "",
 		calories: "60",
-		img: "placeholder.jpg",
+		img: "lemonade.jpg",
 		ingredients: "",
 		available: "TRUE",
 		price: "1.99")
@@ -256,7 +256,7 @@ MenuItem.create(
 		category: "Drinks",
 		description: "",
 		calories: "150",
-		img: "placeholder.jpg",
+		img: "rootbeer.png",
 		ingredients: "",
 		available: "TRUE",
 		price: "1.99")
@@ -265,7 +265,7 @@ MenuItem.create(
 		category: "Drinks",
 		description: "",
 		calories: "100",
-		img: "placeholder.jpg",
+		img: "hotChocolate.jpg",
 		ingredients: "",
 		available: "TRUE",
 		price: "2.50")
