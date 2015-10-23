@@ -5,7 +5,11 @@
   <legend><%= params[:item] %></legend>
     <fieldset>
       <div>
-        <%= image_tag("placeholder.png", width: "150px") %>
+        <% unless item.img.to_s.nil? %>
+          <%= image_tag item.img, width:"150px" %>
+        <% else %>
+          <%= image_tag("placeholder.png", width: "150px") %>
+        <% end %>
         <%= item.description %>
         <%= form_tag ticket_addToTicket_path(:params => params), :method => 'get' do %>
           <fieldset>
