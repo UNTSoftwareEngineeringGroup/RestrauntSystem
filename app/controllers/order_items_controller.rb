@@ -17,17 +17,15 @@ class OrderItemsController < ApplicationController
   	@orderItem = @ticket.orderItems.find(params[:order_id])
 
 
-  	case @orderItem.istatus  	
+  	case @orderItem.istatus
 	  	when unClaimed
-	  		@orderItem.istatus = inProgress
+	  		@orderItem.update(:istatus => inProgress)
 	  	when inProgress
-	  		@orderItem.istatus = done
+	  		@orderItem.update(:istatus => done)
+	  		# TODO check all order items within ticket
+	  		redirect_to ticket_checkTicketStatus_path(:ticket_id => @ticket.id)	  		
 	  	when done
-	  		@orderItem.istatus = inProgress
-	  		# check all order items within ticket
+	  		@orderItem.update(:istatus => inProgress)
   	end
-
-  	logger.debug
-
   end
 end
