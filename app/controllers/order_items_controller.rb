@@ -22,7 +22,6 @@ class OrderItemsController < ApplicationController
 	  		@orderItem.update(:istatus => inProgress)
 	  	when inProgress
 	  		@orderItem.update(:istatus => done)
-	  		# TODO check all order items within ticket
 	  		redirect_to ticket_checkTicketStatus_path(:ticket_id => @ticket.id)	  		
 	  	when done
 	  		@orderItem.update(:istatus => inProgress)
