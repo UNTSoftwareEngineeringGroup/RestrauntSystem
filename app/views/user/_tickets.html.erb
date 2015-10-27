@@ -2,23 +2,28 @@
 	<% tickets = Ticket.all%>
 	<% tickets.each do |ticket|%>
 	<li>
+	<% if ticket.tstatus == 1 %> <!-- if ticket is sent to kitchen -->
 	<div class="ticket-container">
 		<h3>Table #<%=ticket.table%></h3>
 		<hr>
 		<%orderItems = ticket.orderItems.all%>
 		<%orderItems.each do |orderItem|%>
-		<div class="order-item panel button" onclick="updateStatus(this)">
-			<h4><%=(MenuItem.find(orderItem.item)).name%></h4>
-			<hr>
-			<span><b>Ingredients:</b></span>
-				<p><%=orderItem.ingredients%></p>
-			<span><b>Notes:</b></span>
-				<p><%=orderItem.notes%></p>
-		</div>
+		<%= link_to order_items_updateStatus_path( 
+			:ticket_id =>"#{ticket.id}" ,
+			:order_id => "#{orderItem.id}"),
+			remote:true do%>
+			<div class="order-item panel button" onclick="updateStatus(this)">
+				<h4><%=(MenuItem.find(orderItem.item)).name%></h4>
+				<hr>
+				<span><b>Ingredients:</b></span>
+					<p><%=orderItem.ingredients%></p>
+				<span><b>Notes:</b></span>
+					<p><%=orderItem.notes%></p>
+			</div>
 		<%end%>
-		<br>
-		<a href="#" class="button success submit-ticket">COMPLETE TICKET</a>
-	</div>	
+		<%end%>
+	</div>
+	<%end%>	
 	</li>
 	<%end%>
 </ul>

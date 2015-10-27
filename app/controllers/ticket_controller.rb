@@ -25,6 +25,25 @@ class TicketController < ApplicationController
 		end
 	end
 
+	def checkTicketStatus
+		ticketDone = 2
+		ticket = Ticket.find(params[:ticket_id])
+		orderItems = ticket.orderItems.all
+
+		numComplete = 0
+		orderItems.each do |orderItem|
+			if(orderItem.istatus == 2)
+				numComplete = numComplete + 1
+			end	
+		end
+
+		if numComplete == orderItems.count
+			ticket.update(:tstatus => ticketDone)
+			# this doesn't work??
+			redirect_to kitchen_path
+		end
+	end
+
 
 	private
 		def calcTotal

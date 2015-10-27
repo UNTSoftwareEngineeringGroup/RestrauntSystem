@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
 
   get 'ticket/addToTicket' => 'ticket#addToTicket'
+  get 'ticket/checkTicketStatus' => 'ticket#checkTicketStatus'
 
 #Order_items
   get 'order_items/show' => 'order_items#show' 
   get 'order_items/addToTicket' => 'order_items#orderToTicket'
+  get 'order_items/updateStatus' => 'order_items#updateStatus'
 
 #Users
   get 'manager' => 'user#manager'
