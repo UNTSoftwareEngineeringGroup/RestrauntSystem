@@ -2,6 +2,7 @@
 	<% tickets = Ticket.all%>
 	<% tickets.each do |ticket|%>
 	<li>
+	<% if ticket.tstatus == 1 %> <!-- if ticket is sent to kitchen -->
 	<div class="ticket-container">
 		<h3>Table #<%=ticket.table%></h3>
 		<hr>
@@ -21,7 +22,8 @@
 			</div>
 		<%end%>
 		<%end%>
-	</div>	
+	</div>
+	<%end%>	
 	</li>
 	<%end%>
 </ul>

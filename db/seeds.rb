@@ -402,7 +402,7 @@ OrderItem.delete_all
 @ticket = Ticket.create(
 	table: "11",
 	tax: "8.25",
-	tstatus: 0,
+	tstatus: 1,
 )
 
 @ticket.orderItems.create(
@@ -428,7 +428,7 @@ OrderItem.delete_all
 @ticket = Ticket.create(
 	table: "3",
 	tax: "8.25",
-	tstatus: 0,
+	tstatus: 1,
 )
 
 @ticket.orderItems.create(

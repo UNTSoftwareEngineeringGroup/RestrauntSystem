@@ -39,6 +39,8 @@ class TicketController < ApplicationController
 
 		if numComplete == orderItems.count
 			ticket.update(:tstatus => ticketDone)
+			# this doesn't work??
+			redirect_to kitchen_path
 		end
 	end
 
