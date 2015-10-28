@@ -6,29 +6,23 @@
     <ul class="right columns">
       <!-- Buttons for the manager view -->
       <% if view == "manager" %>
+        <li><%= button_to "FoH", tableview_path, :method => "get", class: "button round" %></li>
+        <li><%= button_to "BoH", manager_url, :method => "get", class: "button round" %></li>
+        <li><%= button_to "Inventory", root_url, :method => "get", class: "button round" %></li>
         <li>
-          <%= button_to "FoH", tableview_path, :method => "get", class: "button round" %>
-        </li>
-        <li>
-          <%= button_to "BoH", manager_url, :method => "get", class: "button round" %>
-        </li>
-        <li>
-          <%= button_to "Inventory", root_url, :method => "get", class: "button round" %>
-        </li>
-        <li>
-          <%= button_to "Reports", root_url, :method => "get", class: "button round" %>
+          <a href="#" class="button round" data-dropdown="drop">Daily Reports</a>
+          <ul id="drop" data-dropdown-content>
+            <li><%= link_to 'Revenue', manager_reports_path(:view => "revenue") %></li>
+            <li><%= link_to 'Top Sellers', manager_reports_path(:view => "top sellers") %></li>
+          </ul>
         </li>
       <% elsif view == "menu" %>
-	  
 	    <li>
-		<div class="rows"> 
-        <div class="large-0 columns">
-		<%= button_to "Returning Guest ", guestlogin_path,  :method => "get", class: "button round success" %>
-        <li>
-		 	
-          <%= button_to "Refill", root_url, :method => "get", class: "button round" %>
-        </li>    
-        <!-- need to add a way to show the total in the pay button -->
+      <div class="rows"> 
+      <div class="large-0 columns">
+		  <%= button_to "Returning Guest ", guestlogin_path,  :method => "get", class: "button round success" %>
+      <li><%= button_to "Refill", root_url, :method => "get", class: "button round" %></li>    
+      <!-- need to add a way to show the total in the pay button -->
         <li>
 		<div class="rows"> 
         <div class="large-0 columns"> 
@@ -45,14 +39,10 @@
     <ul class="left">
       <!-- Back only shows if user is a manager or waiter -->
       <% if view == "waiter" %>
-        <li>
-          <%= button_to "Back", :back, :method => "get", class: "button small radius" %>
-        </li>
+        <li><%= button_to "Back", :back, :method => "get", class: "button small radius" %></li>
       <% elsif view == "menu" %>
         <!-- Help should only show if user is guest -->
-        <li>
-          <%= button_to "Help", root_url, :method => "get", class: "button info small radius" %>
-        </li>
+        <li><%= button_to "Help", root_url, :method => "get", class: "button info small radius" %></li>
 		
 		<li> 
  		<div class="rows"> 

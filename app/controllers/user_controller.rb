@@ -2,6 +2,15 @@ class UserController < ApplicationController
   def manager
   end
 
+  def reports
+    if params[:view] == 'revenue'
+      #set instance variables for the revenue report here
+    elsif params[:view] == 'top sellers'
+      #set instance variables for the top sellers report here
+      #ex. @best_seller, @second_seller, @third_seller
+    end
+  end
+
   def tableview
   end
 
