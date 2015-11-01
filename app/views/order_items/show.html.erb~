@@ -1,3 +1,4 @@
+<%=render 'user/top_nav_bar', :view=> "menu" %>
 <% item = MenuItem.where(:name => "#{params[:item]}").first %>
 <% @ingredients = item.ingredients.split(',') %>
 
@@ -5,9 +6,13 @@
   <legend><%= params[:item] %></legend>
     <fieldset>
       <div>
-        <%= image_tag("placeholder.png", width: "150px") %>
+        <% unless item.img.to_s.nil? %>
+          <%= image_tag item.img, width:"150px" %>
+        <% else %>
+          <%= image_tag("placeholder.png", width: "150px") %>
+        <% end %>
         <%= item.description %>
-        <%= form_tag guest_path(:params => params), :method => 'get' do %>
+        <%= form_tag ticket_addToTicket_path(:params => params), :method => 'get' do %>
           <fieldset>
             <legend>Customize your order</legend>
             Please uncheck everything you want removed.<br>
@@ -21,6 +26,12 @@
             </fieldset>
           </fieldset>
           <%= hidden_field_tag :item_id, "#{item.id}" %>
+
+          <a href="#" data-reveal-id="myModal">More Info</a>
+            <div id="myModal" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+            Calories: <%= item.calories %>
+            <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+          </div>
           <%= submit_tag "Order", class:"button radius" %>
         <% end %>
       </div>
