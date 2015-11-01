@@ -25,16 +25,16 @@ end
 	def checkTicketStatus
 		ticketDone = 2
 		ticket = Ticket.find(params[:ticket_id])
-		orderItems = ticket.orderItems.all
+		torderItems = ticket.orderItems.all
 
 		numComplete = 0
-		orderItems.each do |orderItem|
+		torderItems.each do |orderItem|
 			if(orderItem.istatus == 2)
 				numComplete = numComplete + 1
 			end	
 		end
 
-		if numComplete == orderItems.count
+		if numComplete == torderItems.count
 			ticket.update(:tstatus => ticketDone)
 			# this doesn't work??
 			redirect_to kitchen_path

@@ -12,13 +12,18 @@
 			:ticket_id =>"#{ticket.id}" ,
 			:order_id => "#{orderItem.id}"),
 			remote:true do%>
-			<div class="order-item panel button" onclick="updateStatus(this)">
+			<div class="order-item panel button" id="<%=ticket.table%>orderItem<%=(MenuItem.find(orderItem.item)).name%>" onclick="updateStatus(this)">
 				<h4><%=(MenuItem.find(orderItem.item)).name%></h4>
 				<hr>
 				<span><b>Ingredients:</b></span>
 					<p><%=orderItem.ingredients%></p>
 				<span><b>Notes:</b></span>
 					<p><%=orderItem.notes%></p>
+				<script type="text/javascript">
+					var status = '<%=orderItem.istatus%>';
+					var name = '<%=ticket.table%>orderItem<%=(MenuItem.find(orderItem.item)).name%>';
+					loadStatus(status, name);
+				</script>
 			</div>
 		<%end%>
 		<%end%>
