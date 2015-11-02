@@ -11,7 +11,7 @@ class TicketController < ApplicationController
 	    redirect_to guest_path
 	  else
 	     ticket.orderItems.create(
-	            item: (MenuItem.find_by(name: params[:item_name]).id),
+	            item: (Menuitem.find_by(name: params[:item_name]).id),
 	            ingredients: params[:good_ingredients],
 	            notes: params[:notes],
 	            istatus: 0
