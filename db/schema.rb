@@ -37,20 +37,12 @@ ActiveRecord::Schema.define(version: 20151102170207) do
   add_index "ingredients_menuitems", ["ingredient_id"], name: "index_ingredients_menuitems_on_ingredient_id"
   add_index "ingredients_menuitems", ["menuitem_id"], name: "index_ingredients_menuitems_on_menuitem_id"
 
-<<<<<<< HEAD
-  create_table "menu_items", force: :cascade do |t|
-=======
   create_table "menuitems", force: :cascade do |t|
->>>>>>> master
     t.string   "name"
     t.string   "category"
     t.text     "description"
     t.integer  "calories"
     t.string   "img"
-<<<<<<< HEAD
-    t.text     "ingredients"
-=======
->>>>>>> master
     t.boolean  "available"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
