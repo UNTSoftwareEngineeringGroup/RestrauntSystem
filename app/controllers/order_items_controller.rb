@@ -27,4 +27,8 @@ class OrderItemsController < ApplicationController
 	  		@orderItem.update(:istatus => inProgress)
   	end
   end
+
+  def remove_item
+    
+  end
 end
