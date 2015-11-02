@@ -3,7 +3,7 @@
     <center><strong>Which would you like?</strong></center>
   </p>
   <div>
-    <% menuitems = MenuItem.all %>
+    <% menuitems = Menuitem.all %>
     <ul class="small-block-grid-3">
       <% menuitems.each do |item|%>
         <% if item.category == params[:view] %>
