@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151021043532) do
+ActiveRecord::Schema.define(version: 20151102170207) do
 
   create_table "guestaccounts", force: :cascade do |t|
     t.string   "email"
@@ -21,6 +21,21 @@ ActiveRecord::Schema.define(version: 20151021043532) do
     t.datetime "updated_at",      null: false
     t.string   "password_digest"
   end
+
+  create_table "ingredients", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "available"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "ingredients_menuitems", id: false, force: :cascade do |t|
+    t.integer "menuitem_id"
+    t.integer "ingredient_id"
+  end
+
+  add_index "ingredients_menuitems", ["ingredient_id"], name: "index_ingredients_menuitems_on_ingredient_id"
+  add_index "ingredients_menuitems", ["menuitem_id"], name: "index_ingredients_menuitems_on_menuitem_id"
 
   create_table "menu_items", force: :cascade do |t|
     t.string   "name"
