@@ -29,6 +29,9 @@ class OrderItemsController < ApplicationController
   end
 
   def remove_item
-    
+    puts("THIS IS THE ID: #{params[:item_id]}")
+    @orderItem = OrderItem.find_by(item: params[:item_id])
+    @orderItem.destroy
+    redirect_to guest_confirm_order_path
   end
 end
