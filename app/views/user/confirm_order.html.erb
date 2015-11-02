@@ -2,13 +2,10 @@
 <%= render 'side_nav', view:'menu' %>
 <fieldset class='small-8 small-centered text-center columns'>
   <legend>Current Order</legend>
-  <% @items.each do |item| %>
+  <% @items.each do |orderItem| %>
     <div class='panel'>
-      <% menuitem = MenuItem.where(:id => item.item).first %>
-      <%= menuitem.name %>: 
-      <%= number_to_currency(menuitem.price) %><br>
-      Notes: <%= item.notes %><br>
-      <%= link_to 'Remove', order_items_remove_item_path(:item => menuitem.id) %><br>
+      <h4><%=(MenuItem.find(orderItem.item)).name%></h4>
+      Notes: <%= orderItem.notes %><br>
     </div>
   <% end %>
   Total: <%= number_to_currency(@check.total) %>
