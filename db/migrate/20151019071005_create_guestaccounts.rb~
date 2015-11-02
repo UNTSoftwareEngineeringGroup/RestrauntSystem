@@ -4,7 +4,7 @@ class CreateGuestaccounts < ActiveRecord::Migration
 
 	t.string :email
 	t.string :password
-	t.date   :birthday
+	t.date    :birthday
 	
       t.timestamps null: false
     end
