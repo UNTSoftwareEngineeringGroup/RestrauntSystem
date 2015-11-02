@@ -23,7 +23,11 @@
 	    <li>
 		<div class="rows"> 
         <div class="large-0 columns">
-		<%= button_to "Returning Guest ", guestlogin_path,  :method => "get", class: "button round success" %>
+		<% if current_guestaccount %>
+		<%= button_to current_guestaccount.email,guestlogin_path,  :method => "get", class: "button round success" %>
+		<% else %>
+  <		%= button_to "Returning Guest ", guestlogin_path,  :method => "get", class: "button round success" %>
+		<% end %>
         <li>
 		 	
           <%= button_to "Refill", root_url, :method => "get", class: "button round" %>
