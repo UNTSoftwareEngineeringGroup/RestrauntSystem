@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   get 'ticket/addToTicket' => 'ticket#addToTicket'
   get 'ticket/checkTicketStatus' => 'ticket#checkTicketStatus'
+  get 'ticket/calcTotal' => 'ticket#calcTotal'
 
 #Order_items
   get 'order_items/show' => 'order_items#show' 
