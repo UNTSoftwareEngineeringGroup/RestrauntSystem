@@ -6,6 +6,7 @@
     <div class='panel'>
       <h4><%=(MenuItem.find(orderItem.item)).name%></h4>
       Notes: <%= orderItem.notes %><br>
+      <%= link_to 'Remove', order_items_remove_item_path(item_id: orderItem.item) %><br>
     </div>
   <% end %>
   Total: <%= number_to_currency(@check.total) %>
