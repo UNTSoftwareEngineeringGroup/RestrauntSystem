@@ -12,7 +12,11 @@
             <%= link_to order_items_show_path( :item => "#{item.name}") do %>
               <div class="panel button", style="width:450px">
                 <div class="left">
-                <%= image_tag("placeholder.png", width: "150px") %>
+                <% unless item.img.to_s.nil? %>
+                  <%= image_tag item.img, width:"150px" %>
+                <% else %>
+                  <%= image_tag("placeholder.png", width: "150px") %>
+                <% end %>
                 </div>
                 <%= item.name%>
                 <br><br>

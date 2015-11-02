@@ -1,0 +1,48 @@
+<center>
+  <!-- pay with credit form -->
+  <form>
+    <div class="row">
+      <div class="small-8">
+        <div class="row">
+          <div class="small-3 columns">
+            <label for="right-label" class="right">First Name</label>
+          </div>
+          <div class="small-9 columns">
+            <input type="text" id="right-label">
+          </div>
+          <div class="small-3 columns">
+            <label for="right-label" class="right">Last Name</label>
+          </div>
+          <div class="small-9 columns">
+            <input type="text" id="right-label">
+          </div>
+            <div class="small-3 columns">
+            <label for="right-label" class="right">Zipcode</label>
+          </div>
+          <div class="small-9 columns">
+            <input type="text" id="right-label">
+          </div>
+          <div class="small-3 columns">
+            <label for="right-label" class="right">Credit Card Number</label>
+          </div>
+          <div class="small-9 columns">
+            <input type="text" id="right-label">
+          </div>
+          <div class="small-3 columns">
+            <label for="right-label" class="right">Experation Date</label>
+          </div>
+          <div class="small-9 columns">
+            <input type="text" id="right-label">
+          </div>
+          <div class="small-3 columns">
+            <label for="right-label" class="right">Verification Code</label>
+          </div>
+          <div class="small-9 columns">
+            <input type="text" id="right-label">
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</center>
+<%= button_to "Confirm", guest_path, :method => "get", class:"button radius right" %>

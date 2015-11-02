@@ -2,13 +2,17 @@
   <div class="container">
     <div class="form">
 
-    <h1>Log in</h1>
+    <h1>Returning Guest</h1>
 
-
+<%= flash[:danger] %>
 
 
 <%= form_for(:session, url: guestlogin_path) do |f| %> 
   <%= f.email_field :email, :placeholder => "Email" %> 
   <%= f.password_field :password, :placeholder => "Password" %> 
   <%= f.submit "Submit", class: "btn-submit" %>
+  
+  <a href="signup" class: "btn-New Guest">New Guest</a>
+   <%= form_tag signup_path, :method => 'get' do %>
+<% end %>
 <% end %>

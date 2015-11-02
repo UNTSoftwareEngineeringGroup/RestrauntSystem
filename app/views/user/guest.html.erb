@@ -3,6 +3,9 @@
 <div class="rows">
   <div class="coulmns large-10 right">
     <%= render 'menu' %>
+    <% check = Ticket.find_by(table: session[:table_id]) %>
+    <% items = OrderItem.where(:ticket_id => check.id) unless check.nil? %>
+    <%= link_to 'Confirm Order', guest_confirm_order_path, class:'button right' unless items.nil? %>
   </div>
 </div>
 <%= render 'side_nav', :view => "menu" %>
