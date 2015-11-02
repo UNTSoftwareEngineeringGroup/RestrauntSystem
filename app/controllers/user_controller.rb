@@ -64,4 +64,9 @@ class UserController < ApplicationController
       flash.now[:alert] = "Username can't be blank"
     end 
   end
+
+  def confirm_order
+    @check = Ticket.find_by(table: session[:table_id])
+    @items = OrderItem.where(:ticket_id => @check.id)
+  end
 end
