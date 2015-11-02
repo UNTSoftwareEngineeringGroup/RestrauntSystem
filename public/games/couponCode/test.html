@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+<body>
+
+<center>
+  <h1>Try your luck!</h1>
+  <h5>Roll the number 1 and you win. You have 2 chances.</h5>
+  <button onclick="playGame()">I'm feeling lucky</button>
+  <p id="demo"></p>
+  <p id="user"></p>
+  <br>
+  <br>
+  <button onclick="goBack()">Go Back</button>
+  </center>
+
+
+  <script>
+  var user=0;
+  function playGame(){
+  	if(user<2){
+  		var x = Math.floor((Math.random() * 5) + 1);
+  		document.getElementById("demo").innerHTML = x;
+
+  		if(x==1){
+			alert("You Win!");
+			window.location.replace("couponCode.html");
+		}
+	user++;
+	}
+  }
+
+  function goBack() {
+  window.history.back();
+  }
+  </script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+<body>
+
+<center>
+  <h1>Coupon Code</h1>
+
+  <form name="randform">
+  <input type="button" value="Generate Coupon Code" onClick="randomString();">&nbsp;
+  <input type="text" name="randomfield" value="">
+  <button onclick="goBack()">Save Coupon</button>
+  </form>
+  <br>
+  <button onclick="goBack()">Go Back</button>
+  </center>
+
+
+<script>
+
+  function randomString() {
+  var chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz";
+  var string_length = 8;
+  var randomstring = '';
+  for (var i=0; i<string_length; i++) {
+    var rnum = Math.floor(Math.random() * chars.length);
+    randomstring += chars.substring(rnum,rnum+1);
+  }
+
+  document.randform.randomfield.value = randomstring;
+
+  }
+  
+
+  function goBack() {
+  window.history.back();
+  }
+  </script>
+
+
+</body>
+</html>
