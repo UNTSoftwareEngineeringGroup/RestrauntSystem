@@ -2,25 +2,25 @@ class TicketController < ApplicationController
 
 
 	def addToTicket
-  session[:tableID] = "10"
-  ticket = Ticket.where(table: session[:tableID]).last
-  if (ticket.nil?) || (ticket.tstatus == 9)
-    ticket = Ticket.create(table: session[:tableID], tax: "8.25", tstatus: 0 )   
-    session[:ticket] = check
-    puts("**********Ticket created************")
-    redirect_to guest_path
-  else
-     ticket.orderItems.create(
-            item: (MenuItem.find_by id: params[:item_id]),
-            ingredients: params[:good_ingredients],
-            notes: params[:notes],
-            istatus: 0
-        )
-        session[:ticket] = ticket
-        puts("**************Ticket added to***********")
-        redirect_to guest_path
-    end
-end
+	  ticket = Ticket.find_by(table: session[:table_id])
+	  puts("got table #{ticket.table}")
+	  if (ticket.nil?) || (ticket.tstatus == 9)
+	    ticket = Ticket.create(table: session[:table_id], tax: "8.25", tstatus: 0 )   
+	    session[:ticket] = check
+	    puts("**********Ticket created************")
+	    redirect_to guest_path
+	  else
+	     ticket.orderItems.create(
+	            item: (MenuItem.find_by(name: params[:item_name]).id),
+	            ingredients: params[:good_ingredients],
+	            notes: params[:notes],
+	            istatus: 0
+	        )
+	        session[:ticket_id] = ticket.id
+	        puts("**************Ticket added to***********")
+	        redirect_to guest_path
+	    end
+	end
 
 	def checkTicketStatus
 		ticketDone = 2

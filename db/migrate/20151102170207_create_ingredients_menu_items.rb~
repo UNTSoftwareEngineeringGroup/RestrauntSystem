@@ -1,0 +1,9 @@
+class CreateIngredientsMenuItems < ActiveRecord::Migration
+  def change
+    create_table :ingredients_menu_items, :id => false do |t|
+		 t.belongs_to :menuitem, index: true
+		 t.belongs_to :ingredient, index: true
+    end
+
+  end
+end

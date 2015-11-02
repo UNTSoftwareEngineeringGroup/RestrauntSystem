@@ -1,35 +1,54 @@
-<div>
-  <% menuitems = MenuItem.all %>
-
-  <ul class="small-block-grid-3">
-    <% menuitems.each do |item|%>
-      <li>
-        <div class="columns">
-          <div class="panel">
-            <%= item.name%>
-            <br><br>
-            <%= item.description %>
-            
-            <!-- Ingredients section -->
-            <section class="top-bar-section">
-              <% if item.ingredients != "" %>
-                <div class="has-dropdown">
-                  <a href="#" class="small button radius">Customize</a>
-                  <ul class="dropdown">
-                   <% stuff=item.ingredients.split(',') %>
-                    <% stuff.each do |ingredient| %>
-                      <li style="background:white">
-                       <%= button_to "#{ingredient}", guest_url, :method => "get", class: "small button radius" %>
-                      </li>
-                    <% end %>
-                  </ul>
+<% if ["Drinks", "Appetizers", "Entrees", "Desserts"].include? params[:view] %>
+  <p style="font-size:48px">
+    <center><strong>Which would you like?</strong></center>
+  </p>
+  <div>
+    <% menuitems = MenuItem.all %>
+    <ul class="small-block-grid-3">
+      <% menuitems.each do |item|%>
+        <% if item.category == params[:view] %>
+        <li>
+          <div class="columns">
+            <%= link_to order_items_show_path( :item => "#{item.name}") do %>
+              <div class="panel button", style="width:450px">
+                <div class="left">
+                <% unless item.img.to_s.nil? %>
+                  <%= image_tag item.img, width:"150px" %>
+                <% else %>
+                  <%= image_tag("placeholder.png", width: "150px") %>
+                <% end %>
                 </div>
-              <% end %>
-            </section>
-            Calroies: <%= item.calories %>
+                <%= item.name%>
+                <br><br>
+                <%= item.description %>
+                <br><br>
+                <%= item.price %>
+              </div>
+            <% end %>
           </div>
-        </div>
-      </li>
+        </li>
+      <% end %>
     <% end %>
-  </ul>
-</div>
+    </ul>
+  </div>
+<% elsif ["Games"].include? params[:view] %>
+  <p style="font-size:48px">
+    <center><strong>Which game would you like to play?</strong></center>
+  </p>
+  <center><%= render 'games' %></center>
+<%else %>
+  <div>
+  <p style="font-size:48px" class="centered large-offset-2" >
+    <strong> What would you like to get started with?</strong>
+    <br>
+    We would recommend one of the following
+  </p>
+    <div class="rows">
+      <div class="large-offset-4 columns centered">
+        <div>
+        <%= link_to "Drinks", guest_url(:view => "Drinks"), :method => "get", class: "large button radius" %>
+        <%= link_to "Appetizers", guest_url(:view => "Appetizers"), :method => "get", class: "large button radius" %>
+      </div>
+    </div>
+  </div>
+<% end %>

@@ -1,7 +1,6 @@
 <%=render 'user/top_nav_bar', :view=> "menu" %>
 <%=render 'user/side_nav', :view=> "menu" %>
-<% item = MenuItem.where(:name => "#{params[:item]}").first %>
-<% @ingredients = item.ingredients.split(',') %>
+<% item = Menuitem.where(:name => "#{params[:item]}").first %>
 
 <fieldset>
   <legend><%= params[:item] %></legend>
@@ -17,8 +16,8 @@
           <fieldset>
             <legend>Customize your order</legend>
             Please uncheck everything you want removed.<br>
-            <% @ingredients.each do |ingredient| %>
-              <%= check_box_tag 'good-ingredients[]', checked = "#{ingredient}", true%><%= " #{ingredient}" %>
+            <% item.ingredients.each do |ingredient| %>
+              <%= check_box_tag 'good-ingredients[]', checked = "#{ingredient.name}", true%><%= " #{ingredient.name}" %>
               <br>
             <% end %>
             <fieldset>
@@ -26,7 +25,7 @@
               <%= text_area_tag(:notes,'',size:"24x6") %>
             </fieldset>
           </fieldset>
-          <%= hidden_field_tag :item_id, "#{item.id}" %>
+          <%= hidden_field_tag :item_name, "#{item.name}" %>
 
           <a href="#" data-reveal-id="myModal">More Info</a>
             <div id="myModal" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
