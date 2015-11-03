@@ -1,13 +1,27 @@
 class TicketController < ApplicationController
 
+	def calcTotal
+		puts("calculating total!!!!")
+		check = session[:ticket]
+		check.update(:total => 0)
+		puts(check.total)
+		orderItems = check.orderItems.all
+		orderItems.each do |item|
+			temp = Menuitem.find_by(id: item.item)
+			check.update(:total => (check.total + temp.price))
+				puts("*****ORDER ITEM FOUND*****")
+		#add all items to total and set total with tax
+		end
+	end
 
 	def addToTicket
 	  ticket = Ticket.find_by(table: session[:table_id])
 	  puts("got table #{ticket.table}")
 	  if (ticket.nil?) || (ticket.tstatus == 9)
 	    ticket = Ticket.create(table: session[:table_id], tax: "8.25", tstatus: 0 )   
-	    session[:ticket] = check
+	    session[:ticket] = ticket
 	    puts("**********Ticket created************")
+	    calcTotal
 	    redirect_to guest_path
 	  else
 	     ticket.orderItems.create(
@@ -16,8 +30,9 @@ class TicketController < ApplicationController
 	            notes: params[:notes],
 	            istatus: 0
 	        )
-	        session[:ticket_id] = ticket.id
+	        session[:ticket] = ticket
 	        puts("**************Ticket added to***********")
+	        calcTotal
 	        redirect_to guest_path
 	    end
 	end
@@ -42,16 +57,7 @@ class TicketController < ApplicationController
 	end
 
 
-	private
-		def calcTotal
-			check = session[:ticket]
-			check.total = 0
-			OrderItem.where(id: check.id) do |item|
-				check.total = check.total + item.price
-					puts("*****ORDER ITEM FOUND*****")
-			#add all items to total and set total with tax
-			end
-		end
+
 
 	private
 		def advanceTicket
