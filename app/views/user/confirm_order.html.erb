@@ -5,7 +5,7 @@
   <legend>Current Order</legend>
   <% @items.each do |orderItem| %>
     <div class='panel'>
-      <h4><%=(Menuitem.find(orderItem.item)).name%></h4>
+      <h4><%=(Menuitem.find(orderItem.item)).name%>: $<%=(Menuitem.find(orderItem.item)).price%></h4>
       Notes: <%= orderItem.notes %><br>
       <%= link_to 'Remove', order_items_remove_item_path(item_id: orderItem.item) %><br>
     </div>
@@ -23,9 +23,12 @@
   </fieldset>
   <% elsif @check.tstatus == 1%>
     <div style="text-align:center">
-      <h1 style="padding-top:64px;">Your food is in the kitchen!</h1>
-      <h3 style="color:grey;">Play some games while you wait...</h3>
+      <h1 style="padding-top:64px;">Your food is in the kitchen</h1>
+      <h3 style="color:grey;">Play the coupon game for a chance to earn a discount on your next meal!</h3>
       <br>
-      <%= link_to "Games", guest_url(:view => "Games"), :method => "get", class: "button success radius"%>
+      <a href="/games/couponCode/test.html" class="button success">Coupon Game</a>
+    </div>
+    <div>
+      <%= render 'pay' %>
     </div>
   <%end%>
