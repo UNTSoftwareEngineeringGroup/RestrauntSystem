@@ -520,7 +520,7 @@ OrderItem.delete_all
 @ticket = Ticket.create(
 	table: "11",
 	tax: "8.25",
-	tstatus: 1,
+	tstatus: 0,
 )
 
 @ticket.orderItems.create(
