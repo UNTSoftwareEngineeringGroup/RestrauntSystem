@@ -68,5 +68,10 @@ class UserController < ApplicationController
   def confirm_order
     @check = Ticket.find_by(table: session[:table_id])
     @items = OrderItem.where(:ticket_id => @check.id)
+    @check.update(:total => 0)
+    @items.each do |orderItem|
+      menu_item = Menuitem.find_by(id: orderItem.item)
+      @check.update(:total => (@check.total + menu_item.price))
+    end
   end
 end
