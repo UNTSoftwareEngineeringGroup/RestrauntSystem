@@ -33,6 +33,7 @@
             </div>
           </div>
 		 </div>
+		 <%= session[:tableid] = params[:username].gsub(/[^0-9]/, '') %>
 	  </fieldset>
     <% end %>
   </div>
