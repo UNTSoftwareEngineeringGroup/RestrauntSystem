@@ -1,5 +1,6 @@
 <%= render 'top_nav_bar', view:'menu' %>
 <%= render 'side_nav', view:'menu' %>
+<% if @check.tstatus == 0 %>
 <fieldset class='small-8 small-centered text-center columns'>
   <legend>Current Order</legend>
   <% @items.each do |orderItem| %>
@@ -9,6 +10,20 @@
       <%= link_to 'Remove', order_items_remove_item_path(item_id: orderItem.item) %><br>
     </div>
   <% end %>
-  Total: <%= number_to_currency(@check.total) %>
-  <%= link_to 'Submit Order', guest_path, class:'button radius success' %>
-</fieldset>
+  Total: <%= number_to_currency(@check.total) %><br>
+  <a href="#" data-reveal-id="firstModal" class="radius button">Submit Order</a>
+    <div id="firstModal" class="reveal-modal" data-reveal aria-labelledby="firstModalTitle" aria-hidden="true" role="dialog">
+      <h2 id="firstModalTitle">Are you sure you want to submit?</h2>
+      <p>Once you submit your order, you won't be able to edit it.</p>
+      <%= link_to 'Yes', ticket_advance_ticket_path, class:'button success center'%>
+      <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+    </div>
+  </fieldset>
+  <% elsif @check.tstatus == 1%>
+    <div style="text-align:center">
+      <h1 style="padding-top:64px;">Your food is in the kitchen!</h1>
+      <h3 style="color:grey;">Play some games while you wait...</h3>
+      <br>
+      <%= link_to "Games", guest_url(:view => "Games"), :method => "get", class: "button success radius"%>
+    </div>
+  <%end%>

@@ -56,15 +56,18 @@ class TicketController < ApplicationController
 		end
 	end
 
-
-
-
-	private
-		def advanceTicket
-			check = session[:ticket]
-			check.tstatus = check.tstatus + 1
-			redirect_to :back
+	def advance_ticket
+		check = Ticket.find_by(table: session[:table_id])
+		
+		if (check.tstatus == 0)
+			check.update(:tstatus => 1)
+		elsif (check.tstatus == 1)
+			check.update(:tstatus => 2)
 		end
+
+		puts("NEW STATUS OF TICKET: #{check.tstatus}")
+		redirect_to :back
+	end
 
 	private
 		def pay
