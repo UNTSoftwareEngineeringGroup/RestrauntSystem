@@ -17,7 +17,9 @@
             <legend>Customize your order</legend>
             Please uncheck everything you want removed.<br>
             <% item.ingredients.each do |ingredient| %>
-              <%= check_box_tag 'good-ingredients[]', checked = "#{ingredient.name}", true%><%= " #{ingredient.name}" %>
+              <% if ingredient.available == 1 %>
+                <%= check_box_tag 'good-ingredients[]', checked = "#{ingredient.name}", true%><%= " #{ingredient.name}" %>
+              <%end%>
               <br>
             <% end %>
             <fieldset>
