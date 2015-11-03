@@ -35,7 +35,7 @@ class OrderItemsController < ApplicationController
 
     else 
         @orderItem.destroy
-        redirect_to ticket_calcTotal_path
+        # redirect_to ticket_calcTotal_path
     end
     redirect_to guest_confirm_order_path
   end
