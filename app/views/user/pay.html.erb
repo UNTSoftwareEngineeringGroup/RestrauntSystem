@@ -22,7 +22,7 @@
     <legend>Bill</legend>
     <% items = OrderItem.where(:ticket_id => check.id) %>
     <% items.each do |item| %>
-      <% menuitem = Menuitem.where(:id => item.item).first %>
+      <% menuitem = MenuItem.where(:id => item.item).first %>
       <%= menuitem.name %>
       <%= menuitem.price %>
       <%if params[:view] == 'waiter' %>
