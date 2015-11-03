@@ -1,6 +1,22 @@
 <center>
 <%= render 'top_nav_bar', :view => "manager" %>
-<div class="columns">
+<div class="rows">
   <%= render 'side_nav', :view => "manager" %>
 </div>
 </center>
+
+<% if params[:view] == 'remove' %>
+<center>
+	<strong>What Menu Item Would You Like to Remove?</strong>
+	<br>
+	<br>
+	<ul>
+      <!-- Remove Items Menu -->
+      <li><%= link_to "Drinks", guest_url(:view => "manager"), :method => "get", class: "button radius" %></li>
+      <li><%= link_to "Appetizers", guest_url(:view => "Appetizers"), :method => "get", class: "button radius" %></li>
+      <li><%= link_to "Entrees", guest_url(:view => "Entrees"), :method => "get", class: "button radius" %></li>
+      <li><%= link_to "Dessert", guest_url(:view => "Desserts"), :method => "get", class: "button radius"%></li>
+    </ul>
+
+</center>	
+<%end%>	

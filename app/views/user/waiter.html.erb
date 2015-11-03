@@ -45,6 +45,7 @@ div.columns large-10 right"{
       </div>
       <a class="close-reveal-modal" aria-label="Close">&#215;</a>
     </div>
+    <!--End of Assign Servers-->
 
     <% servers = User.all.where(:accesslevel => 3) %>
     <% servers.each do |servers|%>

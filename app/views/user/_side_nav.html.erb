@@ -5,9 +5,10 @@
       <!-- Manager buttons -->
 
       <!-- Only show Back-End button if in fron-end view -->
-      <li><%= button_to "BoH", waiter_path, :view => "Servers", :method => "get", class: "button large alert" %></li>
+      <li><%= button_to "BoH", manager_path, :view => "manager", :method => "get", class: "button large alert" %></li>
       <!-- only show fron-end button if in back-end view -->
-      <li><%= button_to "FoH", waiter_path, :view => "Servers", :method => "get", class: "button large alert" %></li>
+      <li><%= button_to "FoH", waiter_path, :view => "manager", :method => "get", class: "button large alert" %></li>
+      <li><%= link_to "Remove Menu Item", manager_path(:view => "remove"), :method => "get", class: "button large alert" %></li>
       <li class="divider"></li>
         <!-- need some kind of for loop to show buttons for each active waiter -->
         <!-- need partial here for waiter -->
