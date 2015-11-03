@@ -1,6 +1,7 @@
 class TicketController < ApplicationController
 
 	def calcTotal
+		puts("calculating total!!!!")
 		check = session[:ticket]
 		check.update(:total => 0)
 		puts(check.total)
