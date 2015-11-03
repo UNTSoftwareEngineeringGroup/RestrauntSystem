@@ -44,7 +44,8 @@
             <a href="#">Mark Missing Ingredients</a>
             <ul class="dropdown">
               <% ingredients.each do |ingredient| %>
-              <li><%=link_to ingredient.name %></li>
+              <% if ingredient.available == 1 then available = "available" else available = "unavailable" end %>
+              <li><%=link_to "#{ingredient.name}: #{available}", controller: "ingredients", action: "update_status", ingredient_name: ingredient.name, remote:true%></li>
               <%end%> <!-- end of ingredients loop -->
             </ul>
           </li>        

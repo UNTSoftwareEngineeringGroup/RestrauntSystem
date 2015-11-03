@@ -25,6 +25,8 @@ class OrderItemsController < ApplicationController
 	  		redirect_to ticket_checkTicketStatus_path(:ticket_id => @ticket.id)	  		
 	  	when done
 	  		@orderItem.update(:istatus => inProgress)
+      else
+        puts("error order item doesn't have a valid status")
   	end
   end
 
