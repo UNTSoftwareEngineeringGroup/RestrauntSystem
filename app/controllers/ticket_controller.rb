@@ -13,7 +13,7 @@ class TicketController < ApplicationController
 		#add all items to total and set total with tax
 		end
 		check.update(:tax => (check.subtotal * 0.0825))
-	   check.update(:total => (check.subtotal + check.tax))
+	   check.update(:total => (check.tax + check.subtotal))
 	end
 
 	def addToTicket
