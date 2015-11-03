@@ -3,27 +3,27 @@ class TicketController < ApplicationController
 	def calcTotal
 		puts("calculating total!!!!")
 		check = session[:ticket]
-		check.update(:total => 0)
+		check.update(:subtotal => 0)
 		puts(check.total)
 		orderItems = check.orderItems.all
 		orderItems.each do |item|
 			temp = Menuitem.find_by(id: item.item)
-			check.update(:total => (check.total + temp.price))
+			check.update(:subtotal => (check.subtotal + temp.price))
 				puts("*****ORDER ITEM FOUND*****")
 		#add all items to total and set total with tax
 		end
+		check.update(:tax => (check.subtotal * 0.0825))
+	   check.update(:total => (check.subtotal + check.tax))
 	end
 
 	def addToTicket
+		session[:table_id] = 14
 	  ticket = Ticket.find_by(table: session[:table_id])
-	  puts("got table #{ticket.table}")
 	  if (ticket.nil?) || (ticket.tstatus == 9)
-	    ticket = Ticket.create(table: session[:table_id], tax: "8.25", tstatus: 0 )   
+	    ticket = Ticket.create(table: session[:table_id], tax: 0, tstatus: 0 )   
 	    session[:ticket] = ticket
 	    puts("**********Ticket created************")
-	    calcTotal
-	    redirect_to guest_path
-	  else
+	  end
 	     ticket.orderItems.create(
 	            item: (Menuitem.find_by(name: params[:item_name]).id),
 	            ingredients: params[:good_ingredients],
@@ -34,7 +34,7 @@ class TicketController < ApplicationController
 	        puts("**************Ticket added to***********")
 	        calcTotal
 	        redirect_to guest_path
-	    end
+	    
 	end
 
 	def checkTicketStatus
