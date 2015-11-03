@@ -552,12 +552,12 @@ OrderItem.delete_all
 
 @ticket.orderItems.create(
 	item: (Menuitem.find_by(name: "The Roundhouse").id),
-#	ingredients: "jalepenos, onions",
+	ingredients: "jalepenos, onions",
 	notes: "yeehaw",
 	istatus: 0)
 @ticket.orderItems.create(
 	item: (Menuitem.find_by(name: "Strawberry Cheesecake").id),
-#	ingredients: "",
+	ingredients: "",
 	notes: "add bacon",
 	istatus: 0)
 

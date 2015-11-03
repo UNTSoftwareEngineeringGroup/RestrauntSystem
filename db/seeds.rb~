@@ -520,28 +520,28 @@ OrderItem.delete_all
 @ticket = Ticket.create(
 	table: "11",
 	tax: "8.25",
-	tstatus: 1,
+	tstatus: 0,
 )
 
 @ticket.orderItems.create(
 	item: (Menuitem.find_by(name: "Nachos").id),
-#	ingredients: "jalepenos, onions",
+	ingredients: "Jalepenos, Onions",
 	notes: "extra cheese please",
 	istatus: 0)
 
 @ticket.orderItems.create(
 	item: (Menuitem.find_by(name: "Double Burger").id),
-#	ingredients: "Lettuce, Tomato",
+	ingredients: "Lettuce, Tomato",
 	notes: "Medium",
 	istatus: 0)
 @ticket.orderItems.create(
 	item: (Menuitem.find_by(name: "The Roundhouse").id),
-#	ingredients: "jalepenos, onions",
+	ingredients: "jalepenos, onions",
 	notes: "yeehaw",
 	istatus: 0)
 @ticket.orderItems.create(
 	item: (Menuitem.find_by(name: "Strawberry Cheesecake").id),
-#	ingredients: "",
+	ingredients: "",
 	notes: "add bacon",
 	istatus: 0)
 @ticket = Ticket.create(

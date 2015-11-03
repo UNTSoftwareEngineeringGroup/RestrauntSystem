@@ -1,0 +1,27 @@
+<%= render 'top_nav_bar', view:'menu' %>
+<div class='columns large-10 right'>
+  <fieldset>
+    <legend>Which drink would you like a refill for?</legend>
+    <ul class='small-block-grid-3'>
+      <% @items.each do |item| %>
+        <li>
+          <% menuitem = Menuitem.where(:id => item.item).first %>
+          <% if menuitem.category == 'Drinks' %>
+            <!-- Change root_url to path for the method to notify the waiter -->
+            <%= link_to waiter_refills_path(:table => session[:table_id], :drink => menuitem.name) do %>
+              <div class='panel button'>
+              <% unless menuitem.img.to_s.nil? %>
+                <%= image_tag menuitem.img, width:"150px" %>
+              <% else %>
+                <%= image_tag("placeholder.png", width: "150px") %>
+               <% end %>
+              <%= menuitem.name %> 
+              </div>
+            <% end %>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+  </fieldset>
+</div>
+<%= render 'side_nav',view:'menu' %>
