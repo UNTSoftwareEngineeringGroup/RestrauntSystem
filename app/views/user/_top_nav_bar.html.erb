@@ -44,7 +44,7 @@
             <a href="#">Mark Missing Ingredients</a>
             <ul class="dropdown">
               <% ingredients.each do |ingredient| %>
-              <li><a href="#"><%=ingredient.name%></a></li>
+              <li><%=link_to ingredient.name %></li>
               <%end%> <!-- end of ingredients loop -->
             </ul>
           </li>        
