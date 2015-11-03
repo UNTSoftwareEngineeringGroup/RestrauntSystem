@@ -38,9 +38,19 @@
           <%= button_to "Pay Total: ", guest_pay_path, :view => "not credit", :method => "get", class: "button round success" %>
         </li>
       <% elsif view == "kitchen" %>
-        <li>
-          <%= button_to "Refresh", kitchen_path, :method => "get", class: "button round" %>
-        </li>    
+      <% ingredients = Ingredient.all %>
+        <ul class="right">
+          <li class="has-dropdown">
+            <a href="#">Mark Missing Ingredients</a>
+            <ul class="dropdown">
+              <% ingredients.each do |ingredient| %>
+              <li><%=link_to ingredient.name %></li>
+              <%end%> <!-- end of ingredients loop -->
+            </ul>
+          </li>        
+          <li><%= button_to "Refresh", kitchen_path, :method => "get", class: "button round" %></li>
+        </ul>
+            
       <% end %>
     </ul>
 
