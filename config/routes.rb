@@ -5,6 +5,9 @@ Rails.application.routes.draw do
   get 'ticket/calcTotal' => 'ticket#calcTotal'
   get 'ticket/advance_ticket' => 'ticket#advance_ticket'
 
+#Ingredients
+  get 'ingredients/update_status' => 'ingredients#update_status'
+
 #Order_items
   get 'order_items/show' => 'order_items#show' 
   get 'order_items/addToTicket' => 'order_items#orderToTicket'

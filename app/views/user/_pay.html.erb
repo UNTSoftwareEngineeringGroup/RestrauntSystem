@@ -1,0 +1,12 @@
+<fieldset class='small-8 small-centered text-center columns' style="width:500px;">
+  <legend>Bill</legend>
+  <% @items.each do |orderItem| %>
+    <div class='panel'>
+      <h4><%=(Menuitem.find(orderItem.item)).name%>: $<%=(Menuitem.find(orderItem.item)).price%></h4>
+    </div>
+  <% end %>
+  <br><h2>Total: <%= number_to_currency(@check.total) %></h2><br>
+    <!--Need to add a way to notify waiter -->
+  <%= link_to "Pay with Cash", guest_path, :method => "get", class: "button radius" %>
+  <!-- Need to show credit partial -->
+  <%= link_to "Pay with Credit", guest_pay_path(:view => "credit"), class:"button radius" %>
