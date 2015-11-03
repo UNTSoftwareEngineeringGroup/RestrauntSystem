@@ -20,6 +20,10 @@ class UserController < ApplicationController
   def waiter
   end
 
+  def waiter_refills
+    redirect_to guest_path
+  end
+
   def kitchen
   end
 
@@ -73,5 +77,10 @@ class UserController < ApplicationController
       menu_item = Menuitem.find_by(id: orderItem.item)
       @check.update(:total => (@check.total + menu_item.price))
     end
+  end
+
+  def refill
+    check = Ticket.find_by(table: session[:table_id])
+    @items = OrderItem.where(:ticket_id => check.id)
   end
 end

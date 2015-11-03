@@ -21,9 +21,11 @@ Rails.application.routes.draw do
   get 'guest' => 'user#guest'
   get 'kitchen' => 'user#kitchen'
   get 'waiter' => 'user#waiter'
+  get 'waiter/refills' => 'user#waiter_refills'
   get 'guest/pay' => 'user#pay'
   get 'login' => 'user#login'
   get 'guest/confirm_order' => 'user#confirm_order'
+  get 'guest/refill' => 'user#refill'
 
  #Guestaccount
   get 'signup' => 'guestaccounts#new'
