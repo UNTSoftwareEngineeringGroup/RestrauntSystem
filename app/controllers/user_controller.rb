@@ -4,10 +4,76 @@ class UserController < ApplicationController
 
   def reports
     if params[:view] == 'revenue'
-      #set instance variables for the revenue report here
+      @subtotal = 0
+      @total = 0
+      @tax = 0
+      @gratuity = 0
+      ticket = Ticket.all
+      ticket.each do |bill|
+        @subtotal += bill.subtotal unless bill.subtotal.nil? 
+        @tax += bill.tax unless bill.tax.nil?
+        @gratuity += bill.gratuity unless bill.gratuity.nil?
+        @total += bill.total unless bill.total.nil?
+      end
+
+      @items_sold = []
+      @menuitems = Menuitem.all
+      @menuitems.each do |item|
+        @items_sold << OrderItem.where(item:item.id).count
+      end 
+      
     elsif params[:view] == 'top sellers'
-      #set instance variables for the top sellers report here
-      #ex. @best_seller, @second_seller, @third_seller
+      @best_sellers = []
+      ['Appetizers','Entrees','Desserts','Drinks'].each do |category|
+
+        top_sell_id = 0
+        top_sell_count = 0
+
+        second_sell_id = 0
+        second_sell_count = 0
+
+        third_sell_id = 0
+        third_sell_count = 0
+
+        menuitems = Menuitem.where(category:category)
+
+        menuitems.each do |item|
+          items_sold = OrderItem.where(item:item.id).count
+          if items_sold > top_sell_count
+            third_sell_id = second_sell_id
+            third_sell_count = second_sell_count
+            
+            second_sell_id = top_sell_id
+            second_sell_count = top_sell_count
+  
+            top_sell_id = item.id
+            top_sell_count = items_sold
+  
+          elsif items_sold > second_sell_count
+            third_sell_id = second_sell_id
+            third_sell_count = second_sell_count
+              
+            second_sell_id = item.id
+            second_sell_count = items_sold
+  
+          elsif items_sold > third_sell_count
+            third_sell_id = item.id
+            third_sell_count = items_sold
+          end
+        end
+        
+        @best_sellers << Menuitem.where(id:top_sell_id).first
+        @best_sellers << Menuitem.where(id:second_sell_id).first
+        @best_sellers << Menuitem.where(id:third_sell_id).first
+     end
+    elsif params[:view] == 'compitem'
+      orderitems = OrderItem.where(compitem:true)
+      @compitems = []
+      @menuitem = []
+      orderitems.each do |order|
+        @compitems << Compitem.where(id:order.compitem_id).first
+        @menuitem << Menuitem.where(id:order.item).first
+      end 
     end
   end
 
