@@ -1,0 +1,51 @@
+<br><br><br>
+<center><h1>Enter your credit card information.</h1></center>
+<center><h4 style="color:grey">Powered by PayFriend</h4></center>
+<br><br>
+
+<%= form_tag guest_submit_payment_path, :method => 'get' do%>
+<form>
+<div class="row">
+	<div class="large-4 large-offset-2 columns">
+		<label>Name on Card
+			<%= text_field_tag :name, params[:name], placeholder: 'First Last', :required => true%>
+		</label>
+	</div>
+</div>
+<br>
+<div class="row">
+	<div class="large-6 large-offset-2 columns">
+		<label>Credit Card Number
+			<%= text_field_tag :card_num, params[:card_num], placeholder: 'xxxx-xxxx-xxxx-xxxx', :required => true%>
+		</label>
+	</div>
+	<div class="large-2 columns end">
+		<label>CIN
+			<%= text_field_tag :cin, params[:cin], placeholder: 'xxx', :required => true%>
+		</label>
+	</div>
+</div>
+<div class="row">
+	<div class="large-2 large-offset-2 columns end">
+		<label>Expiration Date
+			<%= text_field_tag :date, params[:date], placeholder: 'xx/xx/xxxx', :required => true%>
+		</label>
+	</div>
+	<div class="large-4 large-offset-2 columns end">
+		<label>ZIP code
+			<%= text_field_tag :zip, params[:zip], placeholder: 'xxxxx', :required => true%>
+		</label>
+	</div>
+</div>
+<br><br>
+  <div class="row" style="text-align:center">
+    <div class="large-6 large-centered columns">
+      <label>Print or Email Receipt</label>
+      <input type="radio" name="receipt_option" value="Print" id="print"><label for="printReceipt">Print</label>
+      <input type="radio" name="receipt_option" value="Email" id="email"><label for="emailReceipt">Email</label>
+    	</div>
+	</div>
+<br>
+<center><%= submit_tag "Pay", class:"button radius" %></center>
+</form>
+<%end%>
