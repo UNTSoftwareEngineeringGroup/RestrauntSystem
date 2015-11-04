@@ -517,6 +517,7 @@ Table.create(
 ####--------Ticket seed----------####
 Ticket.delete_all
 OrderItem.delete_all
+Compitem.delete_all
 @ticket = Ticket.create(
 	table: "11",
 	tax: "8.25",
@@ -533,8 +534,10 @@ OrderItem.delete_all
 	item: (Menuitem.find_by(name: "Double Burger").id),
 	ingredients: "Lettuce, Tomato",
 	notes: "Medium",
-	istatus: 0)
-@ticket.orderItems.create(
+	istatus: 0,
+	compitem: Compitem.create(user: "Snoopy", reason: "Hair in food", amount: "1.25"))
+
+	@ticket.orderItems.create(
 	item: (Menuitem.find_by(name: "The Roundhouse").id),
 	ingredients: "jalepenos, onions",
 	notes: "yeehaw",

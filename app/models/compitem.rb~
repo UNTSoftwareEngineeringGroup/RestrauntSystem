@@ -1,0 +1,3 @@
+class Compitem < ActiveRecord::Base
+	belongs_to :orderItem
+end
