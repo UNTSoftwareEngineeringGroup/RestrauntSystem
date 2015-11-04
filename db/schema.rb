@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151103222548) do
+ActiveRecord::Schema.define(version: 20151104074918) do
 
   create_table "compitems", force: :cascade do |t|
     t.string   "user"
@@ -51,9 +51,9 @@ ActiveRecord::Schema.define(version: 20151103222548) do
     t.text     "description"
     t.integer  "calories"
     t.string   "img"
-    t.boolean  "available",   default: true
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.boolean  "available"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
     t.float    "price"
   end
 
@@ -78,6 +78,8 @@ ActiveRecord::Schema.define(version: 20151103222548) do
     t.integer  "ticket"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.string   "refills"
+    t.boolean  "help"
   end
 
   create_table "tickets", force: :cascade do |t|
