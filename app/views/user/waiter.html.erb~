@@ -90,7 +90,8 @@ div.columns large-10 right"{
 			end
 				%></p><!--find ticket for table if one exists and get status -->
 		<p>Refill: 
-		<%=	%></p><!--check if table needs refill -->
+		<%= flash[:alert] = "Incorrect credientials1!"
+			%></p><!--check if table needs refill -->
       <a class="close-reveal-modal" aria-label="Close">&#215;</a>
     </div>
 
