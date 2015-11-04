@@ -1,3 +1,23 @@
+<head>
+	<script type="text/javascript">
+		$(function(){
+		    $("#print, #email").change(function(){
+		        $("#email_field").val("").attr("readonly",true);
+		        if($("#email").is(":checked")){
+		            $("#email_field").removeAttr("readonly");
+		            $("#email_field").focus();
+		        }
+		        // else if($("#example_1").is(":checked")){
+		        //     $("#field2").removeAttr("readonly");
+		        //     $("#field2").focus();   
+		        // }
+		    });
+		});
+	</script>
+</head>
+
+
+
 <br><br><br>
 <center><h1>Enter your credit card information.</h1></center>
 <center><h4 style="color:grey">Powered by PayFriend</h4></center>
@@ -41,10 +61,17 @@
   <div class="row" style="text-align:center">
     <div class="large-6 large-centered columns">
       <label>Print or Email Receipt</label>
-      <input type="radio" name="receipt_option" value="Print" id="print"><label for="printReceipt">Print</label>
-      <input type="radio" name="receipt_option" value="Email" id="email"><label for="emailReceipt">Email</label>
+      <input type="radio" checked="checked" id="print" name="receipt_option" value="Print" id="print"><label for="printReceipt">Print</label>
+      <input type="radio" id="email" name="receipt_option" value="Email" id="email"><label for="emailReceipt">Email</label>
     	</div>
 	</div>
+	<div class="row">
+	<div class="large-4 large-centered columns">
+		<label>Email
+			<%= text_field_tag :name, params[:name], placeholder: 'example@example.com', id: 'email_field', :readonly => true %>
+		</label>
+	</div>
+</div>
 <br>
 <center><%= submit_tag "Pay", class:"button radius" %></center>
 </form>
