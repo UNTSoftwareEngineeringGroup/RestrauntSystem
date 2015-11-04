@@ -1,4 +1,4 @@
 class OrderItem < ActiveRecord::Base
   belongs_to :ticket
-  belongs_to :compitem
+  has_one :compitem
 end
