@@ -11,7 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151103162747) do
+ActiveRecord::Schema.define(version: 20151103222548) do
+
+  create_table "compitems", force: :cascade do |t|
+    t.string   "user"
+    t.string   "reason"
+    t.float    "amount"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "guestaccounts", force: :cascade do |t|
     t.string   "email"
@@ -55,10 +63,12 @@ ActiveRecord::Schema.define(version: 20151103162747) do
     t.string   "notes"
     t.integer  "istatus"
     t.integer  "ticket_id"
+    t.integer  "compitem_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
 
+  add_index "order_items", ["compitem_id"], name: "index_order_items_on_compitem_id"
   add_index "order_items", ["ticket_id"], name: "index_order_items_on_ticket_id"
 
   create_table "tables", force: :cascade do |t|

@@ -20,6 +20,10 @@ class UserController < ApplicationController
   def waiter
   end
 
+  def waiter_refills
+    redirect_to guest_path
+  end
+
   def kitchen
   end
 
@@ -68,10 +72,21 @@ class UserController < ApplicationController
   def confirm_order
     @check = Ticket.find_by(table: session[:table_id])
     @items = OrderItem.where(:ticket_id => @check.id)
-    @check.update(:total => 0)
+    @check.update(:subtotal => 0)
     @items.each do |orderItem|
       menu_item = Menuitem.find_by(id: orderItem.item)
-      @check.update(:total => (@check.total + menu_item.price))
+      @check.update(:subtotal => (@check.subtotal + menu_item.price))
     end
+	 @check.update(:tax => (@check.subtotal * 0.0825))
+	 unless @check.gratuity.nill?
+		 @check.update(:total => (@check.subtotal + @check.tax + @check.gratuity))
+	 else
+	 @check.update(:total => (@check.subtotal + @check.tax))
+	 end
+  end
+
+  def refill
+    check = Ticket.find_by(table: session[:table_id])
+    @items = OrderItem.where(:ticket_id => check.id)
   end
 end

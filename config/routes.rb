@@ -35,6 +35,9 @@ Rails.application.routes.draw do
   post 'guestlogin' => 'sessions#create'
   delete 'guestlogout' => 'sessions#destroy'
 
+  get 'guest/pay_w_credit' => 'guest#pay_w_credit'
+  get 'guest/submit_payment' => 'guest#submit_payment'
+
   
   root "user#login"
 end

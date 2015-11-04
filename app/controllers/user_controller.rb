@@ -78,7 +78,11 @@ class UserController < ApplicationController
       @check.update(:subtotal => (@check.subtotal + menu_item.price))
     end
 	 @check.update(:tax => (@check.subtotal * 0.0825))
+	 unless @check.gratuity.nil?
+		 @check.update(:total => (@check.subtotal + @check.tax + @check.gratuity))
+	 else
 	 @check.update(:total => (@check.subtotal + @check.tax))
+	 end
   end
 
   def refill
