@@ -31,4 +31,6 @@
     <div>
       <%= render 'pay' %>
     </div>
+  <% elsif @check.tstatus == 9%>
+    <%=render 'survey' %>  
   <%end%>

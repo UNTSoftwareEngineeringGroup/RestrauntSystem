@@ -7,6 +7,6 @@
   <% end %>
   <br><h2>Total: <%= number_to_currency(@check.total) %></h2><br>
     <!--Need to add a way to notify waiter -->
-  <%= link_to "Pay with Cash", guest_path, :method => "get", class: "button radius" %>
+  <%= link_to "Pay with Cash", guest_submit_payment_path, :method => "get", class: "button radius" %>
   <!-- Need to show credit partial -->
   <%= link_to "Pay with Credit", guest_pay_w_credit_path, class:"button radius" %>

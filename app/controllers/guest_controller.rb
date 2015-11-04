@@ -8,6 +8,6 @@ class GuestController < ApplicationController
 		if(check.tstatus == 9) 
 			puts('The ticket has been paid for')
 		end
-		redirect_to guest_path
+		redirect_to guest_confirm_order_path
 	end
 end
