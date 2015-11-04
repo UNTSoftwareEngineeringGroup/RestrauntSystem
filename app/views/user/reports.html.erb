@@ -1,5 +1,84 @@
-<% if params[:view] == 'revenue' %>
-  revenue report goes here
-<% elsif %>
-  best selling report goes here
-<% end %>
+<%= render 'top_nav_bar', view:'manager' %>
+<%= render 'side_nav', :view => "manager" %>
+<div class='large-10 columns right text-center'>
+  <% if params[:view] == 'revenue' %>
+    <div class='large-6 left columns'>
+      <fieldset>
+        <legend>Daily Revenue Report</legend>
+        <div class='panel'>
+          Gratuity: <%= number_to_currency(@gratuity) %>
+        </div>
+        <div class='panel'>
+          Tax: <%= number_to_currency(@tax) %>
+        </div>
+        <div class='panel'>
+          Subtotal: <%= number_to_currency(@subtotal) %>
+        </div>
+        <div class='panel'>
+          Total: <%= number_to_currency(@total) %>
+        </div>
+      </fieldset>
+    </div>
+    <div class='large-6 right columns'>
+      <fieldset>
+        <legend>Items Sold</legend>
+        <% element = 0 %>
+        <% @menuitems.each do |item| %>
+          <%= item.name %>:
+          <%= @items_sold[element] %> | 
+          <%= number_to_currency(item.price * @items_sold[element]) %><br>
+          <% element += 1 %> 
+        <% end %>
+      </fieldset>
+    </div>
+  <% elsif params[:view] == 'top sellers' %>
+    <% category_counter = 0 %>
+    <% place_counter = 1 %>
+    <% @best_sellers.each do |item| %>
+
+      <% if category_counter == 0 %>
+        <fieldset>
+          <legend>Appetizers Best Sellers</legend>
+      <% elsif category_counter == 3 %>
+        <fieldset>
+          <legend>Entrees Best Sellers</legend>
+      <% elsif category_counter == 6 %>
+        <fieldset>
+          <legend>Desserts Best Sellers</legend>
+      <% elsif category_counter == 9 %>
+        <fieldset>
+          <legend>Drinks Best Sellers</legend>
+      <% end %>
+      
+      <%= place_counter.ordinalize %>:
+      <%= item.name unless item.nil? %><br>
+      <% category_counter += 1 %>
+      <% place_counter += 1 %>
+      <% if place_counter >= 4 %>
+        <% place_counter = 1 %>
+      <% end %>
+      
+      <% if category_counter % 3 == 0 %>
+        </fieldset>
+      <% end %>
+    <% end %>
+  <% elsif params[:view] == 'compitem' %>
+    <% item_counter = 0 %>
+    <table>
+      <thead>
+        <th>Item</th>
+        <th>Employee</th>
+        <th>Reason</th>
+        <th>Comp Amount</th>
+      </thead>
+      <tbody>
+        <% @compitems.each do |comp| %>
+          <td><%= @menuitem[item_counter].name %></td>
+          <td><%= comp.user %></td>
+          <td><%= comp.reason %></td>
+          <td><%= comp.amount %></td>
+        <% end %>
+      </tbody>
+    <table>
+  <% end %>
+</div>
