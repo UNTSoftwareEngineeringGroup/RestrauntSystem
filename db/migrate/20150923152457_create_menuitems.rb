@@ -6,7 +6,7 @@ class CreateMenuitems < ActiveRecord::Migration
       t.text :description
       t.integer :calories
       t.string :img
-      t.boolean :available
+      t.boolean :available, :default => 1
 		
 		t.timestamps null: false
 
