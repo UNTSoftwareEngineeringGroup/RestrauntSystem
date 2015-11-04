@@ -30,7 +30,7 @@
         <li>
 		<div class="rows"> 
         <div class="large-0 columns"> 
-          <%= button_to "Pay Total: ", guest_pay_path, :view => "not credit", :method => "get", class: "button round success" %>
+          <%= button_to "Pay Total: ", guest_confirm_order_path, :method => "get", class: "button round success" %>
         </li>
       <% elsif view == "kitchen" %>
       <% ingredients = Ingredient.all %>
