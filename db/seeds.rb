@@ -125,7 +125,7 @@ Menuitem.create(
 		description: "Golden fries smothered with creamy cheese.",
 		calories: "400", 
 		img: "cheeseFries.jpg",
-		available: "True",
+		available: "TRUE",
 		price: "4.57",
 		:ingredients => Ingredient.where(:name => ['Onions', 'Bacon'])
 )
