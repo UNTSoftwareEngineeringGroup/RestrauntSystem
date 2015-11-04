@@ -21,7 +21,11 @@
 <a data-dropdown="drop1" aria-controls="drop1" aria-expanded="false" class="button">Appetizers</a>
 <ul id="drop1" class="f-dropdown" data-dropdown-content aria-hidden="true" tabindex="-1">
   <% appetizers.each do |appetizer| %>
-    <li><%= link_to appetizer.name, menu_item_change_availability_path(:name => appetizer.name) %></li>
+    <li><%= link_to appetizer.name, menu_item_change_availability_path(:name => appetizer.name) %>
+      <% if appetizer.available == false %>
+      <span><em>^removed</em></span>
+      <%end%>
+    </li>
   <%end%>
 </ul>
 
