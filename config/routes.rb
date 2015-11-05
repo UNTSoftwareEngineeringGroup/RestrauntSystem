@@ -23,6 +23,8 @@ Rails.application.routes.draw do
   get 'kitchen' => 'user#kitchen'
   get 'waiter' => 'user#waiter'
   get 'waiter/refills' => 'user#waiter_refills'
+  get 'waiter/help' => 'user#waiter_help'
+  get 'table/reset_status' => 'user#reset_status'
   get 'guest/pay' => 'user#pay'
   get 'login' => 'user#login'
   get 'guest/confirm_order' => 'user#confirm_order'
