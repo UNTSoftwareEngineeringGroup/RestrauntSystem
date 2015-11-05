@@ -19,7 +19,7 @@ end
 # takes data submitted through signup page and stores it in database
 private
   def guestaccount_params
-    params.require(:guestaccount).permit(:email, :password , :birthday, :points)
+    params.require(:guestaccount).permit(:email, :password , :birthday)
   end
 
 
