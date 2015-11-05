@@ -60,8 +60,11 @@
         <li><%= button_to "Back", :back, :method => "get", class: "button small radius" %></li>
       <% elsif view == "menu" %>
         <!-- Help should only show if user is guest -->
-        <li><%= button_to "Help", root_url, :method => "get", class: "button info small radius" %></li>
-		
+		  <li><%= link_to waiter_help_path(:table => session[:table_id]) do  %>
+			  <div class=" round button">
+				  HELP
+			  </div>
+		  <%end%></li>
 		<li> 
  		<div class="rows"> 
         <div class="large-0 columns"> 

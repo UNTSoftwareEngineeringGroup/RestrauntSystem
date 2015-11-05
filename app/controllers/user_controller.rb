@@ -92,6 +92,18 @@ class UserController < ApplicationController
     redirect_to guest_path
   end
 
+  def waiter_help 
+	table = Table.find_by(username: "Table#{params[:table]}")
+	table.update(help: true)
+	redirect_to guest_path
+  end
+
+  def reset_status
+	table = Table.find_by(username: "Table#{params[:table]}")
+	table.update(refills: nil, help: false)
+	redirect_to waiter_path
+  end
+
   def kitchen
   end
 
@@ -169,6 +181,8 @@ class UserController < ApplicationController
 
   def refill
     check = Ticket.find_by(table: session[:table_id])
-    @items = OrderItem.where(:ticket_id => check.id)
+	 unless check.nil?
+		@items = OrderItem.where(:ticket_id => check.id)
+	 end
   end
 end
