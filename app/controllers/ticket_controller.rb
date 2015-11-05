@@ -12,6 +12,7 @@ class TicketController < ApplicationController
 			check.update(:subtotal => (check.subtotal + temp.price))
 			unless item.compitem.nil?
 				comp = comp + item.compitem.amount
+			end
 				puts("*****ORDER ITEM FOUND*****")
 		#add all items to total and set total with tax
 		end
