@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   get 'order_items/addToTicket' => 'order_items#orderToTicket'
   get 'order_items/updateStatus' => 'order_items#updateStatus'
   get 'order_items/remove_item'=> 'order_items#remove_item'
+  get 'order_items/comp' => 'order_items#comp'
 
 #Users
   get 'manager' => 'user#manager'

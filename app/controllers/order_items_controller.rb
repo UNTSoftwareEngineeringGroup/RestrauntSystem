@@ -41,4 +41,17 @@ class OrderItemsController < ApplicationController
     end
     redirect_to guest_confirm_order_path
   end
+
+  def comp
+    @orderItem = OrderItem.find_by(item: params[:item_id])
+    @orderItem.update(:compitem => Compitem.create(
+      user: params[:user],
+      reason: params[:reason],
+      amount: params[:comp_value])
+    )
+    puts(@orderItem.compitem.user)
+    puts(@orderItem.compitem.reason)
+    puts(@orderItem.compitem.amount)
+    redirect_to guest_confirm_order_path(:view => 'waiter')
+  end
 end
