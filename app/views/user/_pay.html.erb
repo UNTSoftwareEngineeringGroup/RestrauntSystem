@@ -20,6 +20,16 @@
     </form>
     <%end%>
     </div>
+    <div class="row">
+    <%= form_tag guest_confirm_order_path, :method => 'get' do%>
+    <form>
+      <label>Coupon Code
+        <%= text_field_tag :code, params[:code], :required => true%>
+      </label>
+      <%= submit_tag "Check Code", class:"button success"%>
+    </form>
+    <%end%>
+    </div>    
     
     <h3 style="color:#1F7A1F">Total: <%= number_to_currency(@check.total) %></h3>
     <br>
