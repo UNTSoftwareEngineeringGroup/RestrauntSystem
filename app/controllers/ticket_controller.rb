@@ -16,12 +16,26 @@ class TicketController < ApplicationController
 				puts("*****ORDER ITEM FOUND*****")
 		#add all items to total and set total with tax
 		end
+
+		# check reward points   
+		if current_guestaccount#########NOT WORKING ATM
+			if current_guestaccount.points > 4
+				check.update(:subtotal => (check.subtotal - 10.00))
+			end
+		end
+
+		#add tax
 		check.update(:tax => (check.subtotal * 0.0825))
 	   unless check.gratuity.nil?
 			check.update(:total => (check.tax + check.subtotal + check.gratuity - comp))
 		else
-		check.update(:total => (check.tax + check.subtotal - comp))
+			check.update(:total => (check.tax + check.subtotal - comp))
 		end
+		#total cannot be negative due to discount
+		if check.total < 0
+			check.update(:total => 0)
+		end
+	
 	end
 
 	def addToTicket
