@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get 'ticket/checkTicketStatus' => 'ticket#checkTicketStatus'
   get 'ticket/calcTotal' => 'ticket#calcTotal'
   get 'ticket/advance_ticket' => 'ticket#advance_ticket'
+  get 'ticket/update_gratuity' => 'ticket#update_gratuity'
 
 #Ingredients
   get 'ingredients/update_status' => 'ingredients#update_status'
