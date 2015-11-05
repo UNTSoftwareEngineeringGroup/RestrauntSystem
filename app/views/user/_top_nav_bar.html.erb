@@ -54,10 +54,19 @@
     </ul>
 
     <!-- Left Nav Section -->
-    <ul class="left">
-      <!-- Back only shows if user is a manager or waiter -->
-      <% if view == "waiter" %>
-        <li><%= button_to "Back", :back, :method => "get", class: "button small radius" %></li>
+    <ul class="left">      
+      <% if session[:accesslevel] == 3%>
+      <ul class="title-area">
+        <li class="name">
+          <h1><%= link_to "<<Waiter", waiter_path, :method => "get"%></h1>
+        </li>
+      </ul>        
+      <% elsif session[:accesslevel] == 4%>
+      <ul class="title-area">
+        <li class="name">
+          <h1><%= link_to "<<Manager", manager_path, :method => "get"%></h1>
+        </li>
+      </ul> 
       <% elsif view == "menu" %>
         <!-- Help should only show if user is guest -->
 		  <li><%= link_to waiter_help_path(:table => session[:table_id]) do  %>
@@ -74,7 +83,7 @@
 		    (document, 'script', 'twitter-wjs');</script> 
 	    </li> 
 		
-<% elsif view == "kitchen" %> 
+    <% elsif view == "kitchen" %> 
           <ul class="title-area">
             <li class="name">
               <h1><a href="#">Kitchen</a></h1>
