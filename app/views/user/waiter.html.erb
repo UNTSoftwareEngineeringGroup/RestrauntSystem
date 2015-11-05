@@ -89,7 +89,7 @@ div.columns large-10 right"{
 				"Open"
 			end
 				%></p><!--find ticket for table if one exists and get status -->
-		<p>Refill: 
+		<p>Refill: <%= tables.refills %>
 		<%= position = Table.find_by(username: "Table34") 
 			position.refills	%></p><!--check if table needs refill -->
     </div>
