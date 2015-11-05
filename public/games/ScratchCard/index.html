@@ -5,15 +5,14 @@
 
 <center>
   <h1>Try your luck!</h1>
-  <h5>Roll the number 1 and you win. You have 2 chances.</h5>
+  <h5>You have 2 chances.</h5>
   <button onclick="playGame()">I'm feeling lucky</button>
   <p id="demo"></p>
   <p id="user"></p>
   <br>
   <br>
-  <button onclick="goBack()">Go Back</button>
+  <button onclick="goBack()">Go Back</button><br>
   </center>
-
 
   <script>
   var user=0;
@@ -24,8 +23,11 @@
 
   		if(x==1){
 			alert("You Win!");
-			window.location.replace("couponCode.html");
+			window.location.replace("couponScratch.html");
 		}
+    else{
+      window.location.replace("couponFail.html");
+    }
 	user++;
 	}
   }
