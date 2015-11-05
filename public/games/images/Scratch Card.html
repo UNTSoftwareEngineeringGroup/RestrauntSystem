@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<!-- saved from url=(0050)http://localhost:3000/games/ScratchCard/index.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>Scratch Card</title>
+  <style>
+  div {
+  	display: inline-block;
+  	padding: 5px;
+  	border: 1px solid black;
+    border-radius: 10px;
+  }
+  p {
+  	margin: 0;
+  	padding: 5px;
+  	font-size: 50px;
+    font-family: "Arial", Helvetica, sans-serif;
+  }
+
+  </style>
+<style type="text/css"></style></head>
+<body>
+<br><br><br>
+  <center><div><p id="scratchable" style="-webkit-user-select: none; pointer-events: none;"><img src="./Scratch Card_files/hamburger.png" alt="burger" height="100" width="100"><br>Hooray! $10 Off Coupon!<br>Please enter the code: BRYCEKNOWSBEST<br><img src="./Scratch Card_files/hamburger.png" alt="burger" height="100" width="100"></p></div></center>
+  <script src="./Scratch Card_files/ScratchCard.js"></script>
+  <script>ScratchCard(document.querySelector('p'));</script><canvas width="1015" height="350" style="top: 68px; left: 452px; position: absolute; z-index: 1;"></canvas>
+
+  <br>  
+  <center>
+  <button onclick="getCoupon()">Get my Coupon Code</button>
+  <p id="response"></p>
+  </center>
+  <script>
+
+  function getCoupon() {
+    var person = prompt("Please enter the code");
+    if (person == "BRYCEKNOWSBEST") {
+        window.location.replace("couponCode.html");
+    }
+    else{
+      document.getElementById("response").innerHTML = "Sorry you entered the wrong code!"
+    }
+  }
+  </script>
+
+
+
+
+</body></html>

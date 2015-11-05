@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>Scratch Card</title>
+  <style>
+  div {
+  	display: inline-block;
+  	padding: 5px;
+  	border: 1px solid black;
+    border-radius: 10px;
+  }
+  p {
+  	margin: 0;
+  	padding: 5px;
+  	font-size: 50px;
+    font-family: "Arial", Helvetica, sans-serif;
+  }
+
+  </style>
+</head>
+<body>
+<br><br><br>
+  <center><div><p id="scratchable"><img src="/games/images/hamburger.png" alt="burger" height="100" width="100"><br>Sorry! You didn't win <br>:(<br><img src="/games/images/hamburger.png" alt="burger" height="100" width="100"></p></div></center>
+  <script src="ScratchCard.js"></script>
+  <script>ScratchCard(document.querySelector('p'));</script>
+
+  <br>  
+  <center>
+  <button onclick="playGame()">Try again</button>
+  </center>
+  <script>
+  function playGame(){
+      var x = Math.floor((Math.random() * 5) + 1);
+      if(x==1){
+      alert("You Win!");
+      window.location.replace("couponScratch.html");
+    }
+    else if(x>1){
+      alert("Sorry you didn't win :(")
+      window.history.back();
+    }
+  }
+  
+  </script>
+
+
+</body>
+</html>
