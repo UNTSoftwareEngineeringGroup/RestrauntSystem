@@ -4,6 +4,11 @@
   <div class="coulmns large-10 right">
     <% check = Ticket.find_by(table: session[:table_id]) %>
     <% items = OrderItem.where(:ticket_id => check.id) unless check.nil? %>
+    
+    <% if check.nil? %>
+    	<%check = Ticket.create(table: session[:table_id], tax: "8.25", tstatus: 0)%>
+    <%end%>
+
     <% if check.tstatus == 0 || check.tstatus == 9%>
     	<%= render 'menu' %>
 	<% else %>
@@ -12,6 +17,7 @@
 			<h4>Checkout the games tab!</h4>
 		</center>
 	<%end%>
+
 	<center><%= link_to 'View Order', guest_confirm_order_path, class:'button right' unless items.nil? %></center>    
   </div>
 </div>

@@ -5,8 +5,14 @@
       <h4><%=(Menuitem.find(orderItem.item)).name%>: $<%=(Menuitem.find(orderItem.item)).price%></h4>
     </div>
   <% end %>
-  <br><h2>Total: <%= number_to_currency(@check.total) %></h2><br>
+  <br><h2 id="total">Total: <%= number_to_currency(@check.total) %></h2><br>
     <!--Need to add a way to notify waiter -->
-  <%= link_to "Pay with Cash", guest_submit_payment_path, :method => "get", class: "button radius" %>
-  <!-- Need to show credit partial -->
-  <%= link_to "Pay with Credit", guest_pay_w_credit_path, class:"button radius" %>
+    <% if session[:accesslevel] > 2 %>
+      <%= render 'calc_cash', :total => number_to_currency(@check.total)%>
+      <%= link_to "Pay with Cash", guest_submit_payment_path, :method => "get", class: "button radius" %>
+    <% else %>
+      <%= link_to "Pay with Cash", waiter_help_path(:table => session[:table_id], :paying_cash => true), :data => {:confirm => 'a staff member has been notified to assist you'}, :method => "get", class: "button radius" %>
+      <!-- Need to show credit partial -->
+      <%= link_to "Pay with Credit", guest_pay_w_credit_path, class:"button radius" %>
+    <% end %>
+ 
