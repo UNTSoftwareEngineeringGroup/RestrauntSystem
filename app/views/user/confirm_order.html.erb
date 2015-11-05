@@ -11,6 +11,21 @@
       <h4><%=(Menuitem.find(orderItem.item)).name%>: $<%=(Menuitem.find(orderItem.item)).price%></h4>
       Notes: <%= orderItem.notes %><br>
       <%= link_to 'Remove', order_items_remove_item_path(item_id: orderItem.item) %><br>
+      <% if params[:view] == 'waiter' %>
+      <hr>
+        <%= form_tag order_items_comp_path, :method => 'get' do %>
+        <label>Comp Value
+          <%= text_field_tag :comp_value, params[:comp_value], placehoder: "comp item"%>
+        </label>
+        <label>Reason
+          <%= text_field_tag :reason, params[:reason], placehoder: "reason"%>
+        </label>
+        <%= hidden_field_tag :item_id, orderItem.item%>
+        <%= hidden_field_tag :user, "a minion from the hit film minions 2"%>
+        <br>
+        <%= submit_tag "Comp Item", class:"button success" %>
+        <%end%>
+      <% end %>
     </div>
  <% end %>
 	Subtotal: <%= number_to_currency(@check.subtotal) %><br>
