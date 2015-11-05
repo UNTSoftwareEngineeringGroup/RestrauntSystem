@@ -1,4 +1,6 @@
 <%= render 'top_nav_bar', :view => "kitchen" %>
 <div class="coulmns large-10 right"><%= render 'tickets'%></div>
 <%= render 'side_nav', :view => "kitchen" %>
-
+<% if params[:view] == 'manager' %>
+	<%=link_to "<< back to manager view", manager_path, :method => "get", class:"button info" %>
+<% end %>
