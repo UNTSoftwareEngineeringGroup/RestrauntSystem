@@ -137,6 +137,14 @@ class UserController < ApplicationController
 
   def confirm_order
     @check = Ticket.find_by(table: session[:table_id])
+    
+    # when confirm_order is being called via waiter view 
+    if @check.nil?
+      puts("IN THE ERROR CHECK")
+      session[:table_id] = params[:table_id]
+      @check = Ticket.find_by(table: session[:table_id])
+    end
+
     @items = OrderItem.where(:ticket_id => @check.id)
     @check.update(:subtotal => 0)
     @items.each do |orderItem|
