@@ -1,5 +1,8 @@
 <%= render 'top_nav_bar', view:'menu' %>
 <%= render 'side_nav', view:'menu' %>
+<script type="text/javascript">
+  $(document).foundation();
+</script>
 <% if @check.tstatus == 0 %>
 <fieldset class='small-8 small-centered text-center columns'>
   <legend>Current Order</legend>
