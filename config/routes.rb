@@ -37,7 +37,9 @@ Rails.application.routes.draw do
 
   get 'guest/pay_w_credit' => 'guest#pay_w_credit'
   get 'guest/submit_payment' => 'guest#submit_payment'
+  get 'guest/thank_you' => 'guest#thank_you'
 
+  get 'menu_item/change_availability' => 'menu_item#change_availability'
   
   root "user#login"
 end

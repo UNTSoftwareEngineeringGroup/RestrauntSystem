@@ -66,8 +66,7 @@ div.columns large-10 right"{
   <% tables.each do |tables|%>
   <li>
 
-  <a href="#" class = "button radius" data-reveal-id=<%="#{tables.username}"%>><%="#{tables.username}"%></a>
-  	<div id=<%="#{tables.username}"%> class="reveal-modal small" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+  	<div id=<%="#{tables.username}"%> class="table panel button">
       <h2 id="modalTitle"><%="#{tables.username}"%></h2>
 		<p>Status:  <!-- Get Table status -->
 		<%= table = Ticket.find_by(table: tables.username.byteslice(5,2))
@@ -90,9 +89,8 @@ div.columns large-10 right"{
 			end
 				%></p><!--find ticket for table if one exists and get status -->
 		<p>Refill: 
-		<%= flash[:alert] = "Incorrect credientials1!"
-			%></p><!--check if table needs refill -->
-      <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+		<%= position = Table.find_by(username: "Table11") 
+			position.refills	%></p><!--check if table needs refill -->
     </div>
 
   </li>

@@ -6,7 +6,7 @@
     <% menuitems = Menuitem.all %>
     <ul class="small-block-grid-3">
       <% menuitems.each do |item|%>
-        <% if item.category == params[:view] %>
+        <% if item.category == params[:view] && item.available == true%>
         <li>
           <div class="columns">
             <%= link_to order_items_show_path( :item => "#{item.name}") do %>

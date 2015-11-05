@@ -154,5 +154,7 @@ class UserController < ApplicationController
   def refill
     check = Ticket.find_by(table: session[:table_id])
     @items = OrderItem.where(:ticket_id => check.id)
+	 table = Table.find_by(username: "Table#{session[:table_id]}")
+	 table.update(refills: params[:drink])
   end
 end
