@@ -24,7 +24,7 @@
           <%= text_field_tag :reason, params[:reason], placehoder: "reason"%>
         </label>
         <%= hidden_field_tag :item_id, orderItem.item%>
-        <%= hidden_field_tag :user, "a minion from the hit film minions 2"%>
+        <%= hidden_field_tag :user, session[:username]%>
         <br>
         <%= submit_tag "Comp Item", class:"button success" %>
         <%end%>
