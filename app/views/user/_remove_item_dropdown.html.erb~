@@ -22,7 +22,6 @@
 
 
 <a data-dropdown="drop1" aria-controls="drop1" aria-expanded="false" class="button">Drinks</a>
-<ul id="drop1" class="f-dropdown" data-dropdown-content aria-hidden="true" tabindex="-1">
 	<% drinks.each do |drink| %>
 		<li><%= link_to drink.name, menu_item_change_availability_path(:name => drink.name) %>
 		 <% if drink.available == false %>
@@ -33,7 +32,7 @@
  </ul>
 
 <a data-dropdown="drop2" aria-controls="drop2" aria-expanded="false" class="button">Appetizers</a>
-<ul id="drop2" class="f-dropdown" data-dropdown-content aria-hidden="true" tabindex="-1">
+<ul id="drop1" class="f-dropdown" data-dropdown-content aria-hidden="true" tabindex="-1">
   <% appetizers.each do |appetizer| %>
     <li><%= link_to appetizer.name, menu_item_change_availability_path(:name => appetizer.name) %>
       <% if appetizer.available == false %>
@@ -44,7 +43,7 @@
 </ul>
 
 <a data-dropdown="drop3" aria-controls="drop3" aria-expanded="false" class="button">Entrees</a>
-<ul id="drop3" class="f-dropdown" data-dropdown-content aria-hidden="true" tabindex="-1">
+<ul id="drop2" class="f-dropdown" data-dropdown-content aria-hidden="true" tabindex="-1">
   <% entrees.each do |entree| %>
     <li><%= link_to entree.name, menu_item_change_availability_path(:name => entree.name) %>
       <% if entree.available == false %>
@@ -55,7 +54,7 @@
 </ul>
 
 <a data-dropdown="drop4" aria-controls="drop4" aria-expanded="false" class="button">Desserts</a>
-<ul id="drop4" class="f-dropdown" data-dropdown-content aria-hidden="true" tabindex="-1">
+<ul id="drop3" class="f-dropdown" data-dropdown-content aria-hidden="true" tabindex="-1">
   <% desserts.each do |dessert| %>
     <li><%= link_to dessert.name, menu_item_change_availability_path(:name => dessert.name) %>
       <% if dessert.available == false %>
