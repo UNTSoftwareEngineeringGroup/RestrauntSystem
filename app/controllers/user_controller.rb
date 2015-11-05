@@ -92,6 +92,18 @@ class UserController < ApplicationController
     redirect_to guest_path
   end
 
+  def waiter_help 
+	table = Table.find_by(username: "Table#{params[:table]}")
+	table.update(help: true)
+	redirect_to guest_path
+  end
+
+  def reset_status
+	table = Table.find_by(username: "Table#{params[:table]}")
+	table.update(refills: nil, help: false)
+	redirect_to waiter_path
+  end
+
   def kitchen
   end
 
@@ -109,6 +121,7 @@ class UserController < ApplicationController
           table_id = user.username.byteslice(5,2)
           session[:table_id] = table_id
           session[:username] = user.username
+          session[:accesslevel] = 1
           redirect_to guest_path
         end
       else#Else something was found
@@ -116,16 +129,19 @@ class UserController < ApplicationController
           if user.accesslevel == 4
             session[:table_id] = 0
             session[:username] = user.username
+            session[:accesslevel] = 4
             redirect_to manager_path
 
           elsif user.accesslevel == 3
             session[:table_id] = 0
             session[:username] = user.username
+            session[:accesslevel] = 3
             redirect_to waiter_path
 
           elsif user.accesslevel == 2
             session[:table_id] = 0
             session[:username] = user.username
+            session[:accesslevel] = 2
             redirect_to kitchen_path
           end
         else
@@ -137,16 +153,18 @@ class UserController < ApplicationController
     end 
   end
 
+  def waiter_table_gateway
+    puts(params[:table_id])
+    session[:table_id] = params[:table_id]
+    redirect_to guest_confirm_order_path
+  end
+
   def confirm_order
     @check = Ticket.find_by(table: session[:table_id])
-    
-    # when confirm_order is being called via waiter view 
     if @check.nil?
-      puts("IN THE ERROR CHECK")
-      session[:table_id] = params[:table_id]
-      @check = Ticket.find_by(table: session[:table_id])
+      puts("ticket not created yet!")
+      return
     end
-
     @items = OrderItem.where(:ticket_id => @check.id)
     @check.update(:subtotal => 0)
     @items.each do |orderItem|
@@ -163,6 +181,8 @@ class UserController < ApplicationController
 
   def refill
     check = Ticket.find_by(table: session[:table_id])
-    @items = OrderItem.where(:ticket_id => check.id)
+	 unless check.nil?
+		@items = OrderItem.where(:ticket_id => check.id)
+	 end
   end
 end

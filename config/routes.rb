@@ -23,6 +23,8 @@ Rails.application.routes.draw do
   get 'kitchen' => 'user#kitchen'
   get 'waiter' => 'user#waiter'
   get 'waiter/refills' => 'user#waiter_refills'
+  get 'waiter/help' => 'user#waiter_help'
+  get 'table/reset_status' => 'user#reset_status'
   get 'guest/pay' => 'user#pay'
   get 'login' => 'user#login'
   get 'guest/confirm_order' => 'user#confirm_order'
@@ -39,6 +41,8 @@ Rails.application.routes.draw do
   get 'guest/pay_w_credit' => 'guest#pay_w_credit'
   get 'guest/submit_payment' => 'guest#submit_payment'
   get 'guest/thank_you' => 'guest#thank_you'
+
+  get 'user/waiter_table_gateway' => 'user#waiter_table_gateway'
 
   get 'menu_item/change_availability' => 'menu_item#change_availability'
   

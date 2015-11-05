@@ -6,32 +6,50 @@
     <ul class="right columns">
       <!-- Buttons for the manager view -->
       <% if view == "manager" %>
-        <li><%= button_to "FoH", tableview_path, :method => "get", class: "button round" %></li>
-        <li><%= button_to "BoH", manager_url, :method => "get", class: "button round" %></li>
         <li><%= button_to "Inventory", root_url, :method => "get", class: "button round" %></li>
         <li>
           <a href="#" class="button round" data-dropdown="drop">Daily Reports</a>
           <ul id="drop" data-dropdown-content>
             <li><%= link_to 'Revenue', manager_reports_path(:view => "revenue") %></li>
             <li><%= link_to 'Top Sellers', manager_reports_path(:view => "top sellers") %></li>
+            <li><%= link_to 'Compitem', manager_reports_path(:view => "compitem") %></li>
           </ul>
         </li>
       <% elsif view == "menu" %>
 	    <li>
-      <div class="rows"> 
-      <div class="large-0 columns">
-		  <%= button_to "Returning Guest ", guestlogin_path,  :method => "get", class: "button round success" %>
-      <li><%= button_to "Refill", root_url, :method => "get", class: "button round" %></li>    
-      <!-- need to add a way to show the total in the pay button -->
+
+		<div class="rows"> 
+        <div class="large-0 columns">
+		<% if current_guestaccount %>
+		<%= button_to current_guestaccount.email,guestlogin_path,  :method => "get", class: "button round success" %>
+		<% else %>
+  		<%= button_to "Returning Guest ", guestlogin_path,  :method => "get", class: "button round success" %>
+		<% end %>
+        <li><%= button_to "Refill", guest_refill_path, :method => "get", class: "button round" %></li>    
+        <!-- need to add a way to show the total in the pay button -->
         <li>
 		<div class="rows"> 
         <div class="large-0 columns"> 
-          <%= button_to "Pay Total: ", guest_pay_path, :view => "not credit", :method => "get", class: "button round success" %>
+          <% ticket = Ticket.find_by(table: session[:table_id]) %>
+          <% if !ticket.nil? %>
+            <%= button_to "Pay Total: #{number_to_currency(ticket.total)}", guest_confirm_order_path, :method => "get", class: "button round success" %>
+          <% end %>
         </li>
       <% elsif view == "kitchen" %>
-        <li>
-          <%= button_to "Refresh", kitchen_path, :method => "get", class: "button round" %>
-        </li>    
+      <% ingredients = Ingredient.all %>
+        <ul class="right">
+          <li class="has-dropdown">
+            <a href="#">Mark Missing Ingredients</a>
+            <ul class="dropdown">
+              <% ingredients.each do |ingredient| %>
+              <% if ingredient.available == 1 then available = "available" else available = "unavailable" end %>
+              <li><%=link_to "#{ingredient.name}: #{available}", controller: "ingredients", action: "update_status", ingredient_name: ingredient.name, remote:true%></li>
+              <%end%> <!-- end of ingredients loop -->
+            </ul>
+          </li>        
+          <li><%= button_to "Refresh", kitchen_path, :method => "get", class: "button round" %></li>
+        </ul>
+            
       <% end %>
     </ul>
 
@@ -42,8 +60,7 @@
         <li><%= button_to "Back", :back, :method => "get", class: "button small radius" %></li>
       <% elsif view == "menu" %>
         <!-- Help should only show if user is guest -->
-        <li><%= button_to "Help", root_url, :method => "get", class: "button info small radius" %></li>
-		
+		  <li><%= link_to waiter_help_path(:table => session[:table_id]), {class: "button small radius"}  %></li>
 		<li> 
  		<div class="rows"> 
         <div class="large-0 columns"> 
