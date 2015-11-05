@@ -39,7 +39,7 @@ class TicketController < ApplicationController
 	end
 
 	def addToTicket
-	  ticket = Ticket.find_by(table: session[:table_id])
+	  ticket = Ticket.find_by(table: session[:table_id]).last
 	  if (ticket.nil?) || (ticket.tstatus == 9)
 	    ticket = Ticket.create(table: session[:table_id], tax: 0, tstatus: 0 )   
 	    session[:ticket] = ticket
