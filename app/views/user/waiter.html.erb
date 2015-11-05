@@ -79,8 +79,6 @@ div.columns large-10 right"{
 					"Placed order and waiting on food"
 				elsif table.tstatus == 2
 					"Eating"
-				elsif table.tstatus == 3
-					"Help Requested"
 				elsif table.tstatus == 9
 					"Paid"
 				else
@@ -90,9 +88,17 @@ div.columns large-10 right"{
 				"Open"
 			end
 				%></p><!--find ticket for table if one exists and get status -->
-		<p>Refill: <%= tables.refills %>
-		<%= position = Table.find_by(username: "Table34") 
-			position.refills	%></p><!--check if table needs refill -->
+				<p>Refill: <%= tables.refills %></p>
+				<br>
+				
+				<% if tables.help %>
+					<p>***HELP REQUESTED***</p>
+						 <%end	%>
+					 <%=  link_to table_reset_status_path(:table => tables.username.byteslice(5,2)) do %>
+								  <div class="button success radius">
+								  Reset
+								  </div>
+								  <%end %>
     </div>
     <% end %>
 
