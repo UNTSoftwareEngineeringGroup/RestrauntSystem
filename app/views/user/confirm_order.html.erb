@@ -52,6 +52,14 @@
     <div>
       <%= render 'pay' %>
     </div>
-  <% elsif @check.tstatus == 9%>
+  <% elsif @check.tstatus == 2%>
+    <div style="text-align:center">
+      <h1 style="padding-top:64px;">Your food is ready!</h1>
+      <h3 style="color:grey;">Feel free to pay at anytime.</h3>
+    </div>
+    <div>
+      <%= render 'pay' %>
+    </div>        
+  <% elsif @check.tstatus == 9 && session[:accesslevel] == 1%>
     <%=render 'survey' %>  
   <%end%>
