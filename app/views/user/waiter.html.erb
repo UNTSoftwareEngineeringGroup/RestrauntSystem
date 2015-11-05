@@ -67,7 +67,7 @@ div.columns large-10 right"{
   <% tables.each do |tables|%>
   <li>
 
-    <%= link_to guest_confirm_order_path(:table_id => tables.username.byteslice(5,2), :view => 'waiter') do %>
+    <%= link_to user_waiter_table_gateway_path(table_id: tables.username.byteslice(5,2)) do %>
   	<div id=<%="#{tables.username}"%> class="table panel button">
       <h2 id="modalTitle"><%="#{tables.username}"%></h2>
 		<p>Status:  <!-- Get Table status -->

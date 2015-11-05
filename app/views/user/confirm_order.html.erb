@@ -3,7 +3,9 @@
 <script type="text/javascript">
   $(document).foundation();
 </script>
-<% if @check.tstatus == 0 %>
+<% if @check.nil? %>
+  <center><h1>Choose an item to build a ticket.</h1></center>
+<% elsif @check.tstatus == 0 %>
 <fieldset class='small-8 small-centered text-center columns'>
   <legend>Current Order</legend>
   <% @items.each do |orderItem| %>
@@ -11,7 +13,8 @@
       <h4><%=(Menuitem.find(orderItem.item)).name%>: $<%=(Menuitem.find(orderItem.item)).price%></h4>
       Notes: <%= orderItem.notes %><br>
       <%= link_to 'Remove', order_items_remove_item_path(item_id: orderItem.item) %><br>
-      <% if params[:view] == 'waiter' %>
+      <% user = User.find_by(username: session[:username]) %>
+      <% if session[:accesslevel] > 2 %>
       <hr>
         <%= form_tag order_items_comp_path, :method => 'get' do %>
         <label>Comp Value
