@@ -90,6 +90,12 @@ class TicketController < ApplicationController
 		redirect_to :back
 	end
 
+	def update_gratuity
+		ticket = Ticket.find_by(table: session[:table_id])
+		ticket.update(:gratuity => params[:gratuity])
+		redirect_to guest_confirm_order_path
+	end
+
 	private
 		def pay
 			check = session[:ticket]
