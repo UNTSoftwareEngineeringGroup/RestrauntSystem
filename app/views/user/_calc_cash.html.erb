@@ -19,7 +19,6 @@
 		var cash_amount = Number(document.getElementById("cash_amount").value);
 		var ticket_amount = <%=@check.total%>;
 		ticket_amount = ticket_amount.toFixed(2);
-		alert(ticket_amount);
 		cash_amount = cash_amount - ticket_amount;
 		cash_amount = cash_amount.toFixed(2);
 		document.getElementById("change_amount").innerHTML = cash_amount;
