@@ -60,9 +60,9 @@ ActiveRecord::Schema.define(version: 20151106023350) do
     t.text     "description"
     t.integer  "calories"
     t.string   "img"
-    t.boolean  "available"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.boolean  "available",   default: true
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
     t.float    "price"
   end
 
