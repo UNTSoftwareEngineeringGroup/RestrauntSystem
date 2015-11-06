@@ -199,6 +199,7 @@ class UserController < ApplicationController
 		 if (current_guestaccount.birthday.month == Time.now.month &&
 			  current_guestaccount.birthdya.day == Time.now.day)
 			 @check.update(:birthday => true)
+		 end
 	 end
 	 
 	 # check birthday discount
@@ -216,7 +217,7 @@ class UserController < ApplicationController
 
 	 # subtotal cannot be negative
 	 if @check.subtotal < 0
-		 check.update(:subtotal => 0)
+		 @check.update(:subtotal => 0)
 	 end
 
 	 # calculate tax
