@@ -28,6 +28,7 @@ class TicketController < ApplicationController
 			if(current_guestaccount.birthday.month == Time.now.month &&
 				current_guestaccount.birthday.day == Time.now.day)
 				check.update(:birthday => true)
+			end
 		end
 
 		# check birthday discount

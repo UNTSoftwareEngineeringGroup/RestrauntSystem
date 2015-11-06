@@ -187,12 +187,18 @@ class UserController < ApplicationController
 		end
     end
 
+	 
 	 # check reward points
 	 if current_guestaccount
+		 # check points
 		 if current_guestaccount.points > 4
 			 @check.update(:subtotal => (@check.subtotal - 10.00))
 			 @check.update(:points => true)
 		 end
+		 # check birthday
+		 if (current_guestaccount.birthday.month == Time.now.month &&
+			  current_guestaccount.birthdya.day == Time.now.day)
+			 @check.update(:birthday => true)
 	 end
 	 
 	 # check birthday discount
