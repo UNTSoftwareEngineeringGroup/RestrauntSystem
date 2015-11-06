@@ -95,7 +95,11 @@ class UserController < ApplicationController
   def waiter_help 
 	table = Table.find_by(username: "Table#{params[:table]}")
 	table.update(help: true)
-	redirect_to guest_path
+    if params[:paying_cash]
+      redirect_to guest_confirm_order_path, :paying_cash => true
+    else
+  	 redirect_to guest_path
+    end
   end
 
   def reset_status

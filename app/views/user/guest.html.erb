@@ -2,10 +2,21 @@
 <center><%= render 'top_nav_bar', :view => "menu" %></center>
 <div class="rows">
   <div class="coulmns large-10 right">
-    <%= render 'menu' %>
     <% check = Ticket.find_by(table: session[:table_id]) %>
     <% items = OrderItem.where(:ticket_id => check.id) unless check.nil? %>
-    <%= link_to 'Confirm Order', guest_confirm_order_path, class:'button right' unless items.nil? %>
+    
+    <% if !check.nil? %>
+      <%if check.tstatus == 0 || check.tstatus == 9%>
+      	<%= render 'menu' %>
+      <%elsif check.tstatus == 1%>
+    		<center>
+    			<h1>Your food is in the kitchen.</h1>
+    			<h4>Checkout the games tab!</h4>
+    		</center>
+	     <%end%>
+     <%end%>
+
+	<center><%= link_to 'View Order', guest_confirm_order_path, class:'button right' unless items.nil? %></center>    
   </div>
 </div>
 <%= render 'side_nav', :view => "menu" %>

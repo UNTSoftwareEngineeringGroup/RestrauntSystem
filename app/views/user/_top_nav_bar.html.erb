@@ -21,9 +21,9 @@
 		<div class="rows"> 
         <div class="large-0 columns">
 		<% if current_guestaccount %>
-		<%= button_to current_guestaccount.email,guestlogin_path,  :method => "get", class: "button round success" %>
+			<%= button_to current_guestaccount.email << " | " << current_guestaccount.points.to_s << " points" ,guestlogin_path,  :method => "get", class: "button round success" %>
 		<% else %>
-  		<%= button_to "Returning Guest ", guestlogin_path,  :method => "get", class: "button round success" %>
+			<%= button_to "Returning Guest ", guestlogin_path,  :method => "get", class: "button round success" %>
 		<% end %>
         <li><%= button_to "Refill", guest_refill_path, :method => "get", class: "button round" %></li>    
         <!-- need to add a way to show the total in the pay button -->
@@ -54,10 +54,19 @@
     </ul>
 
     <!-- Left Nav Section -->
-    <ul class="left">
-      <!-- Back only shows if user is a manager or waiter -->
-      <% if view == "waiter" %>
-        <li><%= button_to "Back", :back, :method => "get", class: "button small radius" %></li>
+    <ul class="left">      
+      <% if session[:accesslevel] == 3%>
+      <ul class="title-area">
+        <li class="name">
+          <h1><%= link_to "<<Waiter", waiter_path, :method => "get"%></h1>
+        </li>
+      </ul>        
+      <% elsif session[:accesslevel] == 4%>
+      <ul class="title-area">
+        <li class="name">
+          <h1><%= link_to "<<Manager", manager_path, :method => "get"%></h1>
+        </li>
+      </ul> 
       <% elsif view == "menu" %>
         <!-- Help should only show if user is guest -->
 		  <li><%= link_to waiter_help_path(:table => session[:table_id]) do  %>
@@ -74,7 +83,7 @@
 		    (document, 'script', 'twitter-wjs');</script> 
 	    </li> 
 		
-<% elsif view == "kitchen" %> 
+    <% elsif view == "kitchen" %> 
           <ul class="title-area">
             <li class="name">
               <h1><a href="#">Kitchen</a></h1>

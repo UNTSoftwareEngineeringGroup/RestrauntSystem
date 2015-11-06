@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  code: MyString
+  expiration: 2015-11-05
+  valid: 
+
+two:
+  code: MyString
+  expiration: 2015-11-05
+  valid: 

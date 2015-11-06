@@ -4,9 +4,42 @@
     <div class='panel'>
       <h4><%=(Menuitem.find(orderItem.item)).name%>: $<%=(Menuitem.find(orderItem.item)).price%></h4>
     </div>
-  <% end %>
-  <br><h2>Total: <%= number_to_currency(@check.total) %></h2><br>
+  <% end %> 
+    <hr>
+    <h4 style="color:grey">Subtotal: <%= number_to_currency(@check.subtotal) %></h4>
+    <h4 style="color:#FF6161">Tax: <%= number_to_currency(@check.tax) %></h4>
+    <h4 style="color:#1C68FF">Gratuity: <%=number_to_currency(@check.gratuity)%></h4>
+    
+    <div class="row">
+    <%= form_tag ticket_update_gratuity_path, :method => 'get' do%>
+    <form>
+      <label>Gratuity
+        <%= text_field_tag :gratuity, params[:gratuity], :required => true%>
+      </label>
+      <%= submit_tag "Add Gratuity", class:"button success"%>
+    </form>
+    <%end%>
+    </div>
+    <div class="row">
+    <%= form_tag guest_confirm_order_path, :method => 'get' do%>
+    <form>
+      <label>Coupon Code
+        <%= text_field_tag :code, params[:code], :required => true%>
+      </label>
+      <%= submit_tag "Check Code", class:"button success"%>
+    </form>
+    <%end%>
+    </div>    
+    
+    <h3 style="color:#1F7A1F">Total: <%= number_to_currency(@check.total) %></h3>
+    <br>
+    
     <!--Need to add a way to notify waiter -->
-  <%= link_to "Pay with Cash", guest_submit_payment_path, :method => "get", class: "button radius" %>
-  <!-- Need to show credit partial -->
-  <%= link_to "Pay with Credit", guest_pay_w_credit_path, class:"button radius" %>
+    <% if session[:accesslevel] > 2 %>
+      <%= render 'calc_cash', :total => number_to_currency(@check.total)%>
+      <%= link_to "Pay with Cash", guest_submit_payment_path, :method => "get", class: "button radius" %>
+    <% else %>
+      <%= link_to "Pay with Cash", waiter_help_path(:table => session[:table_id], :paying_cash => true), :data => {:confirm => 'a staff member has been notified to assist you'}, :method => "get", class: "button radius" %>
+      <!-- Need to show credit partial -->
+      <%= link_to "Pay with Credit", guest_pay_w_credit_path, class:"button radius" %>
+    <% end %>

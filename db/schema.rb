@@ -11,12 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151104074918) do
+ActiveRecord::Schema.define(version: 20151105094149) do
 
   create_table "compitems", force: :cascade do |t|
     t.string   "user"
     t.string   "reason"
     t.float    "amount"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "coupons", force: :cascade do |t|
+    t.string   "code"
+    t.date     "expiration"
+    t.boolean  "valid"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -28,6 +36,7 @@ ActiveRecord::Schema.define(version: 20151104074918) do
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
     t.string   "password_digest"
+    t.integer  "points"
   end
 
   create_table "ingredients", force: :cascade do |t|
@@ -51,9 +60,9 @@ ActiveRecord::Schema.define(version: 20151104074918) do
     t.text     "description"
     t.integer  "calories"
     t.string   "img"
-    t.boolean  "available",   default: true
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.boolean  "available"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
     t.float    "price"
   end
 
