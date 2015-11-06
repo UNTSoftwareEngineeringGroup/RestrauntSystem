@@ -42,7 +42,8 @@ class TicketController < ApplicationController
 	  ticket = Ticket.find_by(table: session[:table_id])
 	  if (ticket.nil?) || (ticket.tstatus == 9)
 	    ticket = Ticket.create(table: session[:table_id], tax: 0, tstatus: 0 )   
-	    session[:ticket] = ticket
+	    session[:tickets] = {}
+		session[:tickets][ticket] = false
 	    puts("**********Ticket created************")
 	  end
 	     ticket.orderItems.create(
