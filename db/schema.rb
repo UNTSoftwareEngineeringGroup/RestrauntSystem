@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 20151106023350) do
   create_table "coupons", force: :cascade do |t|
     t.string   "code"
     t.date     "expiration"
-    t.boolean  "valid"
+    t.boolean  "usable"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
