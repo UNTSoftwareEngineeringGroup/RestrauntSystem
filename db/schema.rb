@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151105094149) do
+ActiveRecord::Schema.define(version: 20151106023350) do
 
   create_table "compitems", force: :cascade do |t|
     t.string   "user"
@@ -100,6 +100,9 @@ ActiveRecord::Schema.define(version: 20151105094149) do
     t.datetime "updated_at", null: false
     t.float    "gratuity"
     t.float    "subtotal"
+    t.boolean  "birthday"
+    t.boolean  "coupon"
+    t.boolean  "points"
   end
 
   create_table "users", force: :cascade do |t|
