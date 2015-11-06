@@ -11,6 +11,8 @@ class GuestController < ApplicationController
 			if current_guestaccount.points > 4
 				current_guestaccount.update(:points => 0)
 			end
+
+			current_guestaccount.update(:points => (current_guestaccount.points + 1))
 		end
 
 		#log the user out

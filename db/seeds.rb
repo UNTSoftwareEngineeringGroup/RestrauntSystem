@@ -513,7 +513,7 @@ Table.create(
 )
 
 
-
+=begin
 ####--------Ticket seed----------####
 Ticket.delete_all
 OrderItem.delete_all
@@ -547,6 +547,7 @@ Compitem.delete_all
 	ingredients: "",
 	notes: "add bacon",
 	istatus: 0)
+=end
 
 
 
