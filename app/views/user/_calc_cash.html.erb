@@ -22,5 +22,9 @@
 		cash_amount = cash_amount - ticket_amount;
 		cash_amount = cash_amount.toFixed(2);
 		document.getElementById("change_amount").innerHTML = cash_amount;
+		if (cash_amount < 0) {
+			alert("you didn't enter enough cash...")
+			return false;
+		}
 	}
 </script>
