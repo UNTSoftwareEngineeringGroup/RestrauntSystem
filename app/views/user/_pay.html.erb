@@ -7,18 +7,16 @@
   <% end %> 
   <hr>
 	<% if session[:ticket]
-	if session[:ticket].birthday %>
-
-		<% end
+			if session[:ticket].birthday %>
+				<h4 style="color:blue">Birthdya discount: $10.00 off </h4>
+			<% end
 			if session[:ticket].coupon %>
-	<h4 style="color:blue">Coupon: $10.00 off </h4>
-		<% end
+				<h4 style="color:blue">Coupon: $10.00 off </h4>
+			<% end
 			if session[:ticket].points %>
-   <h4 style="color:blue">Reward points: $10.00 off </h4>
-		<% end
-			if session[:ticket.birthday %>
-	<h4 style="color:blue">Birthday discount: $10.00 off </h4>
-	<% end end %>
+				<h4 style="color:blue">Reward points: $10.00 off </h4>
+			<% end %>
+			<% end %>
     <h4 style="color:grey">Subtotal: <%= number_to_currency(@check.subtotal) %></h4>
     <h4 style="color:#FF6161">Tax: <%= number_to_currency(@check.tax) %></h4>
     <h4 style="color:#1C68FF">Gratuity: <%=number_to_currency(@check.gratuity)%></h4>
