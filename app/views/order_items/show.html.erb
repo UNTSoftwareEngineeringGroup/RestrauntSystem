@@ -36,8 +36,13 @@
             Calories: <%= item.calories %>
             <a class="close-reveal-modal" aria-label="Close">&#215;</a>
           </div>
-          <%= submit_tag "Order", class:"button radius" %>
-        <% end %>
+              <% check = Ticket.find_by(table: session[:table_id]) %>
+          <%if check.nil? || check.tstatus == 0 || check.tstatus == 9 %>
+            <%= submit_tag "Order", class:"button radius" %>
+          <%else %>
+            <%= submit_tag "Order already placed", class:"button radius", disabled: true%>
+          <% end %>
+          <% end %>
       </div>
     </fieldset>
 </fieldset>
