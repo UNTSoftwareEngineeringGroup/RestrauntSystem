@@ -5,20 +5,20 @@
       <h4><%=(Menuitem.find(orderItem.item)).name%>: $<%=(Menuitem.find(orderItem.item)).price%></h4>
     </div>
   <% end %> 
-  <hr><!--
-  <%# unless session[:ticket].nil?
-  ticket = session[:ticket]
+  <hr>
+  <% unless session[:ticket].nil?
+  ticket = Ticket.find_by(id: session[:ticket])
 			if ticket.birthday %>
 				<h4 style="color:blue">Birthday discount: $10.00 off </h4>
-			<% #end
-		#	if ticket.coupon %>
+			<% end
+			if ticket.coupon %>
 				<h4 style="color:blue">Coupon: $10.00 off </h4>
-			<% #end
-		#	if ticket.points %>
+			<% end
+			if ticket.points %>
 				<h4 style="color:blue">Reward points: $10.00 off </h4>
-			<%# end %>
-		<% #end %>  
- -->
+			<% end %>
+		<% end %>  
+
     <h4 style="color:grey">Subtotal: <%= number_to_currency(@check.subtotal) %></h4>
     <h4 style="color:#FF6161">Tax: <%= number_to_currency(@check.tax) %></h4>
     <h4 style="color:#1C68FF">Gratuity: <%=number_to_currency(@check.gratuity)%></h4>

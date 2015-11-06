@@ -47,7 +47,7 @@ class TicketController < ApplicationController
 										birthday: false,
 										coupon: false,
 										points: false	  )   
-	    session[:tickets] = ticket
+	    session[:ticket] = ticket
 	    puts("**********Ticket created************")
 	  end
 	     ticket.orderItems.create(
