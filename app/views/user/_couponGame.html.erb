@@ -19,7 +19,8 @@
   		<p>You Won!</p>
   		<p>Here is your code:</p>
   		<%code1 = CouponCode.generate%>
-		<%=code1%>
+		  <%=code1%>
+      <%Coupon.create(code: code1, expiration: Date.today.next_month.next_month.next_month.strftime("%Y%m%d"), usable: true)%>
 		<br>
 		<img src="/games/images/hamburger.png" alt="burger" style="width:100px;height:100px;border:0">
 	</center>	
@@ -42,7 +43,8 @@
   		<p>You Won!</p>
   		<p>Here is your code:</p>
   		<%code2 = CouponCode.generate%>
-		<%=code2%>
+		  <%=code2%>
+      <%Coupon.create(code: code2, expiration: Date.today.next_month.next_month.next_month.strftime("%Y%m%d"), usable: true)%>
 		<br>
 		<img src="/games/images/hamburger.png" alt="burger" style="width:100px;height:100px;border:0">
 	</center>
