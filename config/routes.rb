@@ -35,7 +35,7 @@ Rails.application.routes.draw do
   get 'signup' => 'guestaccounts#new'
   resources :guestaccounts
   
-   get '/guestlogin' => 'sessions#new'
+  get '/guestlogin' => 'sessions#new'
   post 'guestlogin' => 'sessions#create'
   delete 'guestlogout' => 'sessions#destroy'
 
