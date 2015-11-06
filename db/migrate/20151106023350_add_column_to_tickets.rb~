@@ -1,0 +1,10 @@
+class AddColumnToTickets < ActiveRecord::Migration
+  def change
+    add_column :tickets, :birthday, :string
+    add_column :tickets, :boolean, :string
+    add_column :tickets, :coupon, :string
+    add_column :tickets, :boolean, :string
+    add_column :tickets, :points, :string
+    add_column :tickets, :boolean, :string
+  end
+end
