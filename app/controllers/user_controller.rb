@@ -177,11 +177,52 @@ class UserController < ApplicationController
     end
     @items = OrderItem.where(:ticket_id => @check.id)
     @check.update(:subtotal => 0)
+	 # Add item totals
+	 comp = 0
     @items.each do |orderItem|
       menu_item = Menuitem.find_by(id: orderItem.item)
       @check.update(:subtotal => (@check.subtotal + menu_item.price))
+		unless orderItem.compitem.nil?
+			comp = comp + item.compitem.amount
+		end
     end
+
+	 
+	 # check reward points
+	 if current_guestaccount
+		 # check points
+		 if current_guestaccount.points > 4
+			 @check.update(:subtotal => (@check.subtotal - 10.00))
+			 @check.update(:points => true)
+		 end
+		 # check birthday
+		 if (current_guestaccount.birthday.month == Time.now.month &&
+			  current_guestaccount.birthdya.day == Time.now.day)
+			 @check.update(:birthday => true)
+		 end
+	 end
+	 
+	 # check birthday discount
+	 if @check.birthday
+		 @check.update(:subtotal => (@check.subtotal - 10.00))
+	 end
+	 
+	 # check coupon
+	 if @check.coupon
+		 @check.update(:subtotal => (@check.subtotal - 10.00))
+	 end
+
+	 #adjust subtotal for comp
+	 @check.update(:subtotal => (@check.subtotal - comp))
+
+	 # subtotal cannot be negative
+	 if @check.subtotal < 0
+		 @check.update(:subtotal => 0)
+	 end
+
+	 # calculate tax
 	 @check.update(:tax => (@check.subtotal * 0.0825))
+	 
 	 unless @check.gratuity.nil?
 		 @check.update(:total => (@check.subtotal + @check.tax + @check.gratuity))
 	 else
