@@ -18,22 +18,42 @@ class TicketController < ApplicationController
 		end
 
 		# check reward points   
-		if current_guestaccount#########NOT WORKING ATM
+		if current_guestaccount
+			# check points
 			if current_guestaccount.points > 4
 				check.update(:subtotal => (check.subtotal - 10.00))
+				check.update(:points => true)
 			end
+			# check birthday
+			if(current_guestaccount.birthday.month == Time.now.month &&
+				current_guestaccount.birthday.day == Time.now.day)
+				check.update(:birthday => true)
+		end
+
+		# check birthday discount
+		if check.birthday
+			check.update(:subtotal => (check.subtotal - 10.00))
+		end
+
+		# check coupon 
+		if check.coupon
+			check.update(:subtotal => (check.subtotal - 10.00))
+		end
+
+		#adjust subtotal for comp
+		check.update(:subtotal => (check.subtotal - comp))
+
+		# subtotal cannot be negative due to discounts
+		if check.subtotal < 0
+			check.update(:subtotal => 0)
 		end
 
 		#add tax
 		check.update(:tax => (check.subtotal * 0.0825))
 	   unless check.gratuity.nil?
-			check.update(:total => (check.tax + check.subtotal + check.gratuity - comp))
+			check.update(:total => (check.tax + check.subtotal + check.gratuity))
 		else
-			check.update(:total => (check.tax + check.subtotal - comp))
-		end
-		#total cannot be negative due to discount
-		if check.total < 0
-			check.update(:total => 0)
+			check.update(:total => (check.tax + check.subtotal))
 		end
 	
 	end
