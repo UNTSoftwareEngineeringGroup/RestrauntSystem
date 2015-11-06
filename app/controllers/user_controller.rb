@@ -8,12 +8,18 @@ class UserController < ApplicationController
       @total = 0
       @tax = 0
       @gratuity = 0
+      @birthdays = 0
+      @points = 0
+      @coupons = 0
       ticket = Ticket.all
       ticket.each do |bill|
         @subtotal += bill.subtotal unless bill.subtotal.nil? 
         @tax += bill.tax unless bill.tax.nil?
         @gratuity += bill.gratuity unless bill.gratuity.nil?
         @total += bill.total unless bill.total.nil?
+        @birthdays += 1 if bill.birthday
+        @points += 1 if bill.points
+        @coupons += 1 if bill.coupon
       end
 
       @items_sold = []

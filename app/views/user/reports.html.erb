@@ -15,6 +15,15 @@
           Subtotal: <%= number_to_currency(@subtotal) %>
         </div>
         <div class='panel'>
+          <%= @birthdays %> Birthdays: <%= number_to_currency(@birthdays * 10) %>
+        </div>
+        <div class='panel'>
+          <%= @coupons %> Coupons: <%= number_to_currency(@coupons * 10) %>
+        </div>
+        <div class='panel'>
+          <%= @points %> Points Redemption: <%= number_to_currency(@points *10) %>
+        </div>
+        <div class='panel'>
           Total: <%= number_to_currency(@total) %>
         </div>
       </fieldset>
