@@ -197,7 +197,7 @@ class UserController < ApplicationController
 		 end
 		 # check birthday
 		 if (current_guestaccount.birthday.month == Time.now.month &&
-			  current_guestaccount.birthdya.day == Time.now.day)
+			  current_guestaccount.birthday.day == Time.now.day)
 			 @check.update(:birthday => true)
 		 end
 	 end

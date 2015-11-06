@@ -7,7 +7,7 @@
 		   items = OrderItem.where(:ticket_id => check.id)
 		end %>
     
-      <%if check.tstatus == 0 || check.tstatus == 9 || check.nil?%>
+      <%if check.nil? || check.tstatus == 0 || check.tstatus == 9 %>
       	<%= render 'menu' %>
       <%elsif check.tstatus == 1%>
     		<center>

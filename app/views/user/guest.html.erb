@@ -9,11 +9,17 @@
     
       <%if check.nil? || check.tstatus == 0 || check.tstatus == 9 %>
       	<%= render 'menu' %>
-      <%elsif check.tstatus == 1%>
+      <%elsif check.tstatus == 1 || check.tstatus == 2 %>
     		<center>
     			<h1>Your food is in the kitchen.</h1>
     			<h4>Checkout the games tab!</h4>
+        </center>
+          <%= render 'menu' %>
+      <%elsif check.tstatus == 2 %>
+        <center>
+          <h1>Enjoy your food.</h1>
     		</center>
+          <%= render 'menu' %>
 	     <%end%>
 	
 	<center><%= link_to 'View Order', guest_confirm_order_path, class:'button right' unless items.nil? %></center>    
