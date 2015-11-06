@@ -47,7 +47,22 @@
       <h1 style="padding-top:64px;">Your food is in the kitchen</h1>
       <h3 style="color:grey;">Play the coupon game for a chance to earn a discount on your next meal!</h3>
       <br>
-      <a href="/games/couponCode/test.html" class="button success">Coupon Game</a>
+
+      <% #check params for code sent to validate code
+      coupon = Coupon.find_by(code: params[:code])
+      if coupon
+        if coupon.usable && coupon.expiration >= Date.today
+          @check.update(:coupon => true)
+        else
+          @check.update(:coupon => false)
+          %>
+          <% end end %>
+
+
+      <a href="#" data-reveal-id="secondModal" class="radius button">Coupon Game</a>
+      <div id="secondModal" class="reveal-modal" data-reveal aria-labelledby="secondModalTitle" aria-hidden="true" >
+        <%= render 'couponGame' %>
+      </div>
     </div>
     <div>
       <%= render 'pay' %>
