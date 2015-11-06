@@ -6,8 +6,6 @@
     <ul class="right columns">
       <!-- Buttons for the manager view -->
       <% if view == "manager" %>
-        <li><%= button_to "Inventory", root_url, :method => "get", class: "button round" %></li>
-        <li>
           <a href="#" class="button round" data-dropdown="drop">Daily Reports</a>
           <ul id="drop" data-dropdown-content>
             <li><%= link_to 'Revenue', manager_reports_path(:view => "revenue") %></li>
