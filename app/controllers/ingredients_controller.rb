@@ -1,4 +1,7 @@
 class IngredientsController < ApplicationController
+	#update the status of an ingredient
+	#0 = unavailable
+	#1 = available
 	def update_status
 		ingredient = Ingredient.find_by(name: params[:ingredient_name])
 
