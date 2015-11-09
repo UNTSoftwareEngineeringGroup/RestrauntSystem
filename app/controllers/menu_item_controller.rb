@@ -2,6 +2,7 @@ class MenuItemController < ApplicationController
 	def change_availability
 		item = Menuitem.find_by(name: params[:name])
 
+		#sets availability boolean for menu items.
 		case item.available
 		when false
 			item.update(:available => true)	
