@@ -2,7 +2,10 @@ class UserController < ApplicationController
   def manager
   end
 
+  #Generates reports based on which report is selected
   def reports
+
+    # Revenue report initialization
     if params[:view] == 'revenue'
       @subtotal = 0
       @total = 0
@@ -12,6 +15,7 @@ class UserController < ApplicationController
       @points = 0
       @coupons = 0
       ticket = Ticket.all
+      #Sum values from all tickets
       ticket.each do |bill|
         @subtotal += bill.subtotal unless bill.subtotal.nil? 
         @tax += bill.tax unless bill.tax.nil?
@@ -21,17 +25,17 @@ class UserController < ApplicationController
         @points += 1 if bill.points
         @coupons += 1 if bill.coupon
       end
-
+      #Generate list and attach values
       @items_sold = []
       @menuitems = Menuitem.all
       @menuitems.each do |item|
         @items_sold << OrderItem.where(item:item.id).count
       end 
-      
+    # Top seller report  
     elsif params[:view] == 'top sellers'
       @best_sellers = []
       ['Appetizers','Entrees','Desserts','Drinks'].each do |category|
-
+        #initialize values to zero
         top_sell_id = 0
         top_sell_count = 0
 
@@ -42,7 +46,7 @@ class UserController < ApplicationController
         third_sell_count = 0
 
         menuitems = Menuitem.where(category:category)
-
+        #total and organize top 3 of each catagory
         menuitems.each do |item|
           items_sold = OrderItem.where(item:item.id).count
           if items_sold > top_sell_count
@@ -68,10 +72,12 @@ class UserController < ApplicationController
           end
         end
         
+        #print top sellers
         @best_sellers << Menuitem.where(id:top_sell_id).first
         @best_sellers << Menuitem.where(id:second_sell_id).first
         @best_sellers << Menuitem.where(id:third_sell_id).first
      end
+     #Comp item report
     elsif params[:view] == 'compitem'
       orderitems = OrderItem.where(compitem:true)
       @compitems = []
@@ -92,12 +98,14 @@ class UserController < ApplicationController
   def waiter
   end
 
+  #Generates list of drinks that need refill for waiter tables view
   def waiter_refills
     table = Table.find_by(username: "Table#{params[:table]}")
     table.update(refills: params[:drink])    
     redirect_to guest_path
   end
 
+  #Generates help message for waiter if help or pay cash button pressed
   def waiter_help 
 	table = Table.find_by(username: "Table#{params[:table]}")
 	table.update(help: true)
@@ -108,6 +116,8 @@ class UserController < ApplicationController
     end
   end
 
+  # Allows waiter/manager to reset status of table
+  # Clears refill and help requests
   def reset_status
 	table = Table.find_by(username: "Table#{params[:table]}")
 	table.update(refills: nil, help: false)
@@ -120,34 +130,36 @@ class UserController < ApplicationController
   def pay
   end
 
+  #Initial login
+  #Check users and Table database for logins
   def login
     begin params[:username].empty?
       user = User.find_by(username: params[:username])
       if user.nil?#if it is nil then it found nothing in User database
         user = Table.find_by(username: params[:username])
-        if user.nil? #if user is nill it wasn't found
+        if user.nil? #if user is nill it wasn't found in Table database
           flash[:alert] = "Incorrect credientials1!"
-        else#Else something was found
+        else#Else Table was found
           table_id = user.username.byteslice(5,2)
           session[:table_id] = table_id
           session[:username] = user.username
           session[:accesslevel] = 1
           redirect_to guest_path
         end
-      else#Else something was found
+      else#Else manager was found
         if user.password == params[:password]
           if user.accesslevel == 4
             session[:table_id] = 0
             session[:username] = user.username
             session[:accesslevel] = 4
             redirect_to manager_path
-
+            #Server was found
           elsif user.accesslevel == 3
             session[:table_id] = 0
             session[:username] = user.username
             session[:accesslevel] = 3
             redirect_to waiter_path
-
+            #Kitchen was found
           elsif user.accesslevel == 2
             session[:table_id] = 0
             session[:username] = user.username
@@ -163,12 +175,16 @@ class UserController < ApplicationController
     end 
   end
 
+  #allows server/manager to emulate table for customer
   def waiter_table_gateway
     puts(params[:table_id])
     session[:table_id] = params[:table_id]
     redirect_to guest_confirm_order_path
   end
 
+  #Calculates total for payment and notification
+  #Before and after ticket is sent to kitchen or ready
+  # to be cashed out
   def confirm_order
     @check = Ticket.find_by(table: session[:table_id])
     if @check.nil?
@@ -230,6 +246,7 @@ class UserController < ApplicationController
 	 end
   end
 
+  #Sends refill message to table view for server/managers to see
   def refill
     check = Ticket.find_by(table: session[:table_id])
 	 unless check.nil?

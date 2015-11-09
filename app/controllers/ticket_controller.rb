@@ -1,5 +1,10 @@
 class TicketController < ApplicationController
 
+	#called when an item is added to a ticket
+	# This method is copied in it's entirety to 
+	# Confirm order method in user_controller
+	# Both must be updated in tandem to maintain proper
+	# working function.
 	def calcTotal
 		puts("calculating total!!!!")
 		check = session[:ticket]
@@ -59,6 +64,8 @@ class TicketController < ApplicationController
 	
 	end
 
+	# Creates new order item and attaches it to ticket
+	# If no ticket exists it is created
 	def addToTicket
 	  ticket = Ticket.find_by(table: session[:table_id])
 	  if (ticket.nil?) || (ticket.tstatus == 9)
@@ -83,6 +90,9 @@ class TicketController < ApplicationController
 	    
 	end
 
+	# Check status of ticket for kitchen view
+	# Advances the ticket beyone the kitchen if
+	# all orderItems on the ticket are complete
 	def checkTicketStatus
 		ticketDone = 2
 		ticket = Ticket.find(params[:ticket_id])
@@ -102,6 +112,8 @@ class TicketController < ApplicationController
 		end
 	end
 
+	# Advances the value of the tstatus field for a ticket
+	# Used for tracking the progress of the ticket through orders
 	def advance_ticket
 		check = Ticket.find_by(table: session[:table_id])
 		
@@ -115,6 +127,7 @@ class TicketController < ApplicationController
 		redirect_to :back
 	end
 
+	# Adds gratuity to the ticket for proper total calculation
 	def update_gratuity
 		ticket = Ticket.find_by(table: session[:table_id])
 		ticket.update(:gratuity => params[:gratuity])
@@ -122,6 +135,9 @@ class TicketController < ApplicationController
 	end
 
 	private
+		# Handles application of credit card payment
+		# Used to fake credit card transations
+		# Cash payment is handled 
 		def pay
 			check = session[:ticket]
 			if session[:pay] == "card"#card
