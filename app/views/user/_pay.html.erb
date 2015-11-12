@@ -3,6 +3,21 @@
   <% @items.each do |orderItem| %>
     <div class='panel'>
       <h4><%=(Menuitem.find(orderItem.item)).name%>: $<%=(Menuitem.find(orderItem.item)).price%></h4>
+      <% user = User.find_by(username: session[:username]) %>
+      <% if session[:accesslevel] > 2 %>
+      <hr>
+        <%= form_tag order_items_comp_path, :method => 'get' do %>
+        <label>Comp Value
+          <%= text_field_tag :comp_value, params[:comp_value], placehoder: "comp item"%>
+        </label>
+        <label>Reason
+          <%= text_field_tag :reason, params[:reason], placehoder: "reason"%>
+        </label>
+        <%= hidden_field_tag :item_id, orderItem.item%>
+        <%= hidden_field_tag :user, session[:username]%>
+        <br>
+        <%= submit_tag "Comp Item", class:"button success" %>
+        <%end end%>
     </div>
   <% end %> 
   <hr>
