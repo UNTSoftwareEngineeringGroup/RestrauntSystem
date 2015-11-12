@@ -16,8 +16,10 @@
       <% elsif view == "menu" %>
 	    <li>
 
+
 		<div class="rows"> 
         <div class="large-0 columns">
+
 		<% if current_guestaccount %>
 			<%= button_to current_guestaccount.email << " | " << current_guestaccount.points.to_s << " points" ,guestlogin_path,  :method => "get", class: "button round success" %>
 		<% else %>
@@ -80,7 +82,10 @@
 			{js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}} 
 		    (document, 'script', 'twitter-wjs');</script> 
 	    </li> 
-		
+		   <li class="name">   
+          <%= counter = Totalticket.first %>
+          <%= button_to "Guests served: " << counter.total.to_s, guestlogin_path, disabled: true, :method => "get", class: "button round" %>
+        </li>
     <% elsif view == "kitchen" %> 
           <ul class="title-area">
             <li class="name">
