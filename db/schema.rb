@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151106023350) do
+ActiveRecord::Schema.define(version: 20151112184014) do
 
   create_table "compitems", force: :cascade do |t|
     t.string   "user"
@@ -105,6 +105,12 @@ ActiveRecord::Schema.define(version: 20151106023350) do
     t.boolean  "points"
   end
 
+  create_table "totaltickets", force: :cascade do |t|
+    t.integer  "total"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "password"
     t.string   "username"
@@ -114,4 +120,3 @@ ActiveRecord::Schema.define(version: 20151106023350) do
   end
 
 end
-
