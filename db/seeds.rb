@@ -512,6 +512,11 @@ Table.create(
 	ticket:NIL
 )
 
+#######--------Create Ticket Counter-------############
+Totalticket.delete_all
+Totalticket.create(
+	total: 0
+)
 
 =begin
 ####--------Ticket seed----------####

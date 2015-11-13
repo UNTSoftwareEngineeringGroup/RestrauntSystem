@@ -74,7 +74,10 @@ class TicketController < ApplicationController
 										tstatus: 0, 
 										birthday: false,
 										coupon: false,
-										points: false	  )   
+										points: false	  )
+		# Add 1 to ticket counter   
+	    count = Totalticket.first
+	    count.update(:total => count.total + 1)
 	    puts("**********Ticket created************")
 	  end
 	     ticket.orderItems.create(
