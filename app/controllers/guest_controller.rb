@@ -3,6 +3,8 @@ class GuestController < ApplicationController
 		
 	end
 	def submit_payment
+		@email = params[:email];
+
 		check = Ticket.find_by(table: session[:table_id])
 		check.update(:tstatus => 9)
 
@@ -13,6 +15,10 @@ class GuestController < ApplicationController
 			end
 
 			current_guestaccount.update(:points => (current_guestaccount.points + 1))
+		end
+
+		if @email 
+			CreditMailer.creditpay_email(@email).deliver_now
 		end
 
 		#log the user out
