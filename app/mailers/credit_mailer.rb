@@ -1,0 +1,2 @@
+class CreditMailer < ApplicationMailer
+end
