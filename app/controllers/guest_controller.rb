@@ -18,7 +18,7 @@ class GuestController < ApplicationController
 		end
 
 		if @email 
-			CreditMailer.creditpay_email(@email).deliver_now
+			CreditMailer.creditpay_email(@email, check).deliver_now
 		end
 
 		#log the user out
