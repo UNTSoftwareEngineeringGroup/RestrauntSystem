@@ -13,6 +13,12 @@
 		        // }
 		    });
 		});
+
+		function isPrint() {
+			if(document.getElementById('print').checked) {
+				alert("Your receipt is being printed.");
+			}
+		}
 	</script>
 </head>
 
@@ -73,6 +79,6 @@
 	</div>
 </div>
 <br>
-<center><%= submit_tag "Pay", class:"button radius" %></center>
+<center><%= submit_tag "Pay", class:"button radius" , :onclick =>"return isPrint()"%></center>
 </form>
 <%end%>
