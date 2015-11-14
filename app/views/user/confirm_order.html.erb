@@ -3,16 +3,24 @@
 <script type="text/javascript">
   $(document).foundation();
 </script>
+
+<!-- IF THERE IS NO TICKET -->
 <% if @check.nil? %>
   <center><h1>Choose an item to build a ticket.</h1></center>
+
+<!-- in the process of adding items to ticket -->
 <% elsif @check.tstatus == 0 %>
 <fieldset class='small-8 small-centered text-center columns'>
   <legend>Current Order</legend>
+
+  <!-- loop through each item in order -->
   <% @items.each do |orderItem| %>
     <div class='panel'>
       <h4><%=(Menuitem.find(orderItem.item)).name%>: $<%=(Menuitem.find(orderItem.item)).price%></h4>
       Notes: <%= orderItem.notes %><br>
       <%= link_to 'Remove', order_items_remove_item_path(item_id: orderItem.item) %><br>
+      
+      <!-- show comp item ability if user is a server or manager -->
       <% user = User.find_by(username: session[:username]) %>
       <% if session[:accesslevel] > 2 %>
       <hr>
@@ -28,12 +36,21 @@
         <br>
         <%= submit_tag "Comp Item", class:"button success" %>
         <%end%>
-      <% end %>
+      <%end%>
     </div>
  <% end %>
-	Subtotal: <%= number_to_currency(@check.subtotal) %><br>
+	
+  <!-- TOTALS -->
+  Subtotal: <%= number_to_currency(@check.subtotal) %><br>
 	Tax: <%= number_to_currency(@check.tax) %><br>
   Total: <%= number_to_currency(@check.total) %><br>
+  <hr>
+
+  <!-- to go option -->
+  <div style="display:inline-block" class="row">
+    <p>Make your order To-Go <%=check_box_tag 'to-go'%></p>
+  </div>
+
   <a href="#" data-reveal-id="firstModal" class="radius button">Submit Order</a>
     <div id="firstModal" class="reveal-modal" data-reveal aria-labelledby="firstModalTitle" aria-hidden="true" role="dialog">
       <h2 id="firstModalTitle">Are you sure you want to submit?</h2>
