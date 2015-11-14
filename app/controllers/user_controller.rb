@@ -84,12 +84,12 @@ class UserController < ApplicationController
       @menuitem = []
       orderitems.each do |order|
         @compitems << Compitem.where(id:order.compitem_id).first
-        @menuitem << Menuitem.where(id:order.item).first
+        @menuitem << Menuitem.where(id:order.item).first.name
       end 
       tickets = Ticket.where("compticket_id IS NOT ?", nil)
       tickets.each do |ticket|
         @compitems << Compticket.where(id:ticket.compticket_id).first
-        @menuitem << "Ticket"
+        @menuitem << "Ticket from Table#{ticket.table}"
       end 
     end
   end

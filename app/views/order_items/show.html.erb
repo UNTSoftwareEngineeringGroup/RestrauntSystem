@@ -40,7 +40,7 @@
           </div>
               <% check = Ticket.find_by(table: session[:table_id]) %>
           <%if check.nil? || check.tstatus == 0 || check.tstatus == 9 %>
-            <%= submit_tag "Order", class:"button radius" %>
+            <%= submit_tag "Add to Order", class:"button radius" %>
           <%else %>
             <%= submit_tag "Order already placed", class:"button radius", disabled: true%>
           <% end %>

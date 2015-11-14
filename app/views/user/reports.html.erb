@@ -82,11 +82,13 @@
       </thead>
       <tbody>
         <% @compitems.each do |comp| %>
-          <td><%= @menuitem[item_counter].name %></td>
-          <td><%= comp.user %></td>
-          <td><%= comp.reason %></td>
-          <td><%= comp.amount %></td>
-          <% item_counter += 3 %>
+          <tr>
+            <td><%= @menuitem[item_counter] %></td>
+            <td><%= comp.user %></td>
+            <td><%= comp.reason %></td>
+            <td><%= number_to_currency(comp.amount) %></td>
+          </tr>
+          <% item_counter += 1 %>
         <% end %>
       </tbody>
     <table>
