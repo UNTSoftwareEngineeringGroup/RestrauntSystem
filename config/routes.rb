@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get 'ticket/advance_ticket' => 'ticket#advance_ticket'
   get 'ticket/update_gratuity' => 'ticket#update_gratuity'
   get "ticket/compticket" => 'ticket#compticket'
+  get 'ticket/kids' => 'ticket#kids'
 
 #Ingredients
   get 'ingredients/update_status' => 'ingredients#update_status'

@@ -84,7 +84,7 @@
 	    </li> 
 		   <li class="name">   
           <% counter = Totalticket.first %>
-          <%= button_to "Guests served: " << counter.total.to_s, guestlogin_path, disabled: true, :method => "get", class: "button round" %>
+          <button class="button round">Guests Servered: <%=counter.total.to_s%></button>
         </li>
     <% elsif view == "kitchen" %> 
           <ul class="title-area">

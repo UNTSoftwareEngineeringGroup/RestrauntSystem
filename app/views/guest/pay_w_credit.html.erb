@@ -13,6 +13,12 @@
 		        // }
 		    });
 		});
+
+		function isPrint() {
+			if(document.getElementById('print').checked) {
+				alert("Your receipt is being printed.");
+			}
+		}
 	</script>
 </head>
 
@@ -68,11 +74,11 @@
 	<div class="row">
 	<div class="large-4 large-centered columns">
 		<label>Email
-			<%= text_field_tag :name, params[:name], placeholder: 'example@example.com', id: 'email_field', :readonly => true %>
+			<%= text_field_tag :email, params[:email], placeholder: 'example@example.com', id: 'email_field', :readonly => true %>
 		</label>
 	</div>
 </div>
 <br>
-<center><%= submit_tag "Pay", class:"button radius" %></center>
+<center><%= submit_tag "Pay", class:"button radius" , :onclick =>"return isPrint()"%></center>
 </form>
 <%end%>

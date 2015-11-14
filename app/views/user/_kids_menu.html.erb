@@ -1,0 +1,23 @@
+<% drinks = Menuitem.where(category:'kids drink') %>
+<% entrees = Menuitem.where(category:'kids entree') %>
+<% sides = Menuitem.where(category:'kids side') %>
+
+<div class='large-6 columns large-centered'>
+  <%= form_tag ticket_kids_path(params:params), method:'get' do %>
+    <fieldset>
+      <legend>Choose 1 Drink</legend>
+      <%= collection_select :drink, :name, drinks, :name, :name %>
+    </fieldset>
+  
+    <fieldset>
+      <legend>Choose 1 Entree</legend>
+      <%= collection_select :entree, :name, entrees, :name, :name %>
+    </fieldset>
+  
+    <fieldset>
+      <legend>Choose 1 Side</legend>
+      <%= collection_select :side, :name, sides, :name, :name %>
+    </fieldset>
+    <%= submit_tag 'Add to order', class:'button radius success' %>
+  <% end %>
+</div>
