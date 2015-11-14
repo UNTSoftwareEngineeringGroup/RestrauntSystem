@@ -86,6 +86,11 @@ class UserController < ApplicationController
         @compitems << Compitem.where(id:order.compitem_id).first
         @menuitem << Menuitem.where(id:order.item).first
       end 
+      tickets = Ticket.where("compticket_id IS NOT ?", nil)
+      tickets.each do |ticket|
+        @compitems << Compticket.where(id:ticket.compticket_id).first
+        @menuitem << "Ticket"
+      end 
     end
   end
 
