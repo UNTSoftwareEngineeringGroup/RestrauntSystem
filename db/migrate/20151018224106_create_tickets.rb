@@ -5,6 +5,7 @@ class CreateTickets < ActiveRecord::Migration
       t.float :total
       t.float :tax
       t.integer :tstatus
+      t.boolean :togo
 
       t.timestamps null: false
     end
