@@ -143,6 +143,9 @@ class TicketController < ApplicationController
 	# Advances the value of the tstatus field for a ticket
 	# Used for tracking the progress of the ticket through orders
 	def advance_ticket
+		if params[:togo]
+			puts("here")
+		end
 		check = Ticket.find_by(table: session[:table_id])
 		
 		if (check.tstatus == 0)

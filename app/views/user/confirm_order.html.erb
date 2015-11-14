@@ -47,17 +47,22 @@
   <hr>
 
   <!-- to go option -->
+  <%= form_tag ticket_advance_ticket_path, :method => 'get' do %>
+  
   <div style="display:inline-block" class="row">
-    <p>Make your order To-Go <%=check_box_tag 'to-go'%></p>
+    <p>Make your order To-Go <%=check_box_tag :togo%></p>
   </div>
 
   <a href="#" data-reveal-id="firstModal" class="radius button">Submit Order</a>
+    
     <div id="firstModal" class="reveal-modal" data-reveal aria-labelledby="firstModalTitle" aria-hidden="true" role="dialog">
       <h2 id="firstModalTitle">Are you sure you want to submit?</h2>
       <p>Once you submit your order, you won't be able to edit it.</p>
-      <%= link_to 'Yes', ticket_advance_ticket_path, class:'button success center'%>
+      <%= submit_tag "Yes", class:'button success center'%>
       <a class="close-reveal-modal" aria-label="Close">&#215;</a>
     </div>
+  <%end%> <!-- end of form_tag -->
+
   </fieldset>
   <% elsif @check.tstatus == 1%>
     <div style="text-align:center">
