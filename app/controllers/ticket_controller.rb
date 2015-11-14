@@ -154,7 +154,7 @@ class TicketController < ApplicationController
 		puts("NEW STATUS OF TICKET: #{check.tstatus}")
 		
 		if params[:togo]
-			check.update(:table_id => 99)
+			check.update(:togo => params[:togo]) #updates to true
 		end
 		
 		redirect_to :back
