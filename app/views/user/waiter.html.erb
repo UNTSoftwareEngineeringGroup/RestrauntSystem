@@ -10,15 +10,15 @@ div.columns large-10 right"{
 </style>
 <center><%= render 'top_nav_bar', :view => "waiter" %></center>
 
-
+<!-- Removed due to not working or required.
 <div class="rows">
   <div class="large-2 columns" style="background:#333">
     <ul class = side-nav>
-    <!--Modal to assign Server to Table-->
+    <!--Modal to assign Server to Table--
     <a href="#" class="button radius" data-reveal-id="serverModal">Assign Servers</a>
     <div id="serverModal" class="reveal-modal full" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
       <h3 id="modalTitle">Assign Servers</h2>
-      <!--Generating Tables-->
+      <!--Generating Tables--
       <div class="coulmns large-10 right">
       <div class="columns">
       <ul class="large-block-grid-4">
@@ -27,7 +27,7 @@ div.columns large-10 right"{
       <% tables.each do |tables|%>
   
       <li>
-      <!--Generating each table to Assign-->
+      <!--Generating each table to Assign--
         <a href="#" class="button split"><%="#{tables.username}"%> <span data-dropdown="drop"></span></a><br>
         <ul id="drop" class="f-dropdown" data-dropdown-content>
           <li><a href="#">Server1</a></li>
@@ -45,7 +45,7 @@ div.columns large-10 right"{
       </div>
       <a class="close-reveal-modal" aria-label="Close">&#215;</a>
     </div>
-    <!--End of Assign Servers-->
+    <!--End of Assign Servers--
 
     <% servers = User.all.where(:accesslevel => 3) %>
     <% servers.each do |servers|%>
@@ -55,6 +55,7 @@ div.columns large-10 right"{
 	</ul>
   </div>
 </div>
+-->
 <br>
 <br>
 <br>

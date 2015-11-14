@@ -80,6 +80,8 @@ class TicketController < ApplicationController
 										points: false	  )
 		# Add 1 to ticket counter   
 	    count = Totalticket.first
+	    # reset survey variable
+	    session[:survey] = false
 	    count.update(:total => count.total + 1)
 	    puts("**********Ticket created************")
 	  end
@@ -107,6 +109,7 @@ class TicketController < ApplicationController
 										points: false	  )
 		# Add 1 to ticket counter   
 	    count = Totalticket.first
+	    session[:survey] = false
 	    count.update(:total => count.total + 1)
 	    puts("**********Ticket created************")
 	  end

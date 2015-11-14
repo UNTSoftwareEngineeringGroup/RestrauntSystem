@@ -1,4 +1,5 @@
 <center style="padding-top:100px;">
+	<% session[:survey] = true %>
 	<h1>Thank you for visiting Bryce Burger!</h1>
 	<h4 style="color:grey">We hope you come back soon.</h4>
 	<br><br><br>
@@ -6,5 +7,6 @@
 	<a href="https://twitter.com/intent/tweet?button_hashtag=BryceBurger&text=Best%20burgers%20in%20town%20" class=" round button">Tweet #BryceBurger</a>
 			<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)) 
 			{js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}} 
-		    (document, 'script', 'twitter-wjs');</script> 
+		    (document, 'script', 'twitter-wjs');</script> <br>
+		    <a href="/guest">Reset</a>
 </center>
