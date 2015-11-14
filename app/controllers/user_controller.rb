@@ -230,6 +230,7 @@ class UserController < ApplicationController
 
 	 #adjust subtotal for comp
 	 @check.update(:subtotal => (@check.subtotal - comp))
+   @check.update(:subtotal => (@check.subtotal - @check.compticket.amount))
 
 	 # subtotal cannot be negative
 	 if @check.subtotal < 0

@@ -11,12 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151112184014) do
+ActiveRecord::Schema.define(version: 20151112213720) do
 
   create_table "compitems", force: :cascade do |t|
     t.string   "user"
     t.string   "reason"
     t.float    "amount"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "comptickets", force: :cascade do |t|
+    t.string   "user"
+    t.string   "reason"
+    t.float    "amount"
+    t.integer  "ticket_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -96,14 +105,17 @@ ActiveRecord::Schema.define(version: 20151112184014) do
     t.float    "total"
     t.float    "tax"
     t.integer  "tstatus"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "compticket_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
     t.float    "gratuity"
     t.float    "subtotal"
     t.boolean  "birthday"
     t.boolean  "coupon"
     t.boolean  "points"
   end
+
+  add_index "tickets", ["compticket_id"], name: "index_tickets_on_compticket_id"
 
   create_table "totaltickets", force: :cascade do |t|
     t.integer  "total"
