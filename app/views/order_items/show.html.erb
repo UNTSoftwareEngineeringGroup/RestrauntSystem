@@ -27,8 +27,6 @@
             <fieldset>
               <legend>Special Requests</legend>
               <%= text_area_tag(:notes,'',size:"24x6") %>
-              Take out
-              <%= check_box_tag 'take-out' %>
             </fieldset>
           </fieldset>
           <%= hidden_field_tag :item_name, "#{item.name}" %>
