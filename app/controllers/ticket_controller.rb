@@ -89,7 +89,7 @@ class TicketController < ApplicationController
 	        session[:ticket] = ticket
 	        puts("**************Ticket added to***********")
 	        calcTotal
-	        redirect_to guest_path
+#	        redirect_to guest_path
 	    
 	end
 
@@ -136,6 +136,22 @@ class TicketController < ApplicationController
 		ticket.update(:gratuity => params[:gratuity])
 		redirect_to guest_confirm_order_path
 	end
+
+  def kids
+    items = []
+    items << params[:drink]
+    items << params[:entree]
+    items << params[:side]
+
+    items.each do |item|
+      params[:item_name] = item[:name]
+      params[:good_ingredients] = ''
+      params[:notes] = ''
+      addToTicket
+    end
+
+    redirect_to guest_url
+  end
 
 	private
 		# Handles application of credit card payment
