@@ -3,16 +3,24 @@
 <script type="text/javascript">
   $(document).foundation();
 </script>
+<!-- If no ticket exists -->
 <% if @check.nil? %>
   <center><h1>Choose an item to build a ticket.</h1></center>
-<% elsif @check.tstatus == 0 %>
+
+  <!-- If ticket has not been sent to kitchen -->
+<% elsif @check.tstatus == 0 %> 
+
 <fieldset class='small-8 small-centered text-center columns'>
   <legend>Current Order</legend>
+
+  <!-- loop through each item in order -->
   <% @items.each do |orderItem| %>
     <div class='panel'>
-      <h4><%=(Menuitem.find(orderItem.item)).name%>: $<%=(Menuitem.find(orderItem.item)).price%></h4>
+      <h4><%=(Menuitem.find(orderItem.item)).name%>: <%=number_to_currency((Menuitem.find(orderItem.item)).price)%></h4>
       Notes: <%= orderItem.notes %><br>
       <%= link_to 'Remove', order_items_remove_item_path(item_id: orderItem.item) %><br>
+      
+      <!-- show comp item ability if user is a server or manager -->
       <% user = User.find_by(username: session[:username]) %>
       <% if session[:accesslevel] > 2 %>
       <hr>
@@ -28,20 +36,35 @@
         <br>
         <%= submit_tag "Comp Item", class:"button success" %>
         <%end%>
-      <% end %>
+      <%end%>
     </div>
  <% end %>
-	Subtotal: <%= number_to_currency(@check.subtotal) %><br>
-	Tax: <%= number_to_currency(@check.tax) %><br>
+  
+  <!-- TOTALS -->
+  Subtotal: <%= number_to_currency(@check.subtotal) %><br>
+  Tax: <%= number_to_currency(@check.tax) %><br>
   Total: <%= number_to_currency(@check.total) %><br>
-  <a href="#" data-reveal-id="firstModal" class="radius button">Submit Order</a>
+  <hr>
+  <p style="font-size:16px">You can choose to make your order To-Go after submitting your order.</p>
+
+  <a href="" data-reveal-id="firstModal" class="radius button">Submit Order</a>
+    
     <div id="firstModal" class="reveal-modal" data-reveal aria-labelledby="firstModalTitle" aria-hidden="true" role="dialog">
       <h2 id="firstModalTitle">Are you sure you want to submit?</h2>
       <p>Once you submit your order, you won't be able to edit it.</p>
-      <%= link_to 'Yes', ticket_advance_ticket_path, class:'button success center'%>
+      
+      <%= form_tag ticket_advance_ticket_path, :method => 'get' do %>
+        <p>Make your order To-Go <%=check_box_tag :togo%></p>
+        <%= submit_tag "Yes", class:'button success center'%>
+      <%end%>
+
       <a class="close-reveal-modal" aria-label="Close">&#215;</a>
     </div>
+   <!-- end of form_tag -->
+
   </fieldset>
+
+  <!-- If ticket sent to kitchen but not out of kitchen -->
   <% elsif @check.tstatus == 1%>
     <div style="text-align:center">
       <h1 style="padding-top:64px;">Your food is in the kitchen</h1>
@@ -67,6 +90,8 @@
     <div>
       <%= render 'pay' %>
     </div>
+
+    <!-- If ticket out of kitchen but unpaid -->
   <% elsif @check.tstatus == 2%>
     <div style="text-align:center">
       <h1 style="padding-top:64px;">Your food is ready!</h1>
@@ -75,6 +100,6 @@
     <div>
       <%= render 'pay' %>
     </div>        
-  <% elsif @check.tstatus == 9 && session[:accesslevel] == 1%>
+  <% elsif @check.tstatus == 9 && session[:accesslevel] == 1 && session[:survey] == false %>
     <%=render 'survey' %>  
   <%end%>

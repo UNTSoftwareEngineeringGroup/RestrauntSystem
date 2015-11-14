@@ -5,6 +5,8 @@ class CreateTickets < ActiveRecord::Migration
       t.float :total
       t.float :tax
       t.integer :tstatus
+      t.boolean :togo, :default => false
+      t.references :compticket, index: true, foreign_key: true
 
       t.timestamps null: false
     end

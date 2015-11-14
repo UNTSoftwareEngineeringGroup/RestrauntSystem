@@ -5,7 +5,7 @@ class GuestController < ApplicationController
 	def submit_payment
 		@email = params[:email];
 
-		check = Ticket.find_by(table: session[:table_id])
+		check = Ticket.where(table: session[:table_id]).last
 		check.update(:tstatus => 9)
 
 		#reset login reward if user has recieved the award

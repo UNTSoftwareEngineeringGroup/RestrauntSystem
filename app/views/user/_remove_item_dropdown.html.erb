@@ -7,6 +7,9 @@
 <% appetizers = Array.new%>
 <% entrees = Array.new%>
 <% desserts = Array.new%>
+<% kidsdrink = Array.new%>
+<% kidsentree = Array.new%>
+<% kidsside = Array.new%>
 
 <%menuitems.each do |menuitem|%>
 	<%if menuitem.category == "Drinks"%>
@@ -17,6 +20,12 @@
     <% entrees << menuitem%>
   <%elsif menuitem.category == "Desserts"%>
     <% desserts << menuitem%>
+  <%elsif menuitem.category == "kids drink"%>
+    <% kidsdrink << menuitem%>
+  <%elsif menuitem.category == "kids entree"%>
+    <% kidsentree << menuitem%>
+  <%elsif menuitem.category == "kids side"%>
+    <% kidsside << menuitem%>
   <%end%>  
 <%end%>
 
@@ -59,6 +68,39 @@
   <% desserts.each do |dessert| %>
     <li><%= link_to dessert.name, menu_item_change_availability_path(:name => dessert.name) %>
       <% if dessert.available == false %>
+      <span><em>^removed</em></span>
+      <%end%>
+    </li>
+  <%end%>
+</ul>
+
+<a data-dropdown="drop5" aria-controls="drop5" aria-expanded="false" class="button">Kids Drinks</a>
+<ul id="drop5" class="f-dropdown" data-dropdown-content aria-hidden="true" tabindex="-1">
+  <% kidsdrink.each do |kdrink| %>
+    <li><%= link_to kdrink.name, menu_item_change_availability_path(:name => kdrink.name) %>
+      <% if kdrink.available == false %>
+      <span><em>^removed</em></span>
+      <%end%>
+    </li>
+  <%end%>
+</ul>
+
+<a data-dropdown="drop6" aria-controls="drop6" aria-expanded="false" class="button">Kids Entrees</a>
+<ul id="drop6" class="f-dropdown" data-dropdown-content aria-hidden="true" tabindex="-1">
+  <% kidsentree.each do |kentree| %>
+    <li><%= link_to kentree.name, menu_item_change_availability_path(:name => kentree.name) %>
+      <% if kentree.available == false %>
+      <span><em>^removed</em></span>
+      <%end%>
+    </li>
+  <%end%>
+</ul>
+
+<a data-dropdown="drop7" aria-controls="drop7" aria-expanded="false" class="button">Kids Sides</a>
+<ul id="drop7" class="f-dropdown" data-dropdown-content aria-hidden="true" tabindex="-1">
+  <% kidsside.each do |kside| %>
+    <li><%= link_to kside.name, menu_item_change_availability_path(:name => kside.name) %>
+      <% if kside.available == false %>
       <span><em>^removed</em></span>
       <%end%>
     </li>

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: MyString
+  reason: MyString
+  float: 
+  ticket_id: 1
+
+two:
+  user: MyString
+  reason: MyString
+  float: 
+  ticket_id: 1

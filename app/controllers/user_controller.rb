@@ -84,7 +84,12 @@ class UserController < ApplicationController
       @menuitem = []
       orderitems.each do |order|
         @compitems << Compitem.where(id:order.compitem_id).first
-        @menuitem << Menuitem.where(id:order.item).first
+        @menuitem << Menuitem.where(id:order.item).first.name
+      end 
+      tickets = Ticket.where("compticket_id IS NOT ?", nil)
+      tickets.each do |ticket|
+        @compitems << Compticket.where(id:ticket.compticket_id).first
+        @menuitem << "Ticket from Table#{ticket.table}"
       end 
     end
   end
@@ -186,7 +191,7 @@ class UserController < ApplicationController
   #Before and after ticket is sent to kitchen or ready
   # to be cashed out
   def confirm_order
-    @check = Ticket.find_by(table: session[:table_id])
+    @check = Ticket.where(table: session[:table_id]).last
     if @check.nil?
       puts("ticket not created yet!")
       return
@@ -199,7 +204,7 @@ class UserController < ApplicationController
       menu_item = Menuitem.find_by(id: orderItem.item)
       @check.update(:subtotal => (@check.subtotal + menu_item.price))
 		unless orderItem.compitem.nil?
-			comp = comp + item.compitem.amount
+			comp = comp + orderItem.compitem.amount
 		end
     end
 
@@ -230,6 +235,9 @@ class UserController < ApplicationController
 
 	 #adjust subtotal for comp
 	 @check.update(:subtotal => (@check.subtotal - comp))
+   unless @check.compticket.nil? 
+   @check.update(:subtotal => (@check.subtotal - @check.compticket.amount))
+   end
 
 	 # subtotal cannot be negative
 	 if @check.subtotal < 0
@@ -248,7 +256,7 @@ class UserController < ApplicationController
 
   #Sends refill message to table view for server/managers to see
   def refill
-    check = Ticket.find_by(table: session[:table_id])
+    check = Ticket.where(table: session[:table_id]).last
 	 unless check.nil?
 		@items = OrderItem.where(:ticket_id => check.id)
 	 end
