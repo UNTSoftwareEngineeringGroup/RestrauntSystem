@@ -22,7 +22,7 @@
   <% end %> 
   <hr>
   <% unless session[:ticket].nil?
-  ticket = Ticket.find_by(table: session[:table_id])
+  ticket = Ticket.where(table: session[:table_id]).last
 			if ticket.birthday %>
 				<h4 style="color:blue">Birthday discount: $10.00 off </h4>
 			<% end
@@ -34,6 +34,10 @@
 			<% end %>
 		<% end %>  
 
+    <!-- Display value removed from ticket view compticket if it exists -->
+    <% unless ticket.compticket.nil? %>
+    <h4 style="color:#1F7A1F">Comp Value: <%= number_to_currency(ticket.compticket.amount) %></h4>
+      <% end %>
     <h4 style="color:grey">Subtotal: <%= number_to_currency(@check.subtotal) %></h4>
     <h4 style="color:#FF6161">Tax: <%= number_to_currency(@check.tax) %></h4>
     <h4 style="color:#1C68FF">Gratuity: <%=number_to_currency(@check.gratuity)%></h4>
