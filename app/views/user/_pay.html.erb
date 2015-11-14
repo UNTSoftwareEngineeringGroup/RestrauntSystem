@@ -61,10 +61,10 @@
       <hr>
         <%= form_tag ticket_compticket_path, :method => 'get' do %>
         <label>Comp Ticket Value
-          <%= text_field_tag :comp_value, params[:tcomp_value], placehoder: "comp ticket"%>
+          <%= text_field_tag :comp_value, params[:comp_value], placehoder: "comp ticket"%>
         </label>
         <label>Reason
-          <%= text_field_tag :reason, params[:treason], placeholder: "reason" %>
+          <%= text_field_tag :reason, params[:reason], placeholder: "reason" %>
         </label>
         <%= hidden_field_tag :ticket_id, session[:ticket]%>
         <%= hidden_field_tag :user, session[:username]%>

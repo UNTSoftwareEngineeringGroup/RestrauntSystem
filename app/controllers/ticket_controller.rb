@@ -48,6 +48,7 @@ class TicketController < ApplicationController
 
 		#adjust subtotal for comp
 		check.update(:subtotal => (check.subtotal - comp))
+		check.update(:subtotal => (check.subtotal - check.compticket.amount))
 
 		# subtotal cannot be negative due to discounts
 		if check.subtotal < 0
@@ -171,22 +172,19 @@ class TicketController < ApplicationController
 =end
 public
 	def compticket
-		puts("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
-		puts("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
-		puts("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
-		#@ticket = Ticket.find_last(table: session[:table_id])
-		ticket = session[:ticket]
-		ticket.update(:compticket => Compticket.create(
+		@ticket = Ticket.where(table: session[:table_id]).last
+		#ticket = session[:ticket]
+		unless @ticket.compticket.nil?
+			@ticket.compticket.delete
+		end
+		@ticket.update(:compticket => Compticket.create(
 			user: params[:user],
-			reason: params[:treason],
-			amount: params[:tcomp_value])
+			reason: params[:reason],
+			amount: params[:comp_value])
 		)
-		puts("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
-		puts("!!!!!!!!!!!!!!!!!INSIDE COMPTICKET!!!!!!!!!!!!!!!!!!!!!")
-		puts("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
-		puts(ticket.compticket.user)
-		puts(ticket.compticket.reason)
-		puts(ticket.compticket.amount)
+		puts(@ticket.compticket.user)
+		puts(@ticket.compticket.reason)
+		puts(@ticket.compticket.amount)
 		redirect_to guest_confirm_order_path
 	end
 end
