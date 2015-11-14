@@ -199,7 +199,7 @@ class UserController < ApplicationController
       menu_item = Menuitem.find_by(id: orderItem.item)
       @check.update(:subtotal => (@check.subtotal + menu_item.price))
 		unless orderItem.compitem.nil?
-			comp = comp + item.compitem.amount
+			comp = comp + orderItem.compitem.amount
 		end
     end
 

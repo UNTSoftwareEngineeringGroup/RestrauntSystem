@@ -155,6 +155,38 @@ class TicketController < ApplicationController
 			end
 		end
 
+=begin copied for debugging.
+  def comp
+    @orderItem = OrderItem.find_by(item: params[:item_id])
+    @orderItem.update(:compitem => Compitem.create(
+      user: params[:user],
+      reason: params[:reason],
+      amount: params[:comp_value])
+    )
+    puts(@orderItem.compitem.user)
+    puts(@orderItem.compitem.reason)
+    puts(@orderItem.compitem.amount)
+    redirect_to guest_confirm_order_path(:view => 'waiter')
+  end
+=end
 
-
+	def compticket
+		puts("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
+		puts("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
+		puts("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
+		#@ticket = Ticket.find_last(table: session[:table_id])
+		@ticket = session[:ticket]
+		@ticket.update(:compticket => Compticket.create(
+			user: params[:user],
+			reason: prams[:treason],
+			amount: params[:tcomp_value])
+		)
+		puts("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+		puts("!!!!!!!!!!!!!!!!!INSIDE COMPTICKET!!!!!!!!!!!!!!!!!!!!!")
+		puts("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+		puts(@ticket.compticket.user)
+		puts(@ticket.compticket.reason)
+		puts(@ticket.compticket.amount)
+		redirect_to guest_confirm_order_path
+	end
 end
