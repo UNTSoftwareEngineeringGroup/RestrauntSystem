@@ -7,118 +7,203 @@
 #   cities = City.create([{ name: "Chicago" }, { name: "Copenhagen" }])
 #   Mayor.create(name: "Emanuel", city: cities.first)
 
+puts "Seeding has began"
 ####-------Ingredients----####
+print "Seeding Ingredients."
 Ingredient.all.delete('menuitem')
 Ingredient.delete_all
-
 
 Ingredient.create(
 	name: "Onions",
 	available: 1
 )
-
+print "."
 Ingredient.create(
 	name: "Bacon",
 	available: 1
 )
-
+print "."
 Ingredient.create(
 	name: "Ranch",
 	available: 1
 )
-
+print "."
 Ingredient.create(
 	name: "Blue Cheese",
 	available: 1
 )
-
+print "."
 Ingredient.create(
 	name: "Celery",
 	available: 1
 )
-
+print "."
 Ingredient.create(
 	name: "Carrots",
 	available: 1
 )
-
+print "."
 Ingredient.create(
 	name: "Marinara Sauce",
 	available: 1
 )
-
+print "."
 Ingredient.create(
 	name: "Cheese",
 	available: 1
 )
-
+print "."
 Ingredient.create(
 	name: "Jalepenos",
 	available: 1
 )
-
+print "."
 
 Ingredient.create(
 	name: "Lettuce",
 	available: 1
 )
-
+print "."
 Ingredient.create(
 	name: "Tomatoes",
 	available: 1
 )
-
+print "."
 Ingredient.create(
 	name: "Pickles",
 	available: 1
 )
-
+print "."
 Ingredient.create(
 	name: "Egg",
 	available: 1
 )
-
+print "."
 Ingredient.create(
 	name: "Avocado",
 	available: 1
 )
-
+print "."
 Ingredient.create(
 	name: "Strawberrys",
 	available: 1
 )
-
+print "."
 Ingredient.create(
 	name: "Peanuts",
 	available: 1
 )
-
+print "."
 Ingredient.create(
 	name: "Chocolate Syrup",
 	available: 1
 )
-
+print "."
 Ingredient.create(
 	name: "Banana",
 	available: 1
 )
-
+print "."
 Ingredient.create(
 	name: "Vanilla",
 	available: 1
 )
-
+print "."
 Ingredient.create(
 	name: "Chocolate",
 	available: 1
 )
-
+puts "."
 
 Menuitem.all.delete("ingredients")
 Menuitem.delete_all
 
+####----Kids Menu Option------####
+print "Seeding Kids menu"
+Menuitem.create(
+  name:'Water',
+  category:'kids drink' ,
+  calories: 0 ,
+  img: nil,
+  available: "TRUE",
+  price: '1.00'
+)
+print "."
+Menuitem.create(
+  name:'Milk',
+  category:'kids drink',
+  calories:103,
+  img: nil,
+  available: "TRUE",
+  price: '1.00'
+)
+print "."
+Menuitem.create(
+  name: 'Apple Juice',
+  category:'kids drink',
+  calories:113,
+  img: nil,
+  available: "TRUE",
+  price: '1.00'
+)
+print "."
+Menuitem.create(
+  name:'Hotdog',
+  category:'kids entree',
+  calories:151,
+  img: nil,
+  available: "TRUE",
+  price: '2.00'
+)
+print "."
+Menuitem.create(
+  name:'Burger',
+  category:'kids entree',
+  calories:254,
+  img: nil,
+  available: "TRUE",
+  price: '2.00'
+)
+print "."
+Menuitem.create(
+  name: 'Grilled Cheese',
+  category: 'kids entree',
+  calories: 291,
+  img: nil,
+  available: "TRUE",
+  price: '2.00'
+)
+print "."
+Menuitem.create(
+  name: 'Fries',
+  category: 'kids side',
+  calories: 222,
+  img: nil,
+  available: "TRUE",
+  price: '1.50'
+)
+print "."
+Menuitem.create(
+  name: 'Fruit',
+  category: 'kids side',
+  calories: 150,
+  img: nil,
+  available: "TRUE",
+  price: '1.50'
+)
+print "."
+Menuitem.create(
+  name: 'Potato Chips',
+  category: 'kids side',
+  calories: 152,
+  img: nil,
+  available: "TRUE",
+  price: '1.50'
+)
+puts "."
 
 ####-----Appetizers-------########
+print "Seeding Appretixers"
 Menuitem.create(
 		name: "Cheese Fries",
  		category: "Appetizers",
@@ -129,6 +214,7 @@ Menuitem.create(
 		price: "4.57",
 		:ingredients => Ingredient.where(:name => ['Onions', 'Bacon'])
 )
+print "."
 Menuitem.create(
 		name: "Chips and Salsa",
 		category: "Appetizers",
@@ -137,6 +223,7 @@ Menuitem.create(
 		img: "chipsAndSalsa.jpg",
 		available: "TRUE",
 		price: "3.29")
+print "."
 Menuitem.create(
 		name:"Spinach Dip",
 		category: "Appetizers",
@@ -145,6 +232,7 @@ Menuitem.create(
 		img: "spinachDip.jpg",
 		available: "TRUE",
 		price: "4.99")
+print "."
 Menuitem.create(
 		name: "Buffalo Chicken Wings",
 		category: "Appetizers",
@@ -155,6 +243,7 @@ Menuitem.create(
 		price: "6.99",
 		:ingredients => Ingredient.where(:name => ['Ranch', 'Blue Cheese', 'Celery', 'Carrots'])
 )
+print "."
 Menuitem.create(
 		name: "Fried Mozzarella Cheese",
 		category: "Appetizers",
@@ -165,6 +254,7 @@ Menuitem.create(
 		price: "5.99",
 		:ingredients => Ingredient.where(:name => ['Marinara Sauce'])
 )
+print "."
 Menuitem.create(
 		name: "Nachos",
 		category: "Appetizers",
@@ -176,8 +266,10 @@ Menuitem.create(
 		price: "4.69",
 		:ingredients => Ingredient.where(:name => ['Cheese', 'Jalepenos', 'Onions'])
 )
-
+puts "."
 #####----------Entrees----------###
+
+print "Seeding Entrees"
 Menuitem.create(
 		name: "Bacon Cheese Burger",
 		category: "Entrees",
@@ -188,6 +280,7 @@ Menuitem.create(
 		price: "9.99",
 		:ingredients => Ingredient.where(:name => ['Bacon', 'Cheese', 'Lettuce', 'Tomatoes', 'Pickles', 'Onions'])
 )
+print "."
 Menuitem.create(
 		name: "Teriyaki Burger",
 		category: "Entrees",
@@ -198,6 +291,7 @@ Menuitem.create(
 		price: "8.99",
 		:ingredients => Ingredient.where(:name => ['Cheese', 'Lettuce', 'Tomatoes', 'Pickles', 'Onions'])
 )
+print "."
 Menuitem.create(
 		name: "Double Burger",
 		category: "Entrees",
@@ -208,6 +302,7 @@ Menuitem.create(
 		price: "12.99",
 		:ingredients => Ingredient.where(:name =>['Cheese', 'Lettuce', 'Tomatoes', 'Pickles', 'Onions'])
 )
+print "."
 Menuitem.create(
 		name: "The Roundhouse",
 		category: "Entrees",
@@ -218,6 +313,7 @@ Menuitem.create(
 		price: "6.59",
 		:ingredients => Ingredient.where(:name => ['Cheese', 'Lettuce', 'Tomatoes', 'Pickles', 'Onions'])
 )
+print "."
 Menuitem.create(
 		name: "The Champion",
 		category: "Entrees",
@@ -228,6 +324,7 @@ Menuitem.create(
 		price: "9.78",
 		:ingredients => Ingredient.where(:name => ['Cheese', 'Egg', 'Avocado', 'Lettuce', 'Tomatoes', 'Pickles', 'Onion'])
 )
+print "."
 Menuitem.create(
 		name: "The Classic",
 		category: "Entrees",
@@ -238,7 +335,9 @@ Menuitem.create(
 		price: "6.99",
 		:ingredients => Ingredient.where(:name => ['Cheese', 'Lettuce', 'Tomatoes', 'Pickles', 'Onion'])
 )
+puts "."
 #########------Desserts---------#####
+print "Seeding Desserts"
 Menuitem.create(
 		name: "Piece of Cake",
 		category: "Desserts",
@@ -248,6 +347,7 @@ Menuitem.create(
 		available: "TRUE",
 		price: "3.49",
 )
+print "."
 Menuitem.create(
 		name: "Fruit Fiesta",
 		category: "Desserts",
@@ -257,6 +357,7 @@ Menuitem.create(
 		available: "TRUE",
 		price: "4.59",
 )
+print "."
 Menuitem.create(
 		name: "The Old Fashioned",
 		category: "Desserts",
@@ -266,6 +367,7 @@ Menuitem.create(
 		available: "TRUE",
 		price: "3.99",
 )
+print "."
 Menuitem.create(
 		name: "Strawberry Cheesecake",
 		category: "Desserts",
@@ -276,6 +378,7 @@ Menuitem.create(
 		price: "7.79",
 		:ingredients => Ingredient.where(:name => ['Strawberrys'])
 )
+print "."
 Menuitem.create(
 		name: "Hot Fudge Sundae",
 		category: "Desserts",
@@ -286,6 +389,7 @@ Menuitem.create(
 		price: "4.59",
 		:ingredients => Ingredient.where(:name => ['Peanuts', 'Chocolate Syrup', 'Banana'])
 )
+print "."
 Menuitem.create(
 		name: "Key Lime Pie",
 		category: "Desserts",
@@ -295,6 +399,7 @@ Menuitem.create(
 		available: "TRUE",
 		price: "3.99",
 )
+print "."
 Menuitem.create(
 		name: "Ice Cream",
 		category: "Desserts",
@@ -305,7 +410,9 @@ Menuitem.create(
 		price: "4.99",
 		:ingredients => Ingredient.where(:name => ['Vanilla', 'Chocolate'])
 )
+puts "."
 ########--------Drinks--------#########
+print "Seeding Drinks"
 Menuitem.create(
 		name: "Coke",
 		category: "Drinks",
@@ -315,6 +422,7 @@ Menuitem.create(
 		available: "TRUE",
 		price: "1.99"
 )
+print "."
 Menuitem.create(
 		name: "Diet Coke",
 		category: "Drinks",
@@ -324,6 +432,7 @@ Menuitem.create(
 		available: "TRUE",
 		price: "1.99"
 )
+print "."
 Menuitem.create(
 		name: "Sprite",
 		category: "Drinks",
@@ -333,6 +442,7 @@ Menuitem.create(
 		available: "TRUE",
 		price: "1.99"
 )
+print "."
 Menuitem.create(
 		name: "Dr. Pepper",
 		category: "Drinks",
@@ -342,6 +452,7 @@ Menuitem.create(
 		available: "TRUE",
 		price: "1.99"
 )
+print "."
 Menuitem.create(
 		name: "Fanta Orange",
 		category: "Drinks",
@@ -351,6 +462,7 @@ Menuitem.create(
 		available: "TRUE",
 		price: "1.99"
 )
+print "."
 Menuitem.create(
 		name: "Iced Tea",
 		category: "Drinks",
@@ -360,6 +472,7 @@ Menuitem.create(
 		available: "TRUE",
 		price: "1.99"
 )
+print "."
 Menuitem.create(
 		name: "Lemonade",
 		category: "Drinks",
@@ -369,6 +482,7 @@ Menuitem.create(
 		available: "TRUE",
 		price: "1.99"
 )
+print "."
 Menuitem.create(
 		name: "Root Beer",
 		category: "Drinks",
@@ -378,6 +492,7 @@ Menuitem.create(
 		available: "TRUE",
 		price: "1.99"
 )
+print "."
 Menuitem.create(
 		name: "Hot Chocolate",
 		category: "Drinks",
@@ -387,47 +502,55 @@ Menuitem.create(
 		available: "TRUE",
 		price: "2.50"
 )
-
+puts "."
 
 		###-------Seed Users-------###
+print "Seeding Users"
 User.delete_all ##erase previous seed
 User.create(
 	username:"Manager",
 	password:"1234",
 	accesslevel: 4
 )
+print "."
 User.create(
 	username:"Server1",
 	password:"1234",
 	accesslevel: 3
 )
+print "."
 User.create(
 	username:"Server2",
 	password:"1234",
 	accesslevel: 3
 )
+print "."
 User.create(
 	username:"Server3",
 	password:"1234",
 	accesslevel: 3
 )
+print "."
 User.create(
 	username:"Server4",
 	password:"1234",
 	accesslevel: 3
 )
+print "."
 User.create(
 	username:"Server5",
 	password:"1234",
 	accesslevel: 3
 )
+print "."
 User.create(
 	username:"Kitchen",
 	password:"kitchen",
 	accesslevel: 2
 )
-
+puts "."
 ###----Seed tables-----###
+print "Seeding Tables"
 Table.delete_all ##erase previous seed
 Table.create(
 	username:"Table11",
@@ -435,83 +558,84 @@ Table.create(
 	accesslevel:1,
 	ticket:NIL
 )
-
+print "."
 Table.create(
 	username:"Table12",
 	password:NIL,
 	accesslevel:1,
 	ticket:NIL
 )
-
+print "."
 Table.create(
 	username:"Table13",
 	password:NIL,
 	accesslevel:1,
 	ticket:NIL
 )
-
+print "."
 Table.create(
 	username:"Table14",
 	password:NIL,
 	accesslevel:1,
 	ticket:NIL
 )
-
+print "."
 Table.create(
 	username:"Table21",
 	password:NIL,
 	accesslevel:1,
 	ticket:NIL
 )
-
+print "."
 Table.create(
 	username:"Table22",
 	password:NIL,
 	accesslevel:1,
 	ticket:NIL
 )
-
+print "."
 Table.create(
 	username:"Table23",
 	password:NIL,
 	accesslevel:1,
 	ticket:NIL
 )
-
+print "."
 Table.create(
 	username:"Table24",
 	password:NIL,
 	accesslevel:1,
 	ticket:NIL
 )
+print "."
 Table.create(
 	username:"Table31",
 	password:NIL,
 	accesslevel:1,
 	ticket:NIL
 )
-
+print "."
 Table.create(
 	username:"Table32",
 	password:NIL,
 	accesslevel:1,
 	ticket:NIL
 )
-
+print "."
 Table.create(
 	username:"Table33",
 	password:NIL,
 	accesslevel:1,
 	ticket:NIL
 )
-
+print "."
 Table.create(
 	username:"Table34",
 	password:NIL,
 	accesslevel:1,
 	ticket:NIL
 )
-
+puts "."
 #######--------Create Ticket Counter-------############
 Totalticket.delete_all
 Totalticket.create(
@@ -555,4 +679,4 @@ Compitem.delete_all
 =end
 
 
-
+puts "Seeding Complete"

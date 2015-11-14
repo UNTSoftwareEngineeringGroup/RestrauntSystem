@@ -93,6 +93,31 @@ class TicketController < ApplicationController
 	    
 	end
 
+	def addToTicketKids
+	  ticket = Ticket.find_by(table: session[:table_id])
+	  if (ticket.nil?) || (ticket.tstatus == 9)
+	    ticket = Ticket.create(table: session[:table_id], 
+										tax: 0, 
+										tstatus: 0, 
+										birthday: false,
+										coupon: false,
+										points: false	  )
+		# Add 1 to ticket counter   
+	    count = Totalticket.first
+	    count.update(:total => count.total + 1)
+	    puts("**********Ticket created************")
+	  end
+	     ticket.orderItems.create(
+	            item: (Menuitem.find_by(name: params[:item_name]).id),
+	            ingredients: params[:good_ingredients],
+	            notes: params[:notes],
+	            istatus: 0
+	        )
+	        session[:ticket] = ticket
+	        puts("**************Ticket added to***********")
+	        calcTotal 
+	end
+
 	# Check status of ticket for kitchen view
 	# Advances the ticket beyone the kitchen if
 	# all orderItems on the ticket are complete
@@ -136,6 +161,22 @@ class TicketController < ApplicationController
 		ticket.update(:gratuity => params[:gratuity])
 		redirect_to guest_confirm_order_path
 	end
+
+  def kids
+    items = []
+    items << params[:drink]
+    items << params[:entree]
+    items << params[:side]
+
+    items.each do |item|
+      params[:item_name] = item[:name]
+      params[:good_ingredients] = ''
+      params[:notes] = ''
+      addToTicketKids
+    end
+
+    redirect_to guest_url
+  end
 
 	private
 		# Handles application of credit card payment
