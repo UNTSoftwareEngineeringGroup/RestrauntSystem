@@ -30,9 +30,11 @@
         <li>
 		<div class="rows"> 
         <div class="large-0 columns"> 
-          <% ticket = Ticket.find_by(table: session[:table_id]) %>
-          <% if !ticket.nil? %>
+          <% ticket = Ticket.where(table: session[:table_id]).last %>
+          <% if !ticket.nil?  %>
+              <% if ticket.tstatus != 9 %>
             <%= button_to "Pay Total: #{number_to_currency(ticket.total)}", guest_confirm_order_path, :method => "get", class: "button round success" %>
+            <% end %>
           <% end %>
         </li>
       <% elsif view == "kitchen" %>

@@ -48,7 +48,10 @@ class TicketController < ApplicationController
 
 		#adjust subtotal for comp
 		check.update(:subtotal => (check.subtotal - comp))
-
+		unless check.compticket.nil? 
+		check.update(:subtotal => (check.subtotal - check.compticket.amount))
+		end
+		
 		# subtotal cannot be negative due to discounts
 		if check.subtotal < 0
 			check.update(:subtotal => 0)
@@ -67,7 +70,7 @@ class TicketController < ApplicationController
 	# Creates new order item and attaches it to ticket
 	# If no ticket exists it is created
 	def addToTicket
-	  ticket = Ticket.find_by(table: session[:table_id])
+	  ticket = Ticket.where(table: session[:table_id]).last
 	  if (ticket.nil?) || (ticket.tstatus == 9)
 	    ticket = Ticket.create(table: session[:table_id], 
 										tax: 0, 
@@ -94,9 +97,9 @@ class TicketController < ApplicationController
 	end
 
 	def addToTicketKids
-	  ticket = Ticket.find_by(table: session[:table_id])
-	  if (ticket.nil?) || (ticket.tstatus == 9)
-	    ticket = Ticket.create(table: session[:table_id], 
+	  @ticket = Ticket.where(table: session[:table_id]).last
+	  if (@ticket.nil?) || (@ticket.tstatus == 9)
+	    @ticket = Ticket.create(table: session[:table_id], 
 										tax: 0, 
 										tstatus: 0, 
 										birthday: false,
@@ -107,13 +110,13 @@ class TicketController < ApplicationController
 	    count.update(:total => count.total + 1)
 	    puts("**********Ticket created************")
 	  end
-	     ticket.orderItems.create(
+	     @ticket.orderItems.create(
 	            item: (Menuitem.find_by(name: params[:item_name]).id),
 	            ingredients: params[:good_ingredients],
 	            notes: params[:notes],
 	            istatus: 0
 	        )
-	        session[:ticket] = ticket
+	        session[:ticket] = @ticket
 	        puts("**************Ticket added to***********")
 	        calcTotal 
 	end
@@ -142,8 +145,8 @@ class TicketController < ApplicationController
 
 	# Advances the value of the tstatus field for a ticket
 	# Used for tracking the progress of the ticket through orders
-	def advance_ticket		
-		check = Ticket.find_by(table: session[:table_id])
+	def advance_ticket
+		check = Ticket.where(table: session[:table_id]).last
 		
 		if (check.tstatus == 0)
 			check.update(:tstatus => 1)
@@ -162,7 +165,7 @@ class TicketController < ApplicationController
 
 	# Adds gratuity to the ticket for proper total calculation
 	def update_gratuity
-		ticket = Ticket.find_by(table: session[:table_id])
+		ticket = Ticket.where(table: session[:table_id]).last
 		ticket.update(:gratuity => params[:gratuity])
 		redirect_to guest_confirm_order_path
 	end
@@ -202,5 +205,21 @@ class TicketController < ApplicationController
 		end
 
 
-
+public
+	def compticket
+		@ticket = Ticket.where(table: session[:table_id]).last
+		#ticket = session[:ticket]
+		unless @ticket.compticket.nil?
+			@ticket.compticket.delete
+		end
+		@ticket.update(:compticket => Compticket.create(
+			user: params[:user],
+			reason: params[:reason],
+			amount: params[:comp_value])
+		)
+		puts(@ticket.compticket.user)
+		puts(@ticket.compticket.reason)
+		puts(@ticket.compticket.amount)
+		redirect_to guest_confirm_order_path
+	end
 end

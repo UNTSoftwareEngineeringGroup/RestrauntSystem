@@ -3,13 +3,13 @@
 <script type="text/javascript">
   $(document).foundation();
 </script>
-
-<!-- IF THERE IS NO TICKET -->
+<!-- If no ticket exists -->
 <% if @check.nil? %>
   <center><h1>Choose an item to build a ticket.</h1></center>
 
-<!-- in the process of adding items to ticket -->
-<% elsif @check.tstatus == 0 %>
+  <!-- If ticket has not been sent to kitchen -->
+<% elsif @check.tstatus == 0 %> 
+
 <fieldset class='small-8 small-centered text-center columns'>
   <legend>Current Order</legend>
 
@@ -63,6 +63,8 @@
    <!-- end of form_tag -->
 
   </fieldset>
+
+  <!-- If ticket sent to kitchen but not out of kitchen -->
   <% elsif @check.tstatus == 1%>
     <div style="text-align:center">
       <h1 style="padding-top:64px;">Your food is in the kitchen</h1>
@@ -88,6 +90,8 @@
     <div>
       <%= render 'pay' %>
     </div>
+
+    <!-- If ticket out of kitchen but unpaid -->
   <% elsif @check.tstatus == 2%>
     <div style="text-align:center">
       <h1 style="padding-top:64px;">Your food is ready!</h1>
