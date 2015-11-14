@@ -89,8 +89,33 @@ class TicketController < ApplicationController
 	        session[:ticket] = ticket
 	        puts("**************Ticket added to***********")
 	        calcTotal
-#	        redirect_to guest_path
+	        redirect_to guest_path
 	    
+	end
+
+	def addToTicketKids
+	  ticket = Ticket.find_by(table: session[:table_id])
+	  if (ticket.nil?) || (ticket.tstatus == 9)
+	    ticket = Ticket.create(table: session[:table_id], 
+										tax: 0, 
+										tstatus: 0, 
+										birthday: false,
+										coupon: false,
+										points: false	  )
+		# Add 1 to ticket counter   
+	    count = Totalticket.first
+	    count.update(:total => count.total + 1)
+	    puts("**********Ticket created************")
+	  end
+	     ticket.orderItems.create(
+	            item: (Menuitem.find_by(name: params[:item_name]).id),
+	            ingredients: params[:good_ingredients],
+	            notes: params[:notes],
+	            istatus: 0
+	        )
+	        session[:ticket] = ticket
+	        puts("**************Ticket added to***********")
+	        calcTotal 
 	end
 
 	# Check status of ticket for kitchen view
@@ -147,7 +172,7 @@ class TicketController < ApplicationController
       params[:item_name] = item[:name]
       params[:good_ingredients] = ''
       params[:notes] = ''
-      addToTicket
+      addToTicketKids
     end
 
     redirect_to guest_url
