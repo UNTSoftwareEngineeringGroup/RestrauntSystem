@@ -96,8 +96,9 @@ ActiveRecord::Schema.define(version: 20151112184014) do
     t.float    "total"
     t.float    "tax"
     t.integer  "tstatus"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.boolean  "togo",       default: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
     t.float    "gratuity"
     t.float    "subtotal"
     t.boolean  "birthday"
