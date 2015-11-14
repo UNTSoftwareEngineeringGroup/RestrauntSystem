@@ -55,6 +55,7 @@
         <%= text_field_tag :code, params[:code] %>
       </label>
       <%= submit_tag "Check Code", class:"button success"%>
+      <%end%>
       <% user = User.find_by(username: session[:username]) %>
       <% if session[:accesslevel] > 2 %>
       <hr>
@@ -69,7 +70,7 @@
         <%= hidden_field_tag :user, session[:username]%>
         <br>
         <%= submit_tag "Comp Ticket", class:"button success" %>
-        <%end end%>
+        <%end%>
     </form>
     <%end%>
     </div>    
