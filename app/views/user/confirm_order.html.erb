@@ -16,7 +16,7 @@
   <!-- loop through each item in order -->
   <% @items.each do |orderItem| %>
     <div class='panel'>
-      <h4><%=(Menuitem.find(orderItem.item)).name%>: $<%=(Menuitem.find(orderItem.item)).price%></h4>
+      <h4><%=(Menuitem.find(orderItem.item)).name%>: <%=number_to_currency((Menuitem.find(orderItem.item)).price)%></h4>
       Notes: <%= orderItem.notes %><br>
       <%= link_to 'Remove', order_items_remove_item_path(item_id: orderItem.item) %><br>
       
@@ -39,10 +39,10 @@
       <%end%>
     </div>
  <% end %>
-	
+  
   <!-- TOTALS -->
   Subtotal: <%= number_to_currency(@check.subtotal) %><br>
-	Tax: <%= number_to_currency(@check.tax) %><br>
+  Tax: <%= number_to_currency(@check.tax) %><br>
   Total: <%= number_to_currency(@check.total) %><br>
   <hr>
   <p style="font-size:16px">You can choose to make your order To-Go after submitting your order.</p>
