@@ -2,7 +2,7 @@
 <center><%= render 'top_nav_bar', :view => "menu" %></center>
 <div class="rows">
   <div class="coulmns large-10 right">
-    <% check = Ticket.find_by(table: session[:table_id]) %>
+    <% check = Ticket.where(table: session[:table_id]).last %>
 	 <% unless check.nil?
 		   items = OrderItem.where(:ticket_id => check.id)
 		end %>

@@ -38,7 +38,7 @@
             Calories: <%= item.calories %>
             <a class="close-reveal-modal" aria-label="Close">&#215;</a>
           </div>
-              <% check = Ticket.find_by(table: session[:table_id]) %>
+              <% check = Ticket.where(table: session[:table_id]).last %>
           <%if check.nil? || check.tstatus == 0 || check.tstatus == 9 %>
             <%= submit_tag "Order", class:"button radius" %>
           <%else %>
