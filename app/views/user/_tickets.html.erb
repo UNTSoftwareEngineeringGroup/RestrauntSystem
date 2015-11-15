@@ -3,9 +3,9 @@
 <ul class="small-block-grid-3">
 	<% tickets = Ticket.all%>
 	<% tickets.each do |ticket|%>
-	<li>
+	
 	<% if ticket.tstatus == 1 %> <!-- if ticket is sent to kitchen -->
-	<div class="ticket-container">
+	<li><div class="ticket-container">
 		<h3>Table #<%=ticket.table%></h3>
 		<hr>
 		<%orderItems = ticket.orderItems.all%>
@@ -29,8 +29,8 @@
 			</div>
 		<%end%>
 		<%end%>
-	</div>
+	</div></li>
 	<%end%>	
-	</li>
+	
 <%end%>
 </ul>
